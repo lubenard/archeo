@@ -7,8 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
-import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,8 +15,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -27,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void connectToBluetooth() {
         // Get SharedPreference to see if Bluetooth address is already registered
-        SharedPreferences bluetooth_prefs = getSharedPreferences("BLUETOOTH_RELATED", 0);
+        SharedPreferences bluetooth_prefs = getSharedPreferences("BLUETOOTH_RELATED", Context.MODE_PRIVATE);
         String bluetooth_addr = bluetooth_prefs.getString("BLUETOOTH_ADDR", null);
         if (bluetooth_addr != null){
             // Bluetooth address already registered, try to connect to it
@@ -42,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else {
+            Log.d("BLUETOOTH", "Device not registered, displaying Bluetooth Page...");
             // Bluetooth address not registered, display bluetooth devices
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             BluetoothFragment fragment = new BluetoothFragment();
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int isBluetoothTurnedOn() {
-        Log.d("BLUETOOTH","Checking the bluetooth status");
         if (mBluetoothAdapter == null) {
             // Bluetooth does not exist on this device
             Log.e("BLUETOOTH","Error. It seems bluetooth does not exist on this device");
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("Error!");
                 alertDialogBuilder.setMessage("Sorry, bluetooth does not exist on this device. Exiting...");
-                alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
                     }
@@ -85,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(enableBtIntent, 1);
+                connectToBluetooth();
                 break;
         }
         return true;
@@ -115,13 +113,13 @@ public class MainActivity extends AppCompatActivity {
 
         //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        //isBluetoothConnected();
+        isBluetoothConnected();
 
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         QuizzFragment fragment = new QuizzFragment();
         fragmentTransaction.replace(android.R.id.content, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
         /*if (isBluetoothConnected()) {
             // If permission is granted
