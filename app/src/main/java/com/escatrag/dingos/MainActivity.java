@@ -113,10 +113,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //
         //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        isBluetoothConnected();
+        //isBluetoothConnected();
+
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        QuizzFragment fragment = new QuizzFragment();
+        fragmentTransaction.replace(android.R.id.content, fragment);
+        fragmentTransaction.commit();
 
         /*if (isBluetoothConnected()) {
             // If permission is granted
