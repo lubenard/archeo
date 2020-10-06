@@ -14,15 +14,17 @@ public class ReceiveBtDatas extends Thread {
 
     private String myUUID = "801e2db8-2910-4429-8283-494393b6c337";
 
-    public ReceiveBtDatas (BluetoothDevice device) {
+    public int connect(BluetoothDevice device){
         // UUID uuid = UUID.fromString(myUUID);
         UUID uuid = UUID.randomUUID();
         try {
             socket = device.createRfcommSocketToServiceRecord(uuid);
             socket.connect();
+            return 0;
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return 1;
         }
     }
 

@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -26,17 +27,21 @@ public class MainActivity extends AppCompatActivity {
         // Get SharedPreference to see if Bluetooth address is already registered
         SharedPreferences bluetooth_prefs = getSharedPreferences("BLUETOOTH_RELATED", Context.MODE_PRIVATE);
         String bluetooth_addr = bluetooth_prefs.getString("BLUETOOTH_ADDR", null);
-        if (bluetooth_addr != null){
+        if (bluetooth_addr != null) {
             // Bluetooth address already registered, try to connect to it
-            Log.d("BLUETOOTH","Connecting to " + bluetooth_addr);
+            Log.d("BLUETOOTH", "Connecting to " + bluetooth_addr);
 
             BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(bluetooth_addr);
 
-            bluetoothDataReceiver = new ReceiveBtDatas(device);
-            try {
-                bluetoothDataReceiver.listenForDatas();
-            } catch (IOException e) {
-                e.printStackTrace();
+            bluetoothDataReceiver = new ReceiveBtDatas();
+            if (bluetoothDataReceiver.connect(device) == 1) {
+                Toast.makeText(this, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
+            } else {
+                try {
+                    bluetoothDataReceiver.listenForDatas();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             Log.d("BLUETOOTH", "Device not registered, displaying Bluetooth Page...");
@@ -114,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         isBluetoothConnected();
-
 
         /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         QuizzFragment fragment = new QuizzFragment();

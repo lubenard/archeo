@@ -1,6 +1,8 @@
 package com.escatrag.dingos;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -18,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BluetoothListAdapter extends Fragment implements ListAdapter {
@@ -59,7 +62,24 @@ public class BluetoothListAdapter extends Fragment implements ListAdapter {
                             editor.apply();
                             Toast.makeText(context, "Preference saved! ", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
-                            //BluetoothFragment.launchConnection(device.deviceMacAddr);
+
+                            BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                            BluetoothDevice btdevice = mBluetoothAdapter.getRemoteDevice(device.deviceMacAddr);
+                            ReceiveBtDatas bluetoothDataReceiver = new ReceiveBtDatas();
+                            if (bluetoothDataReceiver.connect(btdevice) == 1){
+                                Toast.makeText(context, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
+                            } else {
+                                try {
+                                    bluetoothDataReceiver.listenForDatas();
+                                    Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
+
+                                    FragmentManager fragmentManager = getFragmentManager();
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    WaitScan fragment = new WaitScan();
+                                    fragmentTransaction.replace(android.R.id.content, fragment);
+                                    fragmentTransaction.commit();
+                                } catch (IOException e) { e.printStackTrace(); }
+                            }
                         }
                     });
                     alertDialogBuilder.setNegativeButton(android.R.string.no, null);

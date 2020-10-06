@@ -33,24 +33,6 @@ public class BluetoothFragment extends Fragment {
         return inflater.inflate(R.layout.bluetooth_fragment, container, false);
     }
 
-    /*private void switchToListenFragment() {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    }*/
-
-    public static void launchConnection(String macAddress) {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(macAddress);
-        ReceiveBtDatas bluetoothDataReceiver = new ReceiveBtDatas(device);
-        try {
-            bluetoothDataReceiver.listenForDatas();
-            Log.d("BLUETOOTH", "Connected to " + macAddress);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //switchToListenFragment();
-    }
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
