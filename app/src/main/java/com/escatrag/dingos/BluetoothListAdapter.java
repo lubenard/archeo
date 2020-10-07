@@ -63,21 +63,22 @@ public class BluetoothListAdapter extends Fragment implements ListAdapter {
                             Toast.makeText(context, "Preference saved! ", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
 
-                            BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-                            BluetoothDevice btdevice = mBluetoothAdapter.getRemoteDevice(device.deviceMacAddr);
                             ReceiveBtDatas bluetoothDataReceiver = new ReceiveBtDatas();
-                            if (bluetoothDataReceiver.connect(btdevice) == 1){
+                            if (bluetoothDataReceiver.connect(device.deviceMacAddr) == 1){
                                 Toast.makeText(context, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
+                                Log.d("BLUETOOTH", "Connection failed! ");
                             } else {
+                                Log.d("BLUETOOTH", "Connection successful! ");
+                                Toast.makeText(context, "Connection successful !", Toast.LENGTH_LONG).show();
                                 try {
                                     bluetoothDataReceiver.listenForDatas();
-                                    Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
+                                    /*Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
 
                                     FragmentManager fragmentManager = getFragmentManager();
                                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                                     WaitScan fragment = new WaitScan();
                                     fragmentTransaction.replace(android.R.id.content, fragment);
-                                    fragmentTransaction.commit();
+                                    fragmentTransaction.commit();*/
                                 } catch (IOException e) { e.printStackTrace(); }
                             }
                         }

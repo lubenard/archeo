@@ -25,6 +25,8 @@ import java.util.Set;
 public class BluetoothFragment extends Fragment {
 
     private BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+    private ArrayList deviceItemList = new ArrayList<BluetoothElementHandling>();
+    private View mainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,11 +35,15 @@ public class BluetoothFragment extends Fragment {
         return inflater.inflate(R.layout.bluetooth_fragment, container, false);
     }
 
+    private void updateListView() {
+        ListView deviceListView = mainView.findViewById(R.id.bluetoothListView);
+        BluetoothListAdapter customAdapter = new BluetoothListAdapter(getContext(), getActivity(),deviceItemList);
+        deviceListView.setAdapter(customAdapter);
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ArrayList deviceItemList = new ArrayList<BluetoothElementHandling>();
 
         // Get list of already paired devices.
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
@@ -61,9 +67,9 @@ public class BluetoothFragment extends Fragment {
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         getContext().registerReceiver(receiver, filter);
 
-        ListView deviceListView = view.findViewById(R.id.bluetoothListView);
-        BluetoothListAdapter customAdapter = new BluetoothListAdapter(getContext(), getActivity(),deviceItemList);
-        deviceListView.setAdapter(customAdapter);
+        mainView = view;
+
+        updateListView();
     }
 
     // Create a BroadcastReceiver for ACTION_FOUND.
@@ -75,6 +81,9 @@ public class BluetoothFragment extends Fragment {
                 // object and its info from the Intent.
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 Log.d("BLUETOOTH", "Device discovered: " + device.getName() + " at address " + device.getAddress());
+                BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress());
+                deviceItemList.add(newDevice);
+                updateListView();
             }
         }
     };

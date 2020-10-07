@@ -31,10 +31,8 @@ public class MainActivity extends AppCompatActivity {
             // Bluetooth address already registered, try to connect to it
             Log.d("BLUETOOTH", "Connecting to " + bluetooth_addr);
 
-            BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(bluetooth_addr);
-
             bluetoothDataReceiver = new ReceiveBtDatas();
-            if (bluetoothDataReceiver.connect(device) == 1) {
+            if (bluetoothDataReceiver.connect(bluetooth_addr) == 1) {
                 Toast.makeText(this, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
             } else {
                 try {
