@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
             bluetoothDataReceiver = new ReceiveBtDatas();
             if (bluetoothDataReceiver.connect(bluetooth_addr) == 1) {
                 Toast.makeText(this, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
-            } else {
+            } /*else {
                 try {
                     bluetoothDataReceiver.listenForDatas();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+            }*/
         } else {
             Log.d("BLUETOOTH", "Device not registered, displaying Bluetooth Page...");
             // Bluetooth address not registered, display bluetooth devices
@@ -112,25 +112,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
         isBluetoothConnected();
-
-        /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        QuizzFragment fragment = new QuizzFragment();
-        fragmentTransaction.replace(android.R.id.content, fragment);
-        fragmentTransaction.commit();*/
-
-        /*if (isBluetoothConnected()) {
-            // If permission is granted
-            WaitScan fragment = new WaitScan();
-            fragmentTransaction.replace(android.R.id.content, fragment);
-        } else {
-            // If permissions not granted
-
-        }
-        fragmentTransaction.commit();*/
     }
 }

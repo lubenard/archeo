@@ -8,9 +8,10 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class ReceiveBtDatas extends Thread {
+public class ReceiveBtDatas extends Thread implements Serializable {
     private Boolean isConnectionAlive = false;
     private BluetoothSocket socket = null;
 
@@ -47,16 +48,20 @@ public class ReceiveBtDatas extends Thread {
         try {
             Log.d("BLUETOOTH", "Listening for datas. IsConnection alive: " + isConnectionAlive);
             while (isConnectionAlive) {
-                if (inputStream.available() > 0) {
-                    Log.d("BLUETOOTH", "Datas available" + String.format("%c", inputStream.read()));
-                } else {
-                    Thread.sleep( 100 );
-                }
+                Log.d("BLUETOOTH", "Datas available: " + String.format("%c", inputStream.read()));
             }
         } catch( Exception exception ) {
             Log.e( "DEBUG", "Cannot read data", exception );
-            closeConnection();
+            //closeConnection();
         }
+    }
+
+    public boolean getConnectionStatus() {
+        return isConnectionAlive;
+    }
+
+    public BluetoothSocket getSocket() {
+        return socket;
     }
 
     public void closeConnection() {

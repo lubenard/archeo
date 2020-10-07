@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -27,12 +28,24 @@ public class BluetoothFragment extends Fragment {
     private BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
     private ArrayList deviceItemList = new ArrayList<BluetoothElementHandling>();
     private View mainView;
+    private static FragmentManager fragmentManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.bluetooth_fragment, container, false);
+    }
+
+    public static void changeForWaitScan(ReceiveBtDatas bluetoothDataReceiver) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("dataReceiver", (Serializable) bluetoothDataReceiver);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        WaitScan fragment = new WaitScan();
+        fragment.setArguments(bundle);
+        fragmentTransaction.replace(android.R.id.content, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private void updateListView() {
@@ -44,6 +57,8 @@ public class BluetoothFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        fragmentManager = getFragmentManager();
 
         // Get list of already paired devices.
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();

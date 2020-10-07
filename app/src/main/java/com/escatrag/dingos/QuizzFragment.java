@@ -35,7 +35,7 @@ public class QuizzFragment extends Fragment {
 
         Log.d("QUIZZ", "RadioGroup is " + radioGroup);
 
-        final int item = 1;
+        final int item = WaitScan.getItemChoice();
         RadioButton goodAnswer = null;
 
         switch (item) {
@@ -46,6 +46,21 @@ public class QuizzFragment extends Fragment {
                 radio3.setText("Seul le haut de l’avant-bras gauche est fracturé");
                 radio4.setText("L’avant-bras gauche est en bouillie !");
                 goodAnswer = radio2;
+                break;
+            case 6:
+                questionTextView.setText("Quel est l'object presenté ?");
+                radio1.setText("C'est un vase de l'âge du bronze");
+                radio2.setText("C'est une épée de l'époque romaine");
+                radio3.setText("C'est un collier en perle de l'époque mérovingigienne");
+                radio4.setText("C'est un pot de fleur d'aujourd'hui");
+                goodAnswer = radio3;
+            case 7:
+                questionTextView.setText("Combien y a t'il de sujets ?");
+                radio1.setText("Il y a un sujet");
+                radio2.setText("Il y a deux sujets");
+                radio3.setText("Il y a trois sujets");
+                radio4.setText("C'est le même que celui qui est sur le dos");
+                goodAnswer = radio1;
                 break;
         }
 

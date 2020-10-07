@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BluetoothListAdapter extends Fragment implements ListAdapter {
+public class BluetoothListAdapter implements ListAdapter {
 
     private ArrayList<BluetoothElementHandling> list;
     private Context context;
@@ -70,16 +71,9 @@ public class BluetoothListAdapter extends Fragment implements ListAdapter {
                             } else {
                                 Log.d("BLUETOOTH", "Connection successful! ");
                                 Toast.makeText(context, "Connection successful !", Toast.LENGTH_LONG).show();
-                                try {
-                                    bluetoothDataReceiver.listenForDatas();
-                                    /*Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
 
-                                    FragmentManager fragmentManager = getFragmentManager();
-                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                    WaitScan fragment = new WaitScan();
-                                    fragmentTransaction.replace(android.R.id.content, fragment);
-                                    fragmentTransaction.commit();*/
-                                } catch (IOException e) { e.printStackTrace(); }
+                                Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
+                                BluetoothFragment.changeForWaitScan(bluetoothDataReceiver);
                             }
                         }
                     });
