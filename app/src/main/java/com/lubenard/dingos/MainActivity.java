@@ -12,11 +12,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.view.View.GONE;
 
 public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    private FragmentManager fragmentManager = getSupportFragmentManager();
     private ReceiveBtDatas bluetoothDataReceiver;
 
 
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.d("BLUETOOTH", "Device not registered, displaying Bluetooth Page...");
             // Bluetooth address not registered, display bluetooth devices
+            FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             BluetoothFragment fragment = new BluetoothFragment();
             fragmentTransaction.replace(android.R.id.content, fragment);
@@ -109,6 +114,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isBluetoothConnected();
+        setContentView(R.layout.landing_fragment);
+
+        final Button startSession = findViewById(R.id.startSessionButton);
+        final TextView textView = findViewById(R.id.welcomeTextView);
+
+        startSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSession.setVisibility(GONE);
+                textView.setVisibility(GONE);
+                isBluetoothConnected();
+            }
+        });
+
     }
 }
