@@ -18,6 +18,9 @@ public class WaitScan extends Fragment {
     private static int itemIndexChoice;
     private static int videoPathChoice;
 
+    private static Boolean isConnectionAlive;
+    private static BluetoothSocket socket;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -26,6 +29,9 @@ public class WaitScan extends Fragment {
     }
 
     private void commitTransition() {
+        // Disable isConnectionAlive to avoid being able to scan during quizz or video
+        isConnectionAlive = false;
+
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         VideoPlayerFragment fragment = new VideoPlayerFragment();
@@ -52,8 +58,8 @@ public class WaitScan extends Fragment {
         {
             public void run()
             {
-                BluetoothSocket socket = bluetoothDataReceiver.getSocket();
-                Boolean isConnectionAlive = bluetoothDataReceiver.getConnectionStatus();
+                socket = bluetoothDataReceiver.getSocket();
+                isConnectionAlive = bluetoothDataReceiver.getConnectionStatus();
                 InputStream inputStream = null;
                 try {
                     inputStream = socket.getInputStream();
@@ -105,9 +111,15 @@ public class WaitScan extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        ReceiveBtDatas bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
-        Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
 
-        threadReadData(bluetoothDataReceiver);
+        if (bundle.getBoolean("launchThread")) {
+            ReceiveBtDatas bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
+            Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
+            threadReadData(bluetoothDataReceiver);
+        }
+        else {
+            Log.d("BLUETOOTH", "No need to launch thread AGAIN, isConnectionAlive = " + isConnectionAlive + " setting it to true");
+            isConnectionAlive = true;
+        }
     }
 }

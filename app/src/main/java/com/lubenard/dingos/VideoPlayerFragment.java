@@ -29,9 +29,8 @@ public class VideoPlayerFragment extends Fragment {
         VideoView videoView = view.findViewById(R.id.videoViewPlayer);
         String videoPath;
 
-        videoPath = "android.resource://com.escatrag.dingos/" + WaitScan.getVideoPathChoice();
+        videoPath = "android.resource://com.lubenard.dingos/" + WaitScan.getVideoPathChoice();
 
-        Log.d("VIDEOVIEW", "Video path is " + videoPath);
         Log.d("VIDEOVIEW", "Video path is " + videoPath);
 
         videoView.setVideoURI(Uri.parse(videoPath));
