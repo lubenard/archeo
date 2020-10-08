@@ -1,4 +1,4 @@
-package com.escatrag.dingos;
+package com.lubenard.dingos;
 
 import android.media.MediaPlayer;
 import android.net.Uri;

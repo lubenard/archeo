@@ -1,4 +1,4 @@
-package com.escatrag.dingos;
+package com.lubenard.dingos;
 
 public class BluetoothElementHandling {
     String deviceName;

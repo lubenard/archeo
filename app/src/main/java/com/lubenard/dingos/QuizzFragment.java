@@ -1,4 +1,4 @@
-package com.escatrag.dingos;
+package com.lubenard.dingos;
 
 import android.os.Bundle;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.escatrag.dingos;
+package com.lubenard.dingos;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
