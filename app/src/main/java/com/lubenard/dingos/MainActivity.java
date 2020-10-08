@@ -1,5 +1,6 @@
 package com.lubenard.dingos;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -12,6 +13,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +26,8 @@ import static android.view.View.GONE;
 public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private ReceiveBtDatas bluetoothDataReceiver;
-
+    private Button startSession;
+    private TextView textView;
 
     private void connectToBluetooth() {
         // Get SharedPreference to see if Bluetooth address is already registered
@@ -111,15 +116,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        startSession.setVisibility(GONE);
+        textView.setVisibility(GONE);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        AboutFragment fragment = new AboutFragment();
+        fragmentTransaction.replace(android.R.id.content, fragment);
+        fragmentTransaction.commit();
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_landing_page, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_fragment);
 
-        final Button startSession = findViewById(R.id.startSessionButton);
-        final TextView textView = findViewById(R.id.welcomeTextView);
+        startSession = findViewById(R.id.startSessionButton);
+        textView = findViewById(R.id.welcomeTextView);
 
         startSession.setOnClickListener(new View.OnClickListener() {
             @Override
