@@ -22,7 +22,7 @@
 			android:layout_height="wrap_content"
 			android:textStyle="bold"
 			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:text="TextView"
+			android:text="DEVICE NAME"
 			android:textSize="20sp"
 			android:layout_marginLeft="10dp"  />
 
@@ -39,6 +39,16 @@
 				android:layout_marginRight="10dp"
 				android:textSize="20sp"
 				android:text="MAC HERE"/>
+			<TextView
+				android:id="@+id/elem_bluetooth_status"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:layout_gravity="end"
+				android:layout_marginRight="0dp"
+				android:textAlignment="viewEnd"
+				android:textSize="20sp"
+				android:text="STATUS"/>
 		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>

@@ -78,9 +78,11 @@ public class BluetoothListAdapter implements ListAdapter {
 
             TextView deviceName = convertView.findViewById(R.id.bluetooth_device_name);
             TextView macAddr = convertView.findViewById(R.id.elem_bluetooth_mac);
+            TextView status = convertView.findViewById(R.id.elem_bluetooth_status);
 
             deviceName.setText(device.deviceName);
             macAddr.setText(device.deviceMacAddr);
+            status.setText(device.deviceStatus);
         }
         return convertView;
     }

@@ -23,8 +23,8 @@ import java.util.Set;
 
 public class BluetoothFragment extends Fragment {
 
-    private BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
-    private ArrayList deviceItemList = new ArrayList<BluetoothElementHandling>();
+    private static BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+    private ArrayList<BluetoothElementHandling> deviceItemList = new ArrayList<BluetoothElementHandling>();
     private View mainView;
     private static FragmentManager fragmentManager;
 
@@ -36,6 +36,9 @@ public class BluetoothFragment extends Fragment {
     }
 
     public static void changeForWaitScan(ReceiveBtDatas bluetoothDataReceiver) {
+        // Stop scanning for new devices
+        btAdapter.cancelDiscovery();
+
         Bundle bundle = new Bundle();
         bundle.putSerializable("dataReceiver", (Serializable) bluetoothDataReceiver);
         bundle.putBoolean("launchThread", true);
@@ -63,7 +66,7 @@ public class BluetoothFragment extends Fragment {
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
             for (BluetoothDevice device : pairedDevices) {
-                BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress());
+                BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress(), "Paired");
                 Log.d("BLUETOOTH", "Device paired: " + device.getName() + " at address " + device.getAddress());
                 deviceItemList.add(newDevice);
             }
@@ -95,9 +98,18 @@ public class BluetoothFragment extends Fragment {
                 // object and its info from the Intent.
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 Log.d("BLUETOOTH", "Device discovered: " + device.getName() + " at address " + device.getAddress());
-                BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress());
-                deviceItemList.add(newDevice);
-                updateListView();
+
+                int flag = 0;
+
+                for (int i = 0; i < deviceItemList.size(); i++) {
+                    if (device.getAddress().equals(deviceItemList.get(i).deviceMacAddr))
+                        flag = 1;
+                }
+                if (flag == 0) {
+                    BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress(), "Discovered");
+                    deviceItemList.add(newDevice);
+                    updateListView();
+                }
             }
         }
     };

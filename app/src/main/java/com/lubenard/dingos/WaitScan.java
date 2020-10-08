@@ -20,12 +20,31 @@ public class WaitScan extends Fragment {
 
     private static Boolean isConnectionAlive;
     private static BluetoothSocket socket;
+    private static ReceiveBtDatas bluetoothDataReceiver;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.waiting_for_scan, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Bundle bundle = getArguments();
+
+        if (bundle.getBoolean("launchThread")) {
+            bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
+            Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
+            threadReadData(bluetoothDataReceiver);
+        }
+        else {
+            Log.d("BLUETOOTH", "No need to launch thread AGAIN, isConnectionAlive = " + isConnectionAlive + " setting it to true");
+            isConnectionAlive = true;
+            threadReadData(bluetoothDataReceiver);
+        }
     }
 
     private void commitTransition() {
@@ -65,9 +84,13 @@ public class WaitScan extends Fragment {
                     inputStream = socket.getInputStream();
                     while (isConnectionAlive) {
                         int dataRead = inputStream.read();
+                        Log.d("BLUETOOTH", "Looking for datas");
                         Log.d("BLUETOOTH", "Datas available: " + String.format("%c", dataRead));
                         switch (dataRead) {
+                            // Reduce this with array
                             case 48: // Intro
+                                setItemChoice(0, R.raw.intro);
+                                commitTransition();
                                 break;
                             case 49: // Avant-bras (1)
                                 setItemChoice(1, R.raw.avant_bras);
@@ -78,8 +101,12 @@ public class WaitScan extends Fragment {
                                 commitTransition();
                                 break;
                             case 51: // Crane (3)
+                                setItemChoice(3, R.raw.crane);
+                                commitTransition();
                                 break;
                             case 52: // Femur (4)
+                                setItemChoice(4, R.raw.femur);
+                                commitTransition();
                                 break;
                             case 53: // Humerus (5)
                                 setItemChoice(5, R.raw.humerus);
@@ -94,8 +121,12 @@ public class WaitScan extends Fragment {
                                 commitTransition();
                                 break;
                             case 56: // Tibia (8)
+                                setItemChoice(8, R.raw.tibia);
+                                commitTransition();
                                 break;
                             case 57: // Outro
+                                setItemChoice(9, R.raw.photo);
+                                commitTransition();
                                 break;
                         }
                     }
@@ -104,22 +135,5 @@ public class WaitScan extends Fragment {
                 }
             }
         }.start();
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        Bundle bundle = getArguments();
-
-        if (bundle.getBoolean("launchThread")) {
-            ReceiveBtDatas bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
-            Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
-            threadReadData(bluetoothDataReceiver);
-        }
-        else {
-            Log.d("BLUETOOTH", "No need to launch thread AGAIN, isConnectionAlive = " + isConnectionAlive + " setting it to true");
-            isConnectionAlive = true;
-        }
     }
 }
