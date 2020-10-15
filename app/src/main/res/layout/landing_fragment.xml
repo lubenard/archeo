@@ -14,7 +14,7 @@
 		android:textAlignment="center"
 		android:textSize="50sp"
 		android:gravity="center_horizontal"
-		android:text="Bienvenue dans Ding'os !"/>
+		android:text="@string/landing_greeting"/>
 
 	<Button
 		android:id="@+id/startSessionButton"
@@ -24,5 +24,5 @@
 		android:textColor="@android:color/white"
 		android:background="@drawable/start_button"
 		android:layout_marginTop="300dp"
-		android:text="Commencer la session ! " />
+		android:text="@string/landing_start_session" />
 </LinearLayout>

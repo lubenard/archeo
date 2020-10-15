@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="menu_about">A propos</string>
+	<string name="bluetooth_list_icon">Icone bluetooth</string>
+	<string name="landing_greeting">Bienvenue dans Ding\'os!</string>
+	<string name="license_github_link">Vous pouvez trouver le code source entier de cette application ici: https://github.com/lubenard/archeo</string>
+	<string name="license_main_license">Cette application est sous license GPLv3.</string>
+	<string name="landing_start_session">Commencer la session !</string>
+	<string name="quizz_check_answer">Verifier mes réponses</string>
+	<string name="wait_scan">Scannez une partie du squelette…</string>
+	<string name="bluetooth_warning_title">Attention</string>
+	<string name="bluetooth_warning_text">Voulez-vous vous connecter a cet appareil ? Ce paramètre sera enregistré.</string>
+	<string name="bluetooth_warning_toast">Préference sauvegardé !</string>
+	<string name="bluetooth_toast_error">Nous n\'avons pas pu nous connecter. Êtes vous sur que l\'appareil est allumé ?</string>
+	<string name="bluetooth_toast_success">Connection réussie !</string>
+	<string name="error">Erreur !</string>
+	<string name="bluetooth_does_not_exist">Désolé, le bluetooth n\'existe pas sur cette appareil. Exit…</string>
+	<string name="bluetooth_required">Le bluetooth is requis pour cette application, exit</string>
+</resources>

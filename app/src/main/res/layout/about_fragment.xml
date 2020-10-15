@@ -13,7 +13,7 @@
 		android:layout_height="wrap_content"
 		android:textSize="60dp"
 		android:textAlignment="center"
-		android:text="Ding'os"
+		android:text="@string/app_name"
 		android:gravity="center_horizontal" />
 
 	<TextView
@@ -23,7 +23,7 @@
 		android:textSize="30dp"
 		android:textAlignment="center"
 		android:gravity="center_horizontal"
-		android:text="This app is under GPLv3 Licence."
+		android:text="@string/license_main_license"
 		android:layout_marginBottom="20dp"/>
 
 	<TextView
@@ -40,5 +40,5 @@
 		android:layout_height="wrap_content"
 		android:textAlignment="center"
 		android:gravity="center_horizontal"
-		android:text="You can find the whoe source code of this app here:\nhttps://github.com/lubenard/archeo" />
+		android:text="@string/license_github_link" />
 </LinearLayout>

@@ -11,7 +11,7 @@
 		android:layout_height="wrap_content"
 		android:textSize="40sp"
 		android:gravity="center"
-		android:text="Quizz Time !"/>
+		android:text="@string/quizz_title"/>
 
 	<TextView
 		android:id="@+id/textViewQuestionQuizz"
@@ -56,6 +56,6 @@
 		android:id="@+id/verifyAnswer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Verifier mes réponses"
+		android:text="@string/quizz_check_answer"
 		android:layout_gravity="center_horizontal"/>
 </LinearLayout>

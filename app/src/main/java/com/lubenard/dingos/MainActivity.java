@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
             bluetoothDataReceiver = new ReceiveBtDatas();
             if (bluetoothDataReceiver.connect(bluetooth_addr) == 1) {
-                Toast.makeText(this, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, this.getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();
             } /*else {
                 try {
                     bluetoothDataReceiver.listenForDatas();
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
         switch (isBluetoothTurnedOn()) {
             case -1:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setTitle("Error!");
-                alertDialogBuilder.setMessage("Sorry, bluetooth does not exist on this device. Exiting...");
+                alertDialogBuilder.setTitle(this.getString(R.string.error));
+                alertDialogBuilder.setMessage(this.getString(R.string.bluetooth_does_not_exist));
                 alertDialogBuilder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if (resultCode == RESULT_CANCELED) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setPositiveButton("Bluetooth is needed for this app, exiting now", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton(this.getString(R.string.bluetooth_required), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
                     }
@@ -152,6 +152,5 @@ public class MainActivity extends AppCompatActivity {
                 isBluetoothConnected();
             }
         });
-
     }
 }

@@ -51,6 +51,9 @@ public class QuizzFragment extends Fragment {
 
         final int item = WaitScan.getItemChoice();
 
+        if (item == 0 || item == 11)
+            commitTransition();
+
         int goodAnswer = 0;
 
         switch (item) {
@@ -132,11 +135,11 @@ public class QuizzFragment extends Fragment {
                     Log.d("QUIZZ", "Selection made by user is number " + selectedId);
                     Log.d("QUIZZ", "goodAnswer is " + finalGoodAnswer);
                     if (selectedId == finalGoodAnswer) {
-                        Toast.makeText(getContext(), "Son of a bitch, you did it !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Well played, you did it !", Toast.LENGTH_LONG).show();
                         commitTransition();
                     }
                     else
-                        Toast.makeText(getContext(), "You motherfucker, you suck", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Oops, wrong answer", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(),
                             "Please make a choice", Toast.LENGTH_LONG).show();

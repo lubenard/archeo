@@ -45,8 +45,8 @@ public class BluetoothListAdapter implements ListAdapter {
                     Log.d("BLUETOOTH", "Trying to connect to macAddress " + device.deviceMacAddr);
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    alertDialogBuilder.setTitle("Warning");
-                    alertDialogBuilder.setMessage("Do you want to connect to this device ? This setting will be remembered");
+                    alertDialogBuilder.setTitle(context.getString(R.string.bluetooth_warning_title));
+                    alertDialogBuilder.setMessage(context.getString(R.string.bluetooth_warning_text));
                     alertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Save preferences for auto reconnection
@@ -54,16 +54,16 @@ public class BluetoothListAdapter implements ListAdapter {
                             SharedPreferences.Editor editor = sharedPref.edit();
                             editor.putString("BLUETOOTH_ADDR", device.deviceMacAddr);
                             editor.apply();
-                            Toast.makeText(context, "Preference saved! ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, context.getString(R.string.bluetooth_warning_toast), Toast.LENGTH_SHORT).show();
                             dialog.cancel();
 
                             ReceiveBtDatas bluetoothDataReceiver = new ReceiveBtDatas();
                             if (bluetoothDataReceiver.connect(device.deviceMacAddr) == 1){
-                                Toast.makeText(context, "We could not connect to device. Are you sure the device is turned on ?", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, context.getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();
                                 Log.d("BLUETOOTH", "Connection failed! ");
                             } else {
-                                Log.d("BLUETOOTH", "Connection successful! ");
-                                Toast.makeText(context, "Connection successful !", Toast.LENGTH_LONG).show();
+                                Log.d("BLUETOOTH", "Connection successful");
+                                Toast.makeText(context, context.getString(R.string.bluetooth_toast_success), Toast.LENGTH_LONG).show();
 
                                 Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
                                 BluetoothFragment.changeForWaitScan(bluetoothDataReceiver);

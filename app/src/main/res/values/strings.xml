@@ -1,6 +1,6 @@
 <resources>
-	<string name="app_name">Ding\'os</string>
-	<string name="license">Scan and discover bones using arduino to teach kids archeology.\nCopyright (C) 2020  lubenard\n
+	<string name="app_name" translatable="false">Ding\'os</string>
+	<string name="license" translatable="false">Scan and discover bones using arduino to teach kids archeology.\nCopyright (C) 2020  lubenard\n
     This program is free software: you can redistribute it and/or modify\n
     it under the terms of the GNU General Public License as published by\n
     the Free Software Foundation, either version 3 of the License, or\n
@@ -11,4 +11,29 @@
     GNU General Public License for more details.\n\n
     You should have received a copy of the GNU General Public License\n
     along with this program.  If not, see https://www.gnu.org/licenses/.\n</string>
+    
+    <string name="menu_about">About</string>
+    <string name="license_github_link">You can find the whole source code of this app here: https://github.com/lubenard/archeo</string>
+    <string name="license_main_license">This app is under GPLv3 Licence.</string>
+    
+    <string name="bluetooth_list_icon">Bluetooth Icon</string>
+    
+    <string name="landing_greeting">Welcome into Ding'os!</string>
+    <string name="landing_start_session">Start the session!</string>
+
+    <string name="quizz_title" translatable="false">Quizz Time !</string>
+    <string name="quizz_check_answer">Check my answers</string>
+
+    <string name="wait_scan">Scan a part of skeleton…</string>
+
+    <string name="bluetooth_warning_title">Warning</string>
+    <string name="bluetooth_warning_text">Do you want to connect to this device ? This setting will be remembered.</string>
+    <string name="bluetooth_warning_toast">Preference saved!</string>
+
+    <string name="bluetooth_toast_error">We could not connect to device. Are you sure the device is turned on ?</string>
+    <string name="bluetooth_toast_success">Connection successful!</string>
+    <string name="error">Error!</string>
+
+    <string name="bluetooth_does_not_exist">Sorry, bluetooth does not exist on this device. Exiting…</string>
+    <string name="bluetooth_required">Bluetooth is needed for this app, exiting now</string>
 </resources>
