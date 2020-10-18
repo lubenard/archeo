@@ -16,4 +16,5 @@
 	<string name="error">Erreur !</string>
 	<string name="bluetooth_does_not_exist">Désolé, le bluetooth n\'existe pas sur cette appareil. Exit…</string>
 	<string name="bluetooth_required">Le bluetooth is requis pour cette application, exit</string>
+	<string name="menu_browse_videos">Voir les videos</string>
 </resources>

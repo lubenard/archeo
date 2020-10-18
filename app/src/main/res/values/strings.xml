@@ -13,12 +13,14 @@
     along with this program.  If not, see https://www.gnu.org/licenses/.\n</string>
     
     <string name="menu_about">About</string>
+    <string name="menu_browse_videos">Browse videos</string>
+
     <string name="license_github_link">You can find the whole source code of this app here: https://github.com/lubenard/archeo</string>
     <string name="license_main_license">This app is under GPLv3 Licence.</string>
     
     <string name="bluetooth_list_icon">Bluetooth Icon</string>
     
-    <string name="landing_greeting">Welcome into Ding'os!</string>
+    <string name="landing_greeting">Welcome into Ding\'os!</string>
     <string name="landing_start_session">Start the session!</string>
 
     <string name="quizz_title" translatable="false">Quizz Time !</string>

@@ -21,7 +21,7 @@ public class VideoPlayerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        return inflater.inflate(R.layout.video_player, container, false);
+        return inflater.inflate(R.layout.video_player_fragment, container, false);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class WaitScan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        return inflater.inflate(R.layout.waiting_for_scan, container, false);
+        return inflater.inflate(R.layout.waiting_for_scan_fragment, container, false);
     }
 
     @Override
