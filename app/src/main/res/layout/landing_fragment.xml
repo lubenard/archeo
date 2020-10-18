@@ -24,5 +24,7 @@
 		android:textColor="@android:color/white"
 		android:background="@drawable/start_button"
 		android:layout_marginTop="300dp"
+		android:paddingLeft="13dp"
+		android:paddingRight="13dp"
 		android:text="@string/landing_start_session" />
 </LinearLayout>

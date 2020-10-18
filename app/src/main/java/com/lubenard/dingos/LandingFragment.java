@@ -26,7 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
-public class LandingPageFragment extends Fragment {
+public class LandingFragment extends Fragment {
 
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private ReceiveBtDatas bluetoothDataReceiver;
@@ -122,6 +122,7 @@ public class LandingPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.landing_fragment, container, false);
     }
 
@@ -136,7 +137,7 @@ public class LandingPageFragment extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         AboutFragment fragment = new AboutFragment();
-        fragmentTransaction.replace(android.R.id.content, fragment);
+        fragmentTransaction.replace(android.R.id.content, fragment).addToBackStack(null);
         fragmentTransaction.commit();
 
         return super.onOptionsItemSelected(item);

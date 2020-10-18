@@ -3,7 +3,7 @@
 	<string name="menu_about">A propos</string>
 	<string name="bluetooth_list_icon">Icone bluetooth</string>
 	<string name="landing_greeting">Bienvenue dans Ding\'os!</string>
-	<string name="license_github_link">Vous pouvez trouver le code source entier de cette application ici: https://github.com/lubenard/archeo</string>
+	<string name="license_github_link_text">Vous pouvez trouver le code source entier de cette application ici:</string>
 	<string name="license_main_license">Cette application est sous license GPLv3.</string>
 	<string name="landing_start_session">Commencer la session !</string>
 	<string name="quizz_check_answer">Verifier mes réponses</string>
