@@ -16,5 +16,16 @@
 	<string name="error">Erreur !</string>
 	<string name="bluetooth_does_not_exist">Désolé, le bluetooth n\'existe pas sur cette appareil. Exit…</string>
 	<string name="bluetooth_required">Le bluetooth is requis pour cette application, exit</string>
-	<string name="menu_browse_videos">Voir les videos</string>
+	<string name="menu_browse_videos">Voir les vidéos</string>
+	<string name="bad_card_code">Cette carte n\'est pas reconnu par l\'application. Êtes vous sûr d\'utiliser la bonne carte ?</string>
+	<string name="video_intro">Intro</string>
+	<string name="video_forearm">Avant-bras</string>
+	<string name="video_coxaux">Coxaux</string>
+	<string name="video_skull">Crane</string>
+	<string name="video_femur">Femur</string>
+	<string name="video_humerus">Humerus</string>
+	<string name="video_object">Objet</string>
+	<string name="video_diminution">Réduction</string>
+	<string name="video_tibia">Tibia</string>
+	<string name="video_photo">Photo</string>
 </resources>

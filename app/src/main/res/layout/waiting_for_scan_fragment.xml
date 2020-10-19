@@ -6,6 +6,15 @@
 	android:orientation="vertical">
 
 	<TextView
+		android:id="@+id/element_discovered"
+		android:layout_width="match_parent"
+		android:textAlignment="viewEnd"
+		android:layout_height="wrap_content"
+		android:textSize="25sp"
+		android:text="0/8"
+		android:gravity="end" />
+
+	<TextView
 		android:id="@+id/textView2"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

@@ -4,7 +4,18 @@
 		<!-- Customize your theme here. -->
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-		<item name="colorAccent">@color/colorAccent</item>
+	</style>
+
+	<style name="custom_button">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:paddingLeft">13dp</item>
+		<item name="android:paddingRight">13dp</item>
+		<item name="android:background">@drawable/start_button</item>
+	</style>
+
+	<style name="custom_button_replay" parent="custom_button">
+		<item name="android:layout_width">250dp</item>
+		<item name="android:layout_marginBottom">30dp</item>
 	</style>
 
 </resources>

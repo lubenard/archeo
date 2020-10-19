@@ -39,4 +39,16 @@
 
     <string name="bluetooth_does_not_exist">Sorry, bluetooth does not exist on this device. Exiting…</string>
     <string name="bluetooth_required">Bluetooth is needed for this app, exiting now</string>
+	<string name="bad_card_code">This card is not recognized by this app. Are you sure you are using right cards?</string>
+
+    <string name="video_intro">Intro</string>
+    <string name="video_forearm">Forearm</string>
+    <string name="video_coxaux">Coxaux</string>
+    <string name="video_skull">Skull</string>
+    <string name="video_femur">Femur</string>
+    <string name="video_humerus">Humerus</string>
+    <string name="video_object">Object</string>
+    <string name="video_diminution">Diminution</string>
+    <string name="video_tibia">Tibia</string>
+    <string name="video_photo">Photo</string>
 </resources>
