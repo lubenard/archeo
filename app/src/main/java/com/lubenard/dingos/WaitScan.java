@@ -73,6 +73,11 @@ public class WaitScan extends Fragment {
 
         Bundle bundle = getArguments();
 
+        if (elementDiscoveredArray.size() == 0)
+            ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
+        else if (elementDiscoveredArray.size() == 8)
+            ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
+
         if (bundle.getBoolean("launchThread")) {
             bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
             Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
@@ -139,16 +144,20 @@ public class WaitScan extends Fragment {
                         if (dataRead >= 48 && dataRead <= 57) {
                             Log.d("BLUETOOTH","Valid card!");
                             int elementRead = dataRead - 48;
-                            elementDiscoveredArray.add(elementRead);
-
-                            TextView textView = (TextView) curView.findViewById(R.id.element_discovered);
-                            textView.setText(elementDiscoveredArray.size() + "/10");
-
-                            setItemChoice(elementRead, resArray[elementRead]);
-
-                            setShouldQuizzLaunch(true);
-
-                            commitTransition();
+                            // The first card HAS TO BE intro
+                            //if (elementDiscoveredArray.size() == 0 && elementRead != 0) {
+                            //    Toast.makeText(getContext(), "THIS IS NOT THE INTRO CARD", Toast.LENGTH_LONG).show();
+                            //} else if ((elementDiscoveredArray.size() == 0 && elementRead == 0) || getElementDiscoveredArray().size() != 0) {
+                                // Add discovered element into array
+                                elementDiscoveredArray.add(elementRead);
+                                // Update counter
+                                ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
+                                //Prepare elements for video + quizz
+                                setItemChoice(elementRead, resArray[elementRead]);
+                                // Quizz should launch after video (not like replay fragment)
+                                setShouldQuizzLaunch(true);
+                                commitTransition();
+                            //}
                         } else {
                             Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);
                             Toast.makeText(getContext(), getContext().getString(R.string.bad_card_code), Toast.LENGTH_LONG).show();

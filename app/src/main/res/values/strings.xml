@@ -108,5 +108,7 @@
     <string name="bad_answer">Oops, wrong answer</string>
     <string name="no_answer">Please make a choice</string>
     <string name="menu_reset_bt">Forget bluetooth device</string>
+    <string name="launch_intro">Launch intro</string>
+    <string name="launch_photo">Discovery over, how to take a good photo?</string>
 
 </resources>

@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.plattysoft.leonids.ParticleSystem;
+import com.plattysoft.leonids.modifiers.ScaleModifier;
+
 public class QuizzFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,6 +143,14 @@ public class QuizzFragment extends Fragment {
                     Log.d("QUIZZ", "goodAnswer is " + finalGoodAnswer);
                     if (selectedId == finalGoodAnswer) {
                         Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_LONG).show();
+                        new ParticleSystem(getActivity(), 10, R.drawable.star, 3000)
+                                .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
+                                .setAcceleration(0.000003f, 90)
+                                .setInitialRotationRange(0, 360)
+                                .setRotationSpeed(160)
+                                .setFadeOut(2000)
+                                .addModifier(new ScaleModifier(0f, 1.5f, 0, 1500))
+                                .oneShot(view, 10);
                         commitTransition();
                     }
                     else

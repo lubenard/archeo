@@ -15,7 +15,7 @@
 		android:gravity="end" />
 
 	<TextView
-		android:id="@+id/textView2"
+		android:id="@+id/wait_scan_main_message"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:textSize="40sp"
