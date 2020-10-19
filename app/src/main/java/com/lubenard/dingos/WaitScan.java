@@ -27,6 +27,7 @@ public class WaitScan extends Fragment {
 
     private static int itemIndexChoice;
     private static int videoPathChoice;
+    private static boolean shouldQuizzLaunch;
 
     private static Boolean isConnectionAlive;
     private static BluetoothSocket socket;
@@ -92,7 +93,6 @@ public class WaitScan extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         VideoPlayerFragment fragment = new VideoPlayerFragment();
         fragmentTransaction.replace(android.R.id.content, fragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -108,7 +108,17 @@ public class WaitScan extends Fragment {
         return elementDiscoveredArray;
     }
 
-    private void setItemChoice(int itemIndex, int videoPath){
+    public static int[] getResArray() {
+        return resArray;
+    }
+
+    public static boolean getShouldQuizzLaunch() { return shouldQuizzLaunch;}
+
+    public static void setShouldQuizzLaunch(boolean newValue) { shouldQuizzLaunch = newValue;}
+
+    public static void setIsConnectionAlive(boolean newValue) { isConnectionAlive = newValue; }
+
+    public static void setItemChoice(int itemIndex, int videoPath){
         itemIndexChoice = itemIndex;
         videoPathChoice = videoPath;
     }
@@ -136,6 +146,9 @@ public class WaitScan extends Fragment {
                             textView.setText(elementDiscoveredArray.size() + "/10");
 
                             setItemChoice(elementRead, resArray[elementRead]);
+
+                            setShouldQuizzLaunch(true);
+
                             commitTransition();
                         } else {
                             Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);

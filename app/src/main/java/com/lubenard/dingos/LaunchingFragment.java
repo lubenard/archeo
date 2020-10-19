@@ -26,7 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
-public class LandingFragment extends Fragment {
+public class LaunchingFragment extends Fragment {
 
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private ReceiveBtDatas bluetoothDataReceiver;
@@ -123,7 +123,7 @@ public class LandingFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.landing_fragment, container, false);
+        return inflater.inflate(R.layout.lauching_fragment, container, false);
     }
 
     @Override

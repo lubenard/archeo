@@ -35,6 +35,10 @@ public class QuizzFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    private String getCustomString(int resId) {
+        return getContext().getString(resId);
+    }
+
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -58,67 +62,67 @@ public class QuizzFragment extends Fragment {
 
         switch (item) {
             case 1:
-                questionTextView.setText("Dans quel état est l'avant bras gauche ?");
-                radio1.setText("L'avant-bras gauche est intact");
-                radio2.setText("L'avant-bras gauche est fracturé en son milieu");
-                radio3.setText("Seul le haut de l’avant-bras gauche est fracturé");
-                radio4.setText("L’avant-bras gauche est en bouillie !");
+                questionTextView.setText(getCustomString(R.string.forearm_question));
+                radio1.setText(getCustomString(R.string.forearm_answ1));
+                radio2.setText(getCustomString(R.string.forearm_answ2));
+                radio3.setText(getCustomString(R.string.forearm_answ3));
+                radio4.setText(getCustomString(R.string.forearm_answ4));
                 goodAnswer = R.id.radioButton2;
                 break;
             case 2:
-                questionTextView.setText("Quel est le sexe du sujet ?");
-                radio1.setText("Le sujet est une femme");
-                radio2.setText("Le sujet est un homme");
-                radio3.setText("Le sexe de ce sujet adulte n'est pas determinable");
-                radio4.setText("C'est un enfant, doonc ce n'est possible sur un squelette");
+                questionTextView.setText(getCustomString(R.string.sex_question));
+                radio1.setText(getCustomString(R.string.sex_answ1));
+                radio2.setText(getCustomString(R.string.sex_answ2));
+                radio3.setText(getCustomString(R.string.sex_answ3));
+                radio4.setText(getCustomString(R.string.sex_answ4));
                 goodAnswer = R.id.radioButton1;
                 break;
             case 3:
-                questionTextView.setText("Dans quel état est la dentition du sujet ?");
-                radio1.setText("Le sujet n'a pas de carie");
-                radio2.setText("Le sujet a une carie");
-                radio3.setText("Le sujet a une carie, une dent sur deux");
-                radio4.setText("Le sujet n'a pas de dents");
+                questionTextView.setText(getCustomString(R.string.teeth_question));
+                radio1.setText(getCustomString(R.string.teeth_answ1));
+                radio2.setText(getCustomString(R.string.teeth_answ2));
+                radio3.setText(getCustomString(R.string.teeth_answ3));
+                radio4.setText(getCustomString(R.string.teeth_answ4));
                 goodAnswer = R.id.radioButton2;
                 break;
             case 4:
-                questionTextView.setText("Quelle taille mesure le sujet ?");
-                radio1.setText("Le sujet mesure environ 1,50m");
-                radio2.setText("Le sujet mesure environ 1,65m");
-                radio3.setText("Le sujet mesure 1,85m");
-                radio4.setText("Il n'est pas possible d'estimer la taille");
+                questionTextView.setText(getCustomString(R.string.size_question));
+                radio1.setText(getCustomString(R.string.size_answ1));
+                radio2.setText(getCustomString(R.string.size_answ2));
+                radio3.setText(getCustomString(R.string.size_answ3));
+                radio4.setText(getCustomString(R.string.size_answ4));
                 goodAnswer = R.id.radioButton2;
                 break;
             case 5:
-                questionTextView.setText("Quel âge a le sujet ?");
-                radio1.setText("Le sujet est un enfant de - de 10 ans");
-                radio2.setText("C'est un adolescent entre 10 et 15 ans");
-                radio3.setText("C'est un adolescent entre 15 et 20 ans");
-                radio4.setText("Il n'est pas possible d'estimer la taille");
+                questionTextView.setText(getCustomString(R.string.age_question));
+                radio1.setText(getCustomString(R.string.age_answ1));
+                radio2.setText(getCustomString(R.string.age_answ2));
+                radio3.setText(getCustomString(R.string.age_answ3));
+                radio4.setText(getCustomString(R.string.age_answ4));
                 goodAnswer = R.id.radioButton4;
                 break;
             case 6:
-                questionTextView.setText("Quel est l'object presenté ?");
-                radio1.setText("C'est un vase de l'âge du bronze");
-                radio2.setText("C'est une épée de l'époque romaine");
-                radio3.setText("C'est un collier en perle de l'époque mérovingigienne");
-                radio4.setText("C'est un pot de fleur d'aujourd'hui");
+                questionTextView.setText(getCustomString(R.string.object_question));
+                radio1.setText(getCustomString(R.string.object_answ1));
+                radio2.setText(getCustomString(R.string.object_answ2));
+                radio3.setText(getCustomString(R.string.object_answ3));
+                radio4.setText(getCustomString(R.string.object_answ4));
                 goodAnswer = R.id.radioButton3;
                 break;
             case 7:
-                questionTextView.setText("Combien y a t'il de sujets ?");
-                radio1.setText("Il y a un sujet");
-                radio2.setText("Il y a deux sujets");
-                radio3.setText("Il y a trois sujets");
-                radio4.setText("C'est le même que celui qui est sur le dos");
+                questionTextView.setText(getCustomString(R.string.howmany_question));
+                radio1.setText(getCustomString(R.string.howmany_answ1));
+                radio2.setText(getCustomString(R.string.howmany_answ2));
+                radio3.setText(getCustomString(R.string.howmany_answ3));
+                radio4.setText(getCustomString(R.string.howmany_answ4));
                 goodAnswer = R.id.radioButton1;
                 break;
             case 8:
-                questionTextView.setText("Quel symptome peut on voir sur le tibia du sujet ?");
-                radio1.setText("Le sujet présente une fracture");
-                radio2.setText("Le sujet présente la syphilis");
-                radio3.setText("Le sujet a un trou, une ostéomyélite (infection)");
-                radio4.setText("Le tibia du sujet est très sain");
+                questionTextView.setText(getCustomString(R.string.tibia_question));
+                radio1.setText(getCustomString(R.string.tibia_answ1));
+                radio2.setText(getCustomString(R.string.tibia_answ2));
+                radio3.setText(getCustomString(R.string.tibia_answ3));
+                radio4.setText(getCustomString(R.string.tibia_answ4));
                 goodAnswer = R.id.radioButton3;
                 break;
         }
@@ -135,14 +139,14 @@ public class QuizzFragment extends Fragment {
                     Log.d("QUIZZ", "Selection made by user is number " + selectedId);
                     Log.d("QUIZZ", "goodAnswer is " + finalGoodAnswer);
                     if (selectedId == finalGoodAnswer) {
-                        Toast.makeText(getContext(), "Well played, you did it !", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_LONG).show();
                         commitTransition();
                     }
                     else
-                        Toast.makeText(getContext(), "Oops, wrong answer", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getContext().getString(R.string.bad_answer), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(),
-                            "Please make a choice", Toast.LENGTH_LONG).show();
+                            getContext().getString(R.string.no_answer), Toast.LENGTH_LONG).show();
                 }
             }
         });

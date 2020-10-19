@@ -28,4 +28,54 @@
 	<string name="video_diminution">Réduction</string>
 	<string name="video_tibia">Tibia</string>
 	<string name="video_photo">Photo</string>
+	<string name="bluetooth_discovered">Découvert</string>
+	<string name="bluetooth_paired">Appairé</string>
+
+	<string name="forearm_question">Dans quel état est l\'avant bras gauche ?</string>
+	<string name="forearm_answ1">L\'avant-bras gauche est intact</string>
+	<string name="forearm_answ2">L\'avant-bras gauche est fracturé en son milieu</string>
+	<string name="forearm_answ4">L\’avant-bras gauche est en bouillie !</string>
+
+	<string name="sex_question">Quel est le sexe du sujet ?</string>
+	<string name="sex_answ1">Le sujet est une femme</string>
+	<string name="sex_answ2">Le sujet est un homme</string>
+	<string name="sex_answ3">Le sexe de ce sujet adulte n\'est pas determinable</string>
+	<string name="sex_answ4">C\'est un enfant, donc ce n\'est possible sur un squelette</string>
+
+	<string name="teeth_question">Dans quel état est la dentition du sujet ?</string>
+	<string name="teeth_answ1">Le sujet n\'a pas de carie</string>
+	<string name="teeth_answ2">Le sujet a une carie</string>
+	<string name="teeth_answ3">Le sujet a une carie, une dent sur deux</string>
+	<string name="teeth_answ4">Le sujet n\'a pas de dents</string>
+
+	<string name="size_question">Quelle taille mesure le sujet ?</string>
+	<string name="size_answ1">Le sujet mesure environ 1,50m</string>
+	<string name="size_answ2">Le sujet mesure environ 1,65m</string>
+	<string name="size_answ3">Le sujet mesure 1,85m</string>
+	<string name="size_answ4">Il n\'est pas possible d\'estimer la taille</string>
+
+	<string name="age_question">Quel âge a le sujet ?</string>
+	<string name="age_answ1">Le sujet est un enfant de - de 10 ans</string>
+	<string name="age_answ2">C\'est un adolescent entre 10 et 15 ans</string>
+	<string name="age_answ3">C\'est un adolescent entre 15 et 20 ans</string>
+	<string name="age_answ4">C\'est un adulte</string>
+
+	<string name="object_question">Quel est l\'object presenté ?</string>
+	<string name="object_answ1">C\'est un vase de l\'âge du bronze</string>
+	<string name="object_answ2">C\'est une épée de l\'époque romaine</string>
+	<string name="object_answ3">C\'est un collier en perle de l\'époque mérovingigienne</string>
+	<string name="object_answ4">C\'est un pot de fleur d\'aujourd'hui</string>
+
+	<string name="howmany_question">Combien y a t\'il de sujets ?</string>
+	<string name="howmany_answ1">Il y a un sujet</string>
+	<string name="howmany_answ2">Il y a deux sujets</string>
+	<string name="howmany_answ3">Il y a trois sujets</string>
+	<string name="howmany_answ4">C\'est le même que celui qui est sur le dos</string>
+
+	<string name="tibia_answ1">Le sujet présente une fracture</string>
+	<string name="tibia_answ2">Le sujet présente la syphilis</string>
+	<string name="tibia_answ3">Le sujet a un trou, une ostéomyélite (infection)</string>
+	<string name="tibia_answ4">Le tibia du sujet est très sain</string>
+	<string name="forearm_answ3">Seul le haut de l\\’avant-bras gauche est fracturé</string>
+	<string name="tibia_question">Quel symptome peut on voir sur le tibia du sujet ?</string>
 </resources>

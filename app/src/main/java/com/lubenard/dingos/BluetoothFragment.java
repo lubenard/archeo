@@ -66,7 +66,7 @@ public class BluetoothFragment extends Fragment {
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
             for (BluetoothDevice device : pairedDevices) {
-                BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress(), "Paired");
+                BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress(), getContext().getString(R.string.bluetooth_paired));
                 Log.d("BLUETOOTH", "Device paired: " + device.getName() + " at address " + device.getAddress());
                 deviceItemList.add(newDevice);
             }
@@ -106,14 +106,13 @@ public class BluetoothFragment extends Fragment {
                         flag = 1;
                 }
                 if (flag == 0) {
-                    BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress(), "Discovered");
+                    BluetoothElementHandling newDevice = new BluetoothElementHandling(device.getName(), device.getAddress(), getContext().getString(R.string.bluetooth_discovered));
                     deviceItemList.add(newDevice);
                     updateListView();
                 }
             }
         }
     };
-
 
     @Override
     public void onDestroy() {

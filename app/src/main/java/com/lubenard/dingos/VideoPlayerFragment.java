@@ -54,16 +54,20 @@ public class VideoPlayerFragment extends Fragment {
         videoView.start();
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
             @Override
             public void onCompletion(MediaPlayer mp) {
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
-                Log.d("VIDEOVIEW", "Video is finished now, let's go to the quizz");
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                QuizzFragment fragment = new QuizzFragment();
+                Fragment fragment;
+                if (WaitScan.getShouldQuizzLaunch()) {
+                    Log.d("VIDEOVIEW", "Video is finished now, let's go to the quizz");
+                    fragment = (QuizzFragment) new QuizzFragment();
+                } else {
+                    Log.d("VIDEOVIEW", "Since we should not go to quizz, let's go to replay");
+                    fragment = (ListVideo) new ListVideo();
+                }
                 fragmentTransaction.replace(android.R.id.content, fragment);
-                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
