@@ -64,7 +64,7 @@
 	<string name="object_answ1">C\'est un vase de l\'âge du bronze</string>
 	<string name="object_answ2">C\'est une épée de l\'époque romaine</string>
 	<string name="object_answ3">C\'est un collier en perle de l\'époque mérovingigienne</string>
-	<string name="object_answ4">C\'est un pot de fleur d\'aujourd'hui</string>
+	<string name="object_answ4">C\'est un pot de fleur d\'aujourd\'hui</string>
 
 	<string name="howmany_question">Combien y a t\'il de sujets ?</string>
 	<string name="howmany_answ1">Il y a un sujet</string>
@@ -78,4 +78,8 @@
 	<string name="tibia_answ4">Le tibia du sujet est très sain</string>
 	<string name="forearm_answ3">Seul le haut de l\\’avant-bras gauche est fracturé</string>
 	<string name="tibia_question">Quel symptome peut on voir sur le tibia du sujet ?</string>
+	<string name="good_answer">Bien joué ! C\'est la bonne réponse</string>
+	<string name="bad_answer">Oops, mauvaise réponse</string>
+	<string name="no_answer">Faites un choix</string>
+	<string name="set_language">Changer de langue</string>
 </resources>

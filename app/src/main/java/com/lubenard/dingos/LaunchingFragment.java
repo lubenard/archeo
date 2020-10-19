@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,6 +27,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.Locale;
+
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
@@ -30,6 +36,8 @@ public class LaunchingFragment extends Fragment {
 
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private ReceiveBtDatas bluetoothDataReceiver;
+    private String currentLocale;
+    private int switchToLanguage;
 
     private void connectToBluetooth() {
         // Get SharedPreference to see if Bluetooth address is already registered
@@ -58,6 +66,20 @@ public class LaunchingFragment extends Fragment {
             fragmentTransaction.replace(android.R.id.content, fragment);
             fragmentTransaction.commit();
         }
+    }
+
+    private void setAppLocale(String localeCode){
+        Locale myLocale = new Locale(localeCode);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        LaunchingFragment fragment = new LaunchingFragment();
+        fragmentTransaction.replace(android.R.id.content, fragment);
+        fragmentTransaction.commit();
     }
 
     private int isBluetoothTurnedOn() {
@@ -128,19 +150,48 @@ public class LaunchingFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_landing_page, menu);
+        inflater.inflate(R.menu.menu_launching_page, menu);
+        if (!currentLocale.equals("fr_FR") && !currentLocale.equals("fr")) {
+            Log.d("LANGUAGE", "Setting icon to fr");
+            menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.fr));
+            switchToLanguage = 0; // Switch to fr language
+        }
+        else {
+            Log.d("LANGUAGE", "Setting icon to en");
+            menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.en));
+            switchToLanguage = 1; // switch to en language
+        }
+        Log.d("LANGUAGE", "Switch to language is " + switchToLanguage);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        AboutFragment fragment = new AboutFragment();
-        fragmentTransaction.replace(android.R.id.content, fragment).addToBackStack(null);
-        fragmentTransaction.commit();
+        switch (item.getItemId()) {
+            case R.id.about:
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                AboutFragment fragment = new AboutFragment();
+                fragmentTransaction.replace(android.R.id.content, fragment).addToBackStack(null);
+                fragmentTransaction.commit();
+                return super.onOptionsItemSelected(item);
+            case R.id.set_language:
+                if (switchToLanguage == 1)
+                    setAppLocale("en-us");
+                else if (switchToLanguage == 0)
+                    setAppLocale("fr");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-        return super.onOptionsItemSelected(item);
+    Locale getCurrentLocale(Context context){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            return context.getResources().getConfiguration().getLocales().get(0);
+        } else {
+            return context.getResources().getConfiguration().locale;
+        }
     }
 
     @Override
@@ -149,6 +200,10 @@ public class LaunchingFragment extends Fragment {
 
         Button startSession = view.findViewById(R.id.startSessionButton);
         TextView textView = view.findViewById(R.id.welcomeTextView);
+
+        currentLocale = getCurrentLocale(getContext()).toString();
+
+        Log.d("LANGUAGE", "Current locale is " + currentLocale);
 
         startSession.setOnClickListener(new View.OnClickListener() {
             @Override

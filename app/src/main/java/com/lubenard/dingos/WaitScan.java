@@ -76,13 +76,12 @@ public class WaitScan extends Fragment {
         if (bundle.getBoolean("launchThread")) {
             bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
             Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
-            threadReadData(bluetoothDataReceiver);
         }
         else {
             Log.d("BLUETOOTH", "isConnectionAlive = " + isConnectionAlive + " setting it to true");
             isConnectionAlive = true;
-            threadReadData(bluetoothDataReceiver);
         }
+        threadReadData(bluetoothDataReceiver);
     }
 
     private void commitTransition() {

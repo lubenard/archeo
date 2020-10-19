@@ -106,5 +106,6 @@
     <string name="good_answer">Well played, you did it !</string>
     <string name="bad_answer">Oops, wrong answer</string>
     <string name="no_answer">Please make a choice</string>
+    <string name="set_language">Change language</string>
 
 </resources>
