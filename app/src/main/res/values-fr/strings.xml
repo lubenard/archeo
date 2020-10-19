@@ -81,5 +81,6 @@
 	<string name="good_answer">Bien joué ! C\'est la bonne réponse</string>
 	<string name="bad_answer">Oops, mauvaise réponse</string>
 	<string name="no_answer">Faites un choix</string>
-	<string name="set_language">Changer de langue</string>
+	<string name="menu_set_language">Changer de langue</string>
+	<string name="menu_reset_bt">Oublier l\'appareil bluetooth</string>
 </resources>

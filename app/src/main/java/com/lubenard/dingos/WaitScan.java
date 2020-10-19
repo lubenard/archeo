@@ -69,7 +69,7 @@ public class WaitScan extends Fragment {
         curView = view;
 
         TextView textView = (TextView) curView.findViewById(R.id.element_discovered);
-        textView.setText(elementDiscoveredArray.size() + "/10");
+        textView.setText(elementDiscoveredArray.size() + "/8");
 
         Bundle bundle = getArguments();
 

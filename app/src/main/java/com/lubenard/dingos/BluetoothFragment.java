@@ -35,6 +35,10 @@ public class BluetoothFragment extends Fragment {
         return inflater.inflate(R.layout.bluetooth_fragment, container, false);
     }
 
+    public static void setFragmentManager(FragmentManager newFragmentManager) {
+        fragmentManager = newFragmentManager;
+    }
+
     public static void changeForWaitScan(ReceiveBtDatas bluetoothDataReceiver) {
         // Stop scanning for new devices
         btAdapter.cancelDiscovery();
@@ -42,6 +46,7 @@ public class BluetoothFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("dataReceiver", (Serializable) bluetoothDataReceiver);
         bundle.putBoolean("launchThread", true);
+
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         WaitScan fragment = new WaitScan();
         fragment.setArguments(bundle);

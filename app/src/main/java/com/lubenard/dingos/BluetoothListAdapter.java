@@ -29,6 +29,12 @@ public class BluetoothListAdapter implements ListAdapter {
         activity = getActivity;
     }
 
+    private void saveMacAddr(String macToSave) {
+        // Save preferences for auto reconnection
+        SharedPreferences prefs = activity.getPreferences(Context.MODE_PRIVATE);
+        prefs.edit().putString("BLUETOOTH_ADDR", macToSave).apply();
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
@@ -49,14 +55,7 @@ public class BluetoothListAdapter implements ListAdapter {
                     alertDialogBuilder.setMessage(context.getString(R.string.bluetooth_warning_text));
                     alertDialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // Save preferences for auto reconnection
-                            SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString("BLUETOOTH_ADDR", device.deviceMacAddr);
-                            editor.apply();
-                            Toast.makeText(context, context.getString(R.string.bluetooth_warning_toast), Toast.LENGTH_SHORT).show();
                             dialog.cancel();
-
                             ReceiveBtDatas bluetoothDataReceiver = new ReceiveBtDatas();
                             if (bluetoothDataReceiver.connect(device.deviceMacAddr) == 1){
                                 Toast.makeText(context, context.getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();
@@ -64,8 +63,8 @@ public class BluetoothListAdapter implements ListAdapter {
                             } else {
                                 Log.d("BLUETOOTH", "Connection successful");
                                 Toast.makeText(context, context.getString(R.string.bluetooth_toast_success), Toast.LENGTH_LONG).show();
-
                                 Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
+                                saveMacAddr(device.deviceMacAddr);
                                 BluetoothFragment.changeForWaitScan(bluetoothDataReceiver);
                             }
                         }

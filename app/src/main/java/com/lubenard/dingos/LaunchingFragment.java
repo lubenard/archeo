@@ -41,8 +41,7 @@ public class LaunchingFragment extends Fragment {
 
     private void connectToBluetooth() {
         // Get SharedPreference to see if Bluetooth address is already registered
-        SharedPreferences bluetooth_prefs = getActivity().getSharedPreferences("BLUETOOTH_RELATED", Context.MODE_PRIVATE);
-        String bluetooth_addr = bluetooth_prefs.getString("BLUETOOTH_ADDR", null);
+        String bluetooth_addr = getActivity().getPreferences(Context.MODE_PRIVATE).getString("BLUETOOTH_ADDR", null);
         if (bluetooth_addr != null) {
             // Bluetooth address already registered, try to connect to it
             Log.d("BLUETOOTH", "Connecting to " + bluetooth_addr);
@@ -50,13 +49,10 @@ public class LaunchingFragment extends Fragment {
             bluetoothDataReceiver = new ReceiveBtDatas();
             if (bluetoothDataReceiver.connect(bluetooth_addr) == 1) {
                 Toast.makeText(getContext(), getContext().getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();
-            } /*else {
-                try {
-                    bluetoothDataReceiver.listenForDatas();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }*/
+            } else {
+                BluetoothFragment.setFragmentManager(getFragmentManager());
+                BluetoothFragment.changeForWaitScan(bluetoothDataReceiver);
+            }
         } else {
             Log.d("BLUETOOTH", "Device not registered, displaying Bluetooth Page...");
             // Bluetooth address not registered, display bluetooth devices
@@ -152,16 +148,13 @@ public class LaunchingFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_launching_page, menu);
         if (!currentLocale.equals("fr_FR") && !currentLocale.equals("fr")) {
-            Log.d("LANGUAGE", "Setting icon to fr");
             menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.fr));
             switchToLanguage = 0; // Switch to fr language
         }
         else {
-            Log.d("LANGUAGE", "Setting icon to en");
             menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.en));
             switchToLanguage = 1; // switch to en language
         }
-        Log.d("LANGUAGE", "Switch to language is " + switchToLanguage);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -180,7 +173,10 @@ public class LaunchingFragment extends Fragment {
                     setAppLocale("en-us");
                 else if (switchToLanguage == 0)
                     setAppLocale("fr");
-                return true;
+                return super.onOptionsItemSelected(item);
+            case R.id.reset_bt:
+                SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                preferences.edit().remove("BLUETOOTH_ADDR").commit();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -199,7 +195,6 @@ public class LaunchingFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button startSession = view.findViewById(R.id.startSessionButton);
-        TextView textView = view.findViewById(R.id.welcomeTextView);
 
         currentLocale = getCurrentLocale(getContext()).toString();
 

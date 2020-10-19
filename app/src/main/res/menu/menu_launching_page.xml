@@ -4,9 +4,13 @@
 
 	<!-- Search, should appear as action button -->
 	<item android:id="@+id/set_language"
-		android:icon="@drawable/en"
-		android:title="@string/set_language"
+		android:icon="@drawable/fr"
+		android:title="@string/menu_set_language"
 		app:showAsAction="ifRoom" />
+
+	<item android:id="@+id/reset_bt"
+		android:title="@string/menu_reset_bt"
+		app:showAsAction="never"/>
 
 	<item android:id="@+id/about"
 		android:title="@string/menu_about"
