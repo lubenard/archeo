@@ -110,12 +110,15 @@
     <string name="menu_reset_bt">Forget bluetooth device</string>
     <string name="launch_intro">Launch intro</string>
     <string name="launch_photo">Discovery over, how to take a good photo?</string>
-	<string name="auto_connect_toast">Connecting to device</string>
+	<string name="auto_connect_toast">Connecting to device...</string>
 	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
     <string name="exit">Exit the app</string>
 	<string name="already_discovered_elemment">Wait a minute, this element has already been scanned!</string>
 	<string name="license_main_leonids">This app use Leonids library, under Apache License 2.0 license</string>
     <string name="license_github_leonids_link_text">You can find the whole source code of Leonids here:</string>
-    <string name="license_github_leonids_link_link">https://github.com/plattysoft/Leonids</string>
+    <string name="license_github_leonids_link_link" translatable="false">https://github.com/plattysoft/Leonids</string>
+    <string name="menu_refresh">Refresh</string>
+	<string name="reload_bt">Refreshing Bluetooth...</string>
+    <string name="menu_reset_user_progress">Reset progress</string>
 
 </resources>

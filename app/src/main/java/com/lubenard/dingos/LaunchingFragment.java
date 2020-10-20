@@ -176,6 +176,9 @@ public class LaunchingFragment extends Fragment {
             case R.id.reset_bt:
                 SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
                 preferences.edit().remove("BLUETOOTH_ADDR").apply();
+            case R.id.reset_user_progress:
+                SharedPreferences preferences2 = getActivity().getPreferences(Context.MODE_PRIVATE);
+                preferences2.edit().remove("DISCOVERED_PROGRESS").apply();
             default:
                 return super.onOptionsItemSelected(item);
         }
