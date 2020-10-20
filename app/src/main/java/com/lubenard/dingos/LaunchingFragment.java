@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,7 +44,7 @@ public class LaunchingFragment extends Fragment {
         if (bluetooth_addr != null) {
             // Bluetooth address already registered, try to connect to it
             Log.d("BLUETOOTH", "Connecting to " + bluetooth_addr);
-
+            Toast.makeText(getContext(), getContext().getString(R.string.auto_connect_toast), Toast.LENGTH_LONG).show();
             bluetoothDataReceiver = new ReceiveBtDatas();
             if (bluetoothDataReceiver.connect(bluetooth_addr) == 1) {
                 Toast.makeText(getContext(), getContext().getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();

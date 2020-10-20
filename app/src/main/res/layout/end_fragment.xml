@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="center">
+
+	<TextView
+		android:id="@+id/wait_scan_main_message"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="30sp"
+		android:gravity="center"
+		android:layout_weight="1"
+		android:text="@string/end_fragment_main_text"/>
+
+	<Button
+		android:id="@+id/exitApp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		style="@style/custom_button"
+		android:layout_marginBottom="200dp"
+		android:text="@string/exit"/>
+
+</LinearLayout>

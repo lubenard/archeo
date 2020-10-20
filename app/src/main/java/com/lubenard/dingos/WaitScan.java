@@ -1,6 +1,8 @@
 package com.lubenard.dingos;
 
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,8 +19,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class WaitScan extends Fragment {
@@ -32,6 +38,7 @@ public class WaitScan extends Fragment {
     private static Boolean isConnectionAlive;
     private static BluetoothSocket socket;
     private static ReceiveBtDatas bluetoothDataReceiver;
+    private static boolean hasLoadProgress = false;
 
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
             R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.objet, R.raw.reduction, R.raw.tibia,
@@ -73,8 +80,11 @@ public class WaitScan extends Fragment {
 
         Bundle bundle = getArguments();
 
-        if (elementDiscoveredArray.size() == 0)
-            ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
+        loadProgress();
+
+        if (elementDiscoveredArray.size() == 0) {
+            ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
+        }
         else if (elementDiscoveredArray.size() == 8)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
@@ -87,6 +97,16 @@ public class WaitScan extends Fragment {
             isConnectionAlive = true;
         }
         threadReadData(bluetoothDataReceiver);
+    }
+
+    private void loadProgress() {
+        String userProgress = getActivity().getPreferences(Context.MODE_PRIVATE).getString("DISCOVERED_PROGRESS", null);
+        if (userProgress != null) {
+            Log.d("WAITSCAN", "User Progress has been found! " + userProgress);
+            Type listType = new TypeToken<ArrayList<Integer>>(){}.getType();
+            elementDiscoveredArray = new Gson().fromJson(userProgress, listType);
+        }
+        hasLoadProgress = true;
     }
 
     private void commitTransition() {
@@ -127,6 +147,13 @@ public class WaitScan extends Fragment {
         videoPathChoice = videoPath;
     }
 
+    private void saveProgress() {
+        Gson gson = new Gson();
+        String elementDscoveredJson = gson.toJson(elementDiscoveredArray);
+        SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+        prefs.edit().putString("DISCOVERED_PROGRESS", elementDscoveredJson).apply();
+    }
+
     private void threadReadData(final ReceiveBtDatas bluetoothDataReceiver) {
         new Thread()
         {
@@ -148,15 +175,26 @@ public class WaitScan extends Fragment {
                             //if (elementDiscoveredArray.size() == 0 && elementRead != 0) {
                             //    Toast.makeText(getContext(), "THIS IS NOT THE INTRO CARD", Toast.LENGTH_LONG).show();
                             //} else if ((elementDiscoveredArray.size() == 0 && elementRead == 0) || getElementDiscoveredArray().size() != 0) {
-                                // Add discovered element into array
-                                elementDiscoveredArray.add(elementRead);
-                                // Update counter
-                                ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
-                                //Prepare elements for video + quizz
-                                setItemChoice(elementRead, resArray[elementRead]);
-                                // Quizz should launch after video (not like replay fragment)
-                                setShouldQuizzLaunch(true);
-                                commitTransition();
+                                if (!elementDiscoveredArray.contains(elementRead)) {
+                                    // Add discovered element into array
+                                    elementDiscoveredArray.add(elementRead);
+                                    // Update counter
+                                    ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
+                                    //Prepare elements for video + quizz
+                                    setItemChoice(elementRead, resArray[elementRead]);
+                                    //Save the new array into pref
+                                    saveProgress();
+                                    // Quizz should launch after video (not like replay fragment)
+                                    setShouldQuizzLaunch(true);
+                                    commitTransition();
+                                }
+                                else {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            Toast.makeText(getContext(), getContext().getString(R.string.already_discovered_elemment), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                }
                             //}
                         } else {
                             Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);

@@ -110,5 +110,9 @@
     <string name="menu_reset_bt">Forget bluetooth device</string>
     <string name="launch_intro">Launch intro</string>
     <string name="launch_photo">Discovery over, how to take a good photo?</string>
+	<string name="auto_connect_toast">Connecting to device</string>
+	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
+    <string name="exit">Exit the app</string>
+	<string name="already_discovered_elemment">Wait a minute, this element has already been scanned!</string>
 
 </resources>
