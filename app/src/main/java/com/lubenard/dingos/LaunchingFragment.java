@@ -175,7 +175,7 @@ public class LaunchingFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
             case R.id.reset_bt:
                 SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-                preferences.edit().remove("BLUETOOTH_ADDR").commit();
+                preferences.edit().remove("BLUETOOTH_ADDR").apply();
             default:
                 return super.onOptionsItemSelected(item);
         }

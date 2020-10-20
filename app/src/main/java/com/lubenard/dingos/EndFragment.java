@@ -1,6 +1,8 @@
 package com.lubenard.dingos;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -30,6 +32,9 @@ public class EndFragment extends Fragment {
         exitApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Remove saved user progress before exiting
+                SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                preferences.edit().remove("DISCOVERED_PROGRESS").apply();
                 getActivity().finish();
             }
         });

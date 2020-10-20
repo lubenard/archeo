@@ -38,7 +38,6 @@ public class WaitScan extends Fragment {
     private static Boolean isConnectionAlive;
     private static BluetoothSocket socket;
     private static ReceiveBtDatas bluetoothDataReceiver;
-    private static boolean hasLoadProgress = false;
 
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
             R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.objet, R.raw.reduction, R.raw.tibia,
@@ -105,8 +104,9 @@ public class WaitScan extends Fragment {
             Log.d("WAITSCAN", "User Progress has been found! " + userProgress);
             Type listType = new TypeToken<ArrayList<Integer>>(){}.getType();
             elementDiscoveredArray = new Gson().fromJson(userProgress, listType);
+            // Update textView
+            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
         }
-        hasLoadProgress = true;
     }
 
     private void commitTransition() {

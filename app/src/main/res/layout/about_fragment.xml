@@ -48,5 +48,31 @@
 		android:layout_height="wrap_content"
 		android:textAlignment="center"
 		android:gravity="center_horizontal"
-		android:text="@string/license_github_link_link" />
+		android:text="@string/license_github_link_link"
+		android:layout_marginBottom="40dp"/>
+
+	<TextView
+		android:id="@+id/textView6"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textAlignment="center"
+		android:gravity="center_horizontal"
+		android:textSize="30dp"
+		android:text="@string/license_main_leonids" />
+
+	<TextView
+		android:id="@+id/textView7"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textAlignment="center"
+		android:gravity="center_horizontal"
+		android:text="@string/license_github_leonids_link_text" />
+
+	<TextView
+		android:id="@+id/textView8"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textAlignment="center"
+		android:gravity="center_horizontal"
+		android:text="@string/license_github_leonids_link_link" />
 </LinearLayout>

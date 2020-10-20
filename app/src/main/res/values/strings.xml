@@ -114,5 +114,8 @@
 	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
     <string name="exit">Exit the app</string>
 	<string name="already_discovered_elemment">Wait a minute, this element has already been scanned!</string>
+	<string name="license_main_leonids">This app use Leonids library, under Apache License 2.0 license</string>
+    <string name="license_github_leonids_link_text">You can find the whole source code of Leonids here:</string>
+    <string name="license_github_leonids_link_link">https://github.com/plattysoft/Leonids</string>
 
 </resources>
