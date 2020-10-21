@@ -44,7 +44,7 @@ public class BluetoothFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_launching_page, menu);
+        inflater.inflate(R.menu.menu_bluetooth_fragment, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -53,6 +53,8 @@ public class BluetoothFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.reload_bt:
                 Toast.makeText(getContext(), getContext().getString(R.string.reload_bt), Toast.LENGTH_SHORT).show();
+                deviceItemList.clear();
+                discoverBt();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -85,12 +87,7 @@ public class BluetoothFragment extends Fragment {
         deviceListView.setAdapter(customAdapter);
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        fragmentManager = getFragmentManager();
-
+    private void discoverBt() {
         // Get list of already paired devices.
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
@@ -113,9 +110,18 @@ public class BluetoothFragment extends Fragment {
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         getContext().registerReceiver(receiver, filter);
 
+        updateListView();
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        fragmentManager = getFragmentManager();
+
         mainView = view;
 
-        updateListView();
+        discoverBt();
     }
 
     // Create a BroadcastReceiver for ACTION_FOUND.
