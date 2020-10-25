@@ -18,10 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,6 +39,7 @@ public class LaunchingFragment extends Fragment {
     private ReceiveBtDatas bluetoothDataReceiver;
     private String currentLocale;
     private int switchToLanguage;
+    private TextView isBackupFoundTextView;
 
     private void connectToBluetooth() {
         // Get SharedPreference to see if Bluetooth address is already registered
@@ -179,6 +182,8 @@ public class LaunchingFragment extends Fragment {
             case R.id.reset_user_progress:
                 SharedPreferences preferences2 = getActivity().getPreferences(Context.MODE_PRIVATE);
                 preferences2.edit().remove("DISCOVERED_PROGRESS").apply();
+                isBackupFoundTextView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+                isBackupFoundTextView.setText(getContext().getString(R.string.saveNotFound));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -201,6 +206,17 @@ public class LaunchingFragment extends Fragment {
         currentLocale = getCurrentLocale(getContext()).toString();
 
         Log.d("LANGUAGE", "Current locale is " + currentLocale);
+
+         isBackupFoundTextView = view.findViewById(R.id.isThereBackup);
+
+        String userProgress = getActivity().getPreferences(Context.MODE_PRIVATE).getString("DISCOVERED_PROGRESS", null);
+        if (userProgress != null) {
+            isBackupFoundTextView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.green, null));
+            isBackupFoundTextView.setText(getContext().getString(R.string.saveFound));
+        } else {
+            isBackupFoundTextView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+            isBackupFoundTextView.setText(getContext().getString(R.string.saveNotFound));
+        }
 
         startSession.setOnClickListener(new View.OnClickListener() {
             @Override

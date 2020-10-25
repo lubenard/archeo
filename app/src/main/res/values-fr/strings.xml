@@ -84,14 +84,18 @@
 	<string name="menu_set_language">Changer de langue</string>
 	<string name="menu_reset_bt">Oublier l\'appareil bluetooth</string>
 	<string name="launch_intro">Lancer l\'introduction</string>
-	<string name="launch_photo">La découverte est finie, comment prendre une bonne photo ?</string>
-	<string name="auto_connect_toast">Connection a l\'appareil...</string>
+	<string name="launch_photo">La découverte est finie, dernière question !</string>
+	<string name="auto_connect_toast">Connection a l\'appareil…</string>
 	<string name="end_fragment_main_text">Bien joué ! Vous avez fini l\'activité !</string>
 	<string name="exit">Quitter l\'app</string>
 	<string name="already_discovered_elemment">Attendez une minute, cet élément à déjà été scanné !</string>
 	<string name="license_main_leonids">Cette app utilise Leonids, une librairie sous license Apache License 2.0</string>
 	<string name="license_github_leonids_link_text">Vous pouvez trouver le code source entier de Leonids ici:</string>
 	<string name="menu_refresh">Rafraichir</string>
-	<string name="reload_bt">Rafraichissement du Bluetooth...</string>
+	<string name="reload_bt">Rafraichissement du Bluetooth…</string>
 	<string name="menu_reset_user_progress">Reinitialiser le progrès</string>
+	<string name="saveFound">Une sauvegarde à été trouvé !</string>
+	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
+	<string name="final_quizz_wrong">Raté, essaie encore</string>
+	<string name="final_quizz_right">Bravo, tu as trouvé !</string>
 </resources>

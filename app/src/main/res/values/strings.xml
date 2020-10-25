@@ -109,7 +109,7 @@
     <string name="no_answer">Please make a choice</string>
     <string name="menu_reset_bt">Forget bluetooth device</string>
     <string name="launch_intro">Launch intro</string>
-    <string name="launch_photo">Discovery over, how to take a good photo?</string>
+    <string name="launch_photo">Discovery over, let\'s go to the final quizz!</string>
 	<string name="auto_connect_toast">Connecting to device...</string>
 	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
     <string name="exit">Exit the app</string>
@@ -120,5 +120,11 @@
     <string name="menu_refresh">Refresh</string>
 	<string name="reload_bt">Refreshing Bluetooth...</string>
     <string name="menu_reset_user_progress">Reset progress</string>
+	<string name="saveFound">A save has been found !</string>
+    <string name="saveNotFound">No save has been found, starting with fresh start</string>
+	<string name="final_quizz_question">Based on all the previous questions, what does the figure in the grave look like?</string>
+    <string name="final_quizz_consigne">Click on the right character</string>
+	<string name="final_quizz_wrong">Missed, try again !</string>
+    <string name="final_quizz_right">Well played !</string>
 
 </resources>

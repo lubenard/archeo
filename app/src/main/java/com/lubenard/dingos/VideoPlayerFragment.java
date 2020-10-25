@@ -33,7 +33,7 @@ public class VideoPlayerFragment extends Fragment {
         VideoView videoView = view.findViewById(R.id.videoViewPlayer);
         String videoPath;
 
-        videoPath = "android.resource://com.lubenard.dingos/" + WaitScan.getVideoPathChoice();
+        videoPath = "android.resource://" + getContext().getPackageName() +"/" + WaitScan.getVideoPathChoice();
 
         Log.d("VIDEOVIEW", "Video path is " + videoPath);
 
