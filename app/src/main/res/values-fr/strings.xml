@@ -96,6 +96,4 @@
 	<string name="menu_reset_user_progress">Reinitialiser le progrès</string>
 	<string name="saveFound">Une sauvegarde à été trouvé !</string>
 	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
-	<string name="final_quizz_wrong">Raté, essaie encore</string>
-	<string name="final_quizz_right">Bravo, tu as trouvé !</string>
 </resources>

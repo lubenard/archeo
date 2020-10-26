@@ -19,7 +19,10 @@
     <string name="license_github_link_text">You can find the whole source code of this app here:</string>
     <string name="license_github_link_link" translatable="false">https://github.com/lubenard/archeo</string>
     <string name="license_main_license">This app is under GPLv3 Licence.</string>
-    
+    <string name="license_main_leonids">This app use Leonids library, under Apache License 2.0 license</string>
+    <string name="license_github_leonids_link_text">You can find the whole source code of Leonids here:</string>
+    <string name="license_github_leonids_link_link" translatable="false">https://github.com/plattysoft/Leonids</string>
+
     <string name="bluetooth_list_icon">Bluetooth Icon</string>
     
     <string name="landing_greeting">Welcome into Ding\'os!</string>
@@ -114,9 +117,7 @@
 	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
     <string name="exit">Exit the app</string>
 	<string name="already_discovered_elemment">Wait a minute, this element has already been scanned!</string>
-	<string name="license_main_leonids">This app use Leonids library, under Apache License 2.0 license</string>
-    <string name="license_github_leonids_link_text">You can find the whole source code of Leonids here:</string>
-    <string name="license_github_leonids_link_link" translatable="false">https://github.com/plattysoft/Leonids</string>
+
     <string name="menu_refresh">Refresh</string>
 	<string name="reload_bt">Refreshing Bluetooth...</string>
     <string name="menu_reset_user_progress">Reset progress</string>
@@ -124,7 +125,7 @@
     <string name="saveNotFound">No save has been found, starting with fresh start</string>
 	<string name="final_quizz_question">Based on all the previous questions, what does the figure in the grave look like?</string>
     <string name="final_quizz_consigne">Click on the right character</string>
-	<string name="final_quizz_wrong">Missed, try again !</string>
-    <string name="final_quizz_right">Well played !</string>
+
+    <string name="photo_scan_text">We are now going to take a picture of the grave !</string>
 
 </resources>

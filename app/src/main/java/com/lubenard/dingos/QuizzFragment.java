@@ -34,7 +34,6 @@ public class QuizzFragment extends Fragment {
         WaitScan fragment = new WaitScan();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(android.R.id.content, fragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -142,7 +141,7 @@ public class QuizzFragment extends Fragment {
                     Log.d("QUIZZ", "Selection made by user is number " + selectedId);
                     Log.d("QUIZZ", "goodAnswer is " + finalGoodAnswer);
                     if (selectedId == finalGoodAnswer) {
-                        Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_SHORT).show();
                         new ParticleSystem(getActivity(), 10, R.drawable.star, 3000)
                                 .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
                                 .setAcceleration(0.000003f, 90)
@@ -154,10 +153,10 @@ public class QuizzFragment extends Fragment {
                         commitTransition();
                     }
                     else
-                        Toast.makeText(getContext(), getContext().getString(R.string.bad_answer), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), getContext().getString(R.string.bad_answer), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(),
-                            getContext().getString(R.string.no_answer), Toast.LENGTH_LONG).show();
+                            getContext().getString(R.string.no_answer), Toast.LENGTH_SHORT).show();
                 }
             }
         });

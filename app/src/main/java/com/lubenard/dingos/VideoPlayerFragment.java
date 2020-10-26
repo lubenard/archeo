@@ -17,11 +17,27 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class VideoPlayerFragment extends Fragment {
+    private static VideoView videoView;
+    private static boolean currentVideoPlayerStatus = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.video_player_fragment, container, false);
+    }
+
+    public static void setVideoPlayerStatus() {
+        // currentVideoPlayerStatus:
+        // TRUE : PLAYING
+        // FALSE : PAUSED
+        if (!currentVideoPlayerStatus) {
+            videoView.start();
+            currentVideoPlayerStatus = true;
+        } else {
+            videoView.pause();
+            currentVideoPlayerStatus = false;
+        }
     }
 
     @Override
@@ -30,7 +46,7 @@ public class VideoPlayerFragment extends Fragment {
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        VideoView videoView = view.findViewById(R.id.videoViewPlayer);
+        videoView = view.findViewById(R.id.videoViewPlayer);
         String videoPath;
 
         videoPath = "android.resource://" + getContext().getPackageName() +"/" + WaitScan.getVideoPathChoice();
@@ -57,15 +73,19 @@ public class VideoPlayerFragment extends Fragment {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+                WaitScan.setIsConnectionAlive(false);
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Fragment fragment;
                 if (WaitScan.getShouldQuizzLaunch()) {
                     Log.d("VIDEOVIEW", "Video is finished now, let's go to the quizz");
-                    fragment = (QuizzFragment) new QuizzFragment();
+                    fragment = new QuizzFragment();
+                } else if (WaitScan.getVideoPathChoice() == R.raw.photo) {
+                    Log.d("VIDEOVIEW", "Video is finished now, let's go to the End Fragment");
+                    fragment = new EndFragment();
                 } else {
                     Log.d("VIDEOVIEW", "Since we should not go to quizz, let's go to replay");
-                    fragment = (ListVideo) new ListVideo();
+                    fragment = new ListVideo();
                 }
                 fragmentTransaction.replace(android.R.id.content, fragment);
                 fragmentTransaction.commit();
