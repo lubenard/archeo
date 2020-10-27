@@ -7,7 +7,7 @@
 	</style>
 
 	<style name="custom_button">
-		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textColor">@android:color/black</item>
 		<item name="android:paddingLeft">13dp</item>
 		<item name="android:paddingRight">13dp</item>
 		<item name="android:background">@drawable/start_button</item>

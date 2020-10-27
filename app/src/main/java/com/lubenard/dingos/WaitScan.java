@@ -202,7 +202,7 @@ public class WaitScan extends Fragment {
                                     //Save the new array into pref
                                     saveProgress();
                                     if (elementDiscoveredCounter < 8 && elementRead != 10) {
-                                        if (elementRead != 0) {
+                                        if (elementRead != 0 && elementRead != 9) {
                                             Log.d("BLUETOOTH", "Updating elementDiscoveredCounter for elementRead " + elementRead);
                                             // Update counter
                                             ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");

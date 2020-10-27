@@ -61,7 +61,7 @@
 
     <string name="forearm_question">What is the condition of the left forearm?</string>
     <string name="forearm_answ1">The left forearm is intact</string>
-    <string name="forearm_answ2">The left forearm is fractured in the middle.</string>
+    <string name="forearm_answ2">Only the lower left forearm is fractured.</string>
     <string name="forearm_answ3">Only the upper left forearm is fractured.</string>
     <string name="forearm_answ4">The left forearm is a mess!</string>
 

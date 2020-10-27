@@ -6,57 +6,70 @@
 	android:orientation="vertical">
 
 	<TextView
-		android:id="@+id/textView"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:textSize="40sp"
-		android:gravity="center"
-		android:text="@string/quizz_title"/>
-
-	<TextView
 		android:id="@+id/textViewQuestionQuizz"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:gravity="center"/>
+		android:textSize="25sp"
+		android:gravity="center"
+		android:text="Question"/>
 
-	<RadioGroup
-		android:id="@+id/quizzRadioGroup"
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="match_parent"
+		android:orientation="horizontal">
 
-		<RadioButton
-			android:id="@+id/radioButton1"
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="20dp"
-			android:text="RadioButton" />
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="1">
 
-		<RadioButton
-			android:id="@+id/radioButton2"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="20dp"
-			android:text="RadioButton" />
+			<Button
+				android:id="@+id/answer1"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_gravity="center_horizontal"
+				android:background="#D56464"
+				android:textSize="20dp"
+				android:text="Answer 1"
+				android:layout_weight="1"/>
 
-		<RadioButton
-			android:id="@+id/radioButton3"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="20dp"
-			android:text="RadioButton" />
+			<Button
+				android:id="@+id/answer2"
+				android:layout_width="match_parent"
+				android:background="#5ab1bb"
+				android:textSize="20dp"
+				android:layout_height="match_parent"
+				android:layout_gravity="center_horizontal"
+				android:layout_weight="1"
+				android:text="Answer 3" />
+		</LinearLayout>
 
-		<RadioButton
-			android:id="@+id/radioButton4"
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="20dp"
-			android:text="RadioButton" />
-	</RadioGroup>
-	<Button
-		android:id="@+id/verifyAnswer"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/quizz_check_answer"
-		style="@style/custom_button"
-		android:layout_gravity="center_horizontal"/>
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:layout_weight="1">
+
+			<Button
+				android:id="@+id/answer3"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_gravity="center_horizontal"
+				android:background="#a5c882"
+				android:textSize="20dp"
+				android:text="Answer 2"
+				android:layout_weight="1"/>
+
+			<Button
+				android:id="@+id/answer4"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_gravity="center_horizontal"
+				android:background="#f7dd72"
+				android:textSize="20dp"
+				android:text="Answer 4"
+				android:layout_weight="1"/>
+		</LinearLayout>
+	</LinearLayout>
 </LinearLayout>
