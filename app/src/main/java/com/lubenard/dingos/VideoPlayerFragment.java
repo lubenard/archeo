@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class VideoPlayerFragment extends Fragment {
     private static VideoView videoView;
     private static boolean currentVideoPlayerStatus = true;
+    private static boolean isInsideVideo = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +39,10 @@ public class VideoPlayerFragment extends Fragment {
             videoView.pause();
             currentVideoPlayerStatus = false;
         }
+    }
+
+    public static boolean getIsInsideVideo() {
+        return isInsideVideo;
     }
 
     @Override
@@ -67,6 +72,8 @@ public class VideoPlayerFragment extends Fragment {
         params.leftMargin = 0;
         videoView.setLayoutParams(params);
 
+        isInsideVideo = true;
+
         videoView.start();
 
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -74,6 +81,7 @@ public class VideoPlayerFragment extends Fragment {
             public void onCompletion(MediaPlayer mp) {
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
                 WaitScan.setIsConnectionAlive(false);
+                isInsideVideo = false;
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Fragment fragment;

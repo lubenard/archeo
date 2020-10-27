@@ -77,7 +77,6 @@ public class BluetoothFragment extends Fragment {
         WaitScan fragment = new WaitScan();
         fragment.setArguments(bundle);
         fragmentTransaction.replace(android.R.id.content, fragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 

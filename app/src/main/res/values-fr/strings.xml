@@ -33,7 +33,8 @@
 
 	<string name="forearm_question">Dans quel état est l\'avant bras gauche ?</string>
 	<string name="forearm_answ1">L\'avant-bras gauche est intact</string>
-	<string name="forearm_answ2">L\'avant-bras gauche est fracturé en son milieu</string>
+	<string name="forearm_answ2">Seul le bas de l\’avant-bras gauche est fracturé</string>
+	<string name="forearm_answ3">Seul le haut de l\’avant-bras gauche est fracturé</string>
 	<string name="forearm_answ4">L\’avant-bras gauche est en bouillie !</string>
 
 	<string name="sex_question">Quel est le sexe du sujet ?</string>
@@ -76,7 +77,6 @@
 	<string name="tibia_answ2">Le sujet présente la syphilis</string>
 	<string name="tibia_answ3">Le sujet a un trou, une ostéomyélite (infection)</string>
 	<string name="tibia_answ4">Le tibia du sujet est très sain</string>
-	<string name="forearm_answ3">Seul le haut de l\\’avant-bras gauche est fracturé</string>
 	<string name="tibia_question">Quel symptome peut on voir sur le tibia du sujet ?</string>
 	<string name="good_answer">Bien joué ! C\'est la bonne réponse</string>
 	<string name="bad_answer">Oops, mauvaise réponse</string>
@@ -96,4 +96,8 @@
 	<string name="menu_reset_user_progress">Reinitialiser le progrès</string>
 	<string name="saveFound">Une sauvegarde à été trouvé !</string>
 	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
+	<string name="final_quizz_question">Sur la base de toutes les questions précédentes, à quoi ressemble la figure dans la tombe ?</string>
+	<string name="final_quizz_consigne">Cliquez sur le bon personnage</string>
+	<string name="photo_scan_text">Nous allons maintenant prendre une photo de la tombe !</string>
+	<string name="about_to_quit">Vous êtes sur le point de quitter l\'application. Si vous voulez la quitter, pressez retour de nouveau</string>
 </resources>

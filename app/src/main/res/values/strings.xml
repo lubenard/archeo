@@ -60,52 +60,52 @@
     <string name="video_photo">Photo</string>
 
     <string name="forearm_question">What is the condition of the left forearm?</string>
-    <string name="forearm_answ1">The left forearm is intact</string>
+    <string name="forearm_answ1">The left forearm is intact.</string>
     <string name="forearm_answ2">Only the lower left forearm is fractured.</string>
     <string name="forearm_answ3">Only the upper left forearm is fractured.</string>
     <string name="forearm_answ4">The left forearm is a mess!</string>
 
     <string name="sex_question">What is the gender of the subject?</string>
-    <string name="sex_answ1">The subject is a woman</string>
-    <string name="sex_answ2">The subject is a man</string>
+    <string name="sex_answ1">The subject is a woman.</string>
+    <string name="sex_answ2">The subject is a man.</string>
     <string name="sex_answ3">The sex of this adult subject is not determinable.</string>
     <string name="sex_answ4">It\'s a child, so it\'s not possible on a skeleton.</string>
 
     <string name="teeth_question">What is the condition of the subject\'s teeth?</string>
-    <string name="teeth_answ1">The subject has no cavities</string>
-    <string name="teeth_answ2">The subject has a cavity</string>
-    <string name="teeth_answ3">The subject has a cavity, every other tooth</string>
-    <string name="teeth_answ4">The subject has no teeth</string>
+    <string name="teeth_answ1">The subject has no cavities.</string>
+    <string name="teeth_answ2">The subject has a cavity.</string>
+    <string name="teeth_answ3">The subject has a cavity, every other tooth.</string>
+    <string name="teeth_answ4">The subject has no teeth.</string>
 
     <string name="size_question">How big is the subject?</string>
-    <string name="size_answ1">The subject measures approximately 1.50m</string>
-    <string name="size_answ2">The subject measures approximately 1.65m</string>
-    <string name="size_answ3">The subject measures 1.85m</string>
-    <string name="size_answ4">It is not possible to estimate the size</string>
+    <string name="size_answ1">The subject measures approximately 1.50m.</string>
+    <string name="size_answ2">The subject measures approximately 1.65m.</string>
+    <string name="size_answ3">The subject measures 1.85m.</string>
+    <string name="size_answ4">It is not possible to estimate the size.</string>
 
     <string name="age_question">How old is the subject?</string>
     <string name="age_answ1">The subject is a child under the age of 10.</string>
     <string name="age_answ2">He is a teenager between 10 and 15 years old.</string>
-    <string name="age_answ3">C\'est un adolescent entre 15 et 20 ans</string>
-    <string name="age_answ4">He\'s an adult</string>
+    <string name="age_answ3">He is a teenager between 15 and 20 years old.</string>
+    <string name="age_answ4">He\'s an adult.</string>
 
     <string name="object_question">What is the object presented?</string>
     <string name="object_answ1">This is a Bronze Age vase.</string>
-    <string name="object_answ2">It is a sword from the Roman period.</string>
-    <string name="object_answ3">It is a pearl necklace from the Merovingian period.</string>
+    <string name="object_answ2">It\'s a sword from the Roman period.</string>
+    <string name="object_answ3">It\'s a pearl necklace from the Merovingian period.</string>
     <string name="object_answ4">It\'s a flowerpot of today</string>
 
     <string name="howmany_question">How many subjects are there?</string>
-    <string name="howmany_answ1">There is one subject</string>
-    <string name="howmany_answ2">There are two subjects</string>
-    <string name="howmany_answ3">There are three subjects</string>
+    <string name="howmany_answ1">There is one subject.</string>
+    <string name="howmany_answ2">There are two subjects.</string>
+    <string name="howmany_answ3">There are three subjects.</string>
     <string name="howmany_answ4">It\'s the same as the one on the back.</string>
 
     <string name="tibia_question">What symptom can be seen on the subject\'s tibia?</string>
-    <string name="tibia_answ1">The subject has a fracture</string>
-    <string name="tibia_answ2">The subject presents syphilis</string>
-    <string name="tibia_answ3">Subject has a hole, osteomyelitis (infection)</string>
-    <string name="tibia_answ4">The subject\'s tibia is very healthy</string>
+    <string name="tibia_answ1">The subject has a fracture.</string>
+    <string name="tibia_answ2">The subject presents syphilis.</string>
+    <string name="tibia_answ3">Subject has a hole, osteomyelitis (infection).</string>
+    <string name="tibia_answ4">The subject\'s tibia is very healthy.</string>
 
     <string name="good_answer">Well played, you did it !</string>
     <string name="bad_answer">Oops, wrong answer</string>
@@ -127,5 +127,6 @@
     <string name="final_quizz_consigne">Click on the right character</string>
 
     <string name="photo_scan_text">We are now going to take a picture of the grave !</string>
-
+    <string name="recap">1. Only the lower left forearm is fractured. \n2. The subject is a woman. \n3. The subject has a cavity.\n4. The subject measures approximately 1.65m.\n5. He\'s an adult.\n6. It\'s a pearl necklace from the Merovingian period. \n7. There are two subjects. \n8. Subject has a hole, osteomyelitis (infection).</string>
+    <string name="about_to_quit">You are about to quit the app. If you want to quit, press back again</string>
 </resources>

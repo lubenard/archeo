@@ -59,6 +59,14 @@ public class FinalQuizz extends Fragment implements View.OnClickListener {
             fragmentTransaction.commit();
         } else {
             Toast.makeText(getContext(), getContext().getString(R.string.bad_answer), Toast.LENGTH_SHORT).show();
+            new ParticleSystem(getActivity(), 10, R.drawable.red_cross, 3000)
+                    .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
+                    .setAcceleration(0.000003f, 90)
+                    .setInitialRotationRange(0, 360)
+                    .setRotationSpeed(160)
+                    .setFadeOut(2000)
+                    .addModifier(new ScaleModifier(0f, 1.5f, 0, 1500))
+                    .oneShot(view, 10);
         }
     }
 }

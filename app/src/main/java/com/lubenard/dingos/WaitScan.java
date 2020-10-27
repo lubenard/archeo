@@ -184,7 +184,7 @@ public class WaitScan extends Fragment {
                         int dataRead = inputStream.read();
                         Log.d("BLUETOOTH", "Looking for datas");
                         Log.d("BLUETOOTH", "Datas available: " + String.format("%c", dataRead));
-                        if (dataRead >= 48 && dataRead <= 57) {
+                        if (dataRead >= 48 && dataRead <= 57 && !VideoPlayerFragment.getIsInsideVideo()) {
                             Log.d("BLUETOOTH","Valid card!");
                             int elementRead = dataRead - 48;
                             Log.d("BLUETOOTH", "elementRead = " + elementRead);
@@ -227,13 +227,13 @@ public class WaitScan extends Fragment {
                                     });
                                 }
                             }
-                        } else if (dataRead == 58 && elementDiscoveredCounter == 8) {
+                        } else if (dataRead == 58 && elementDiscoveredCounter == 8 && !VideoPlayerFragment.getIsInsideVideo()) {
                             // Transition to Final Quizz
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             FinalQuizz fragment = new FinalQuizz();
                             fragmentTransaction.replace(android.R.id.content, fragment);
                             fragmentTransaction.commit();
-                        } else if (dataRead == 59) {
+                        } else if (dataRead == 59 && VideoPlayerFragment.getIsInsideVideo()) {
                             Log.d("BLUETOOTH", "I should set pause/unpause on video");
                             VideoPlayerFragment.setVideoPlayerStatus();
                         } else {
