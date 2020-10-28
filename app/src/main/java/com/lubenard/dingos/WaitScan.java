@@ -49,6 +49,8 @@ public class WaitScan extends Fragment {
 
     private static Thread runningThread;
 
+    private static boolean hasFinalQuizzBeenDone = false;
+
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
             R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.objet, R.raw.reduction, R.raw.tibia,
             R.raw.photo};
@@ -93,9 +95,10 @@ public class WaitScan extends Fragment {
 
         loadProgress();
 
-        if (elementDiscoveredArray.size() == 0) {
+        if (elementDiscoveredArray.size() == 0)
             ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
-        }
+        else if (elementDiscoveredCounter == 8 && hasFinalQuizzBeenDone)
+            ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.photo_scan_text));
         else if (elementDiscoveredCounter == 8)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
@@ -248,11 +251,21 @@ public class WaitScan extends Fragment {
                                 }
                             }
                         } else if (dataRead == 58 && elementDiscoveredCounter == 8 && !VideoPlayerFragment.getIsInsideVideo()) {
-                            // Transition to Final Quizz
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            FinalQuizz fragment = new FinalQuizz();
-                            fragmentTransaction.replace(android.R.id.content, fragment);
-                            fragmentTransaction.commit();
+                            if (!hasFinalQuizzBeenDone) {
+                                // Transition to Final Quizz
+                                setIsConnectionAlive(false);
+                                hasFinalQuizzBeenDone = true;
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                FinalQuizz fragment = new FinalQuizz();
+                                fragmentTransaction.replace(android.R.id.content, fragment);
+                                fragmentTransaction.commit();
+                            } else {
+                                curActivity.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        Toast.makeText(curContext, curContext.getString(R.string.already_discovered_elemment), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }
                         } else if (dataRead == 59 && VideoPlayerFragment.getIsInsideVideo()) {
                             Log.d("BLUETOOTH", "I should set pause/unpause on video");
                             VideoPlayerFragment.setVideoPlayerStatus();

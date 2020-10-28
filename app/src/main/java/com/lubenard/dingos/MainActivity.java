@@ -43,14 +43,17 @@ public class MainActivity extends AppCompatActivity {
         int count = getSupportFragmentManager().getBackStackEntryCount();
 
         Log.d("BACKBUTTON", "I am pressing back button, count is " + count);
-        if (count == 0 && isQuittingSecondTime) {
-            super.onBackPressed();
-            finish();
-        } else if (count == 0) {
-            Toast.makeText(this, getString(R.string.about_to_quit), Toast.LENGTH_SHORT).show();
-            isQuittingSecondTime = true;
-        } else {
-            getSupportFragmentManager().popBackStack();
+        if (!VideoPlayerFragment.getIsInsideVideo()) {
+
+            if (count == 0 && isQuittingSecondTime) {
+                super.onBackPressed();
+                finish();
+            } else if (count == 0) {
+                Toast.makeText(this, getString(R.string.about_to_quit), Toast.LENGTH_SHORT).show();
+                isQuittingSecondTime = true;
+            } else {
+                getSupportFragmentManager().popBackStack();
+            }
         }
     }
 

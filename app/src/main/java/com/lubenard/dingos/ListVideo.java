@@ -24,7 +24,7 @@ public class ListVideo extends Fragment {
 
     private void commitTransition() {
         // Disable isConnectionAlive to avoid being able to scan during quizz or video
-        WaitScan.setIsConnectionAlive(false);
+        //WaitScan.setIsConnectionAlive(false);
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
