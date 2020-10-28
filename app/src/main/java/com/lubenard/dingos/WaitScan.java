@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InterruptedIOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -45,6 +46,8 @@ public class WaitScan extends Fragment {
     private static ReceiveBtDatas bluetoothDataReceiver;
 
     private static int elementDiscoveredCounter = 0;
+
+    private static Thread runningThread;
 
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
             R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.objet, R.raw.reduction, R.raw.tibia,
@@ -151,9 +154,19 @@ public class WaitScan extends Fragment {
 
     public static void setIsConnectionAlive(boolean newValue) { isConnectionAlive = newValue; }
 
+    public static void interruptThread() {
+        if (runningThread != null) {
+            runningThread.interrupt();
+        }
+    }
+
     public static void setItemChoice(int itemIndex, int videoPath){
         itemIndexChoice = itemIndex;
         videoPathChoice = videoPath;
+    }
+
+    public static ReceiveBtDatas getBluetoothDataReceiver() {
+        return bluetoothDataReceiver;
     }
 
     private static void saveProgress() {
@@ -171,10 +184,19 @@ public class WaitScan extends Fragment {
     // 11 - Pause/Resume videoPlayer
 
     private void threadReadData() {
-        new Thread()
+        runningThread = new Thread()
         {
             public void run()
             {
+                if (runningThread.isInterrupted())
+                {
+                    Log.d("BLUETOOTH", "Thread has been stopped");
+                    try {
+                        throw new InterruptedException("Thread stopped");
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 socket = bluetoothDataReceiver.getSocket();
                 isConnectionAlive = bluetoothDataReceiver.getConnectionStatus();
                 InputStream inputStream = null;
@@ -185,9 +207,8 @@ public class WaitScan extends Fragment {
                         Log.d("BLUETOOTH", "Looking for datas");
                         Log.d("BLUETOOTH", "Datas available: " + String.format("%c", dataRead));
                         if (dataRead >= 48 && dataRead <= 57 && !VideoPlayerFragment.getIsInsideVideo()) {
-                            Log.d("BLUETOOTH","Valid card!");
                             int elementRead = dataRead - 48;
-                            Log.d("BLUETOOTH", "elementRead = " + elementRead);
+                            Log.d("BLUETOOTH","Valid card! elementRead = " + elementRead);
                             // The first card HAS TO BE intro
                             if (elementDiscoveredArray.size() == 0 && elementRead != 0) {
                                 curActivity.runOnUiThread(new Runnable() {
@@ -211,7 +232,6 @@ public class WaitScan extends Fragment {
                                         setItemChoice(elementRead, resArray[elementRead]);
                                         // Quizz should launch after video (not like replay fragment)
                                         setShouldQuizzLaunch(true);
-                                        // THE LINE BELOW IS DISABLED JUST FOR TESTS
                                         commitTransition();
                                     } else if (elementDiscoveredArray.size() >= 8 && elementRead == 9) {
                                         // Send to final video
@@ -245,10 +265,13 @@ public class WaitScan extends Fragment {
                             });
                         }
                     }
+                } catch (InterruptedIOException e) {
+                    Log.d("BLUETOOTH", "Thead has been stopped / Interrupted");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        }.start();
+        };
+        runningThread.start();
     }
 }

@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("FRAGMENT_STATE", "User destroyed the app");
-
+        WaitScan.interruptThread();
+        WaitScan.getBluetoothDataReceiver().closeConnection();
     }
 
     @Override

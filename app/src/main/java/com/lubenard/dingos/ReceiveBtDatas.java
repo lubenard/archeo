@@ -50,5 +50,9 @@ public class ReceiveBtDatas extends Thread implements Serializable {
 
     public void closeConnection() {
         isConnectionAlive = false;
+        if (socket != null) {
+            try {socket.close();} catch (Exception e) {}
+            socket = null;
+        }
     }
 }
