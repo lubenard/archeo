@@ -6,10 +6,9 @@ import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.UUID;
 
-public class ReceiveBtDatas extends Thread implements Serializable {
+public class ReceiveBtDatas extends Thread {
     private Boolean isConnectionAlive = false;
     private BluetoothSocket socket = null;
 

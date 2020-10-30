@@ -49,12 +49,9 @@ public class FinalQuizz extends Fragment implements View.OnClickListener {
                     .setFadeOut(2000)
                     .addModifier(new ScaleModifier(0f, 1.5f, 0, 1500))
                     .oneShot(view, 10);
-            Bundle bundle = new Bundle();
-            bundle.putBoolean("launchThread", false);
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             WaitScan fragment = new WaitScan();
-            fragment.setArguments(bundle);
             fragmentTransaction.replace(android.R.id.content, fragment);
             fragmentTransaction.commit();
         } else {

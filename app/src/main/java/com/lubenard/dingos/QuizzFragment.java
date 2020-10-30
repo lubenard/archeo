@@ -30,12 +30,9 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
     }
 
     private void commitTransition() {
-        Bundle bundle = new Bundle();
-        bundle.putBoolean("launchThread", false);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         WaitScan fragment = new WaitScan();
-        fragment.setArguments(bundle);
         fragmentTransaction.replace(android.R.id.content, fragment);
         fragmentTransaction.commit();
     }

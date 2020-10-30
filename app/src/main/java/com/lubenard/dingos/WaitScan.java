@@ -88,10 +88,7 @@ public class WaitScan extends Fragment {
         curContext = getContext();
         fragmentManager = getFragmentManager();
 
-        TextView textView = (TextView) curView.findViewById(R.id.element_discovered);
-        textView.setText(elementDiscoveredArray.size() + "/8");
-
-        Bundle bundle = getArguments();
+        ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
 
         loadProgress();
 
@@ -102,14 +99,10 @@ public class WaitScan extends Fragment {
         else if (elementDiscoveredCounter == 8)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
-        if (bundle.getBoolean("launchThread")) {
-            bluetoothDataReceiver = (ReceiveBtDatas) bundle.getSerializable("dataReceiver");
-            Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
-        }
-        else {
-            Log.d("BLUETOOTH", "isConnectionAlive = " + isConnectionAlive + " setting it to true");
-            isConnectionAlive = true;
-        }
+        bluetoothDataReceiver = BluetoothFragment.getBluetoothDataReceiver();
+        Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
+        Log.d("BLUETOOTH", "isConnectionAlive = " + isConnectionAlive + " setting it to true");
+        isConnectionAlive = true;
         threadReadData();
     }
 
@@ -187,10 +180,8 @@ public class WaitScan extends Fragment {
     // 11 - Pause/Resume videoPlayer
 
     private void threadReadData() {
-        runningThread = new Thread()
-        {
-            public void run()
-            {
+        runningThread = new Thread() {
+            public void run() {
                 if (runningThread.isInterrupted())
                 {
                     Log.d("BLUETOOTH", "Thread has been stopped");

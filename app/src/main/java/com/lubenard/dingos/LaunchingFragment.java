@@ -53,7 +53,8 @@ public class LaunchingFragment extends Fragment {
                 Toast.makeText(getContext(), getContext().getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();
             } else {
                 BluetoothFragment.setFragmentManager(getFragmentManager());
-                BluetoothFragment.changeForWaitScan(bluetoothDataReceiver);
+                BluetoothFragment.setBluetoothDataReceiver(bluetoothDataReceiver);
+                BluetoothFragment.changeForWaitScan();
             }
         } else {
             Log.d("BLUETOOTH", "Device not registered, displaying Bluetooth Page...");

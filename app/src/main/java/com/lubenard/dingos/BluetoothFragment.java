@@ -23,7 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -33,6 +32,8 @@ public class BluetoothFragment extends Fragment {
     private ArrayList<BluetoothElementHandling> deviceItemList = new ArrayList<BluetoothElementHandling>();
     private View mainView;
     private static FragmentManager fragmentManager;
+    private static ReceiveBtDatas bluetoothDataReceiver;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,17 +66,20 @@ public class BluetoothFragment extends Fragment {
         fragmentManager = newFragmentManager;
     }
 
-    public static void changeForWaitScan(ReceiveBtDatas bluetoothDataReceiver) {
+    public static ReceiveBtDatas getBluetoothDataReceiver() {
+        return bluetoothDataReceiver;
+    }
+
+    public static void setBluetoothDataReceiver(ReceiveBtDatas dataReceiver) {
+        bluetoothDataReceiver = dataReceiver;
+    }
+
+    public static void changeForWaitScan() {
         // Stop scanning for new devices
         btAdapter.cancelDiscovery();
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("dataReceiver", (Serializable) bluetoothDataReceiver);
-        bundle.putBoolean("launchThread", true);
-
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         WaitScan fragment = new WaitScan();
-        fragment.setArguments(bundle);
         fragmentTransaction.replace(android.R.id.content, fragment);
         fragmentTransaction.commit();
     }

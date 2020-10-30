@@ -99,5 +99,6 @@
 	<string name="final_quizz_question">Sur la base de toutes les questions précédentes, à quoi ressemble la figure dans la tombe ?</string>
 	<string name="final_quizz_consigne">Cliquez sur le bon personnage</string>
 	<string name="photo_scan_text">Nous allons maintenant prendre une photo de la tombe !</string>
+	<string name="recap">1. Seul l\'avant-bras inférieur gauche est fracturé.\n2. Le sujet est une femme.\n3. Le sujet a une carie.\n4. Le sujet mesure environ 1,65m.\n5. C\'est un adulte.\n6. C\'est un collier de perles de la période mérovingienne.\n7. Il y a deux sujets.\n8. Le sujet a un trou, une ostéomyélite (infection).</string>
 	<string name="about_to_quit">Vous êtes sur le point de quitter l\'application. Si vous voulez la quitter, pressez retour de nouveau</string>
 </resources>

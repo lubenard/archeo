@@ -65,7 +65,8 @@ public class BluetoothListAdapter implements ListAdapter {
                                 Toast.makeText(context, context.getString(R.string.bluetooth_toast_success), Toast.LENGTH_LONG).show();
                                 Log.d("BLUETOOTH", "Connected to " + device.deviceMacAddr);
                                 saveMacAddr(device.deviceMacAddr);
-                                BluetoothFragment.changeForWaitScan(bluetoothDataReceiver);
+                                BluetoothFragment.setBluetoothDataReceiver(bluetoothDataReceiver);
+                                BluetoothFragment.changeForWaitScan();
                             }
                         }
                     });
