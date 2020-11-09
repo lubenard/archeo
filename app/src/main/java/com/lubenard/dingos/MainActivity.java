@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import static android.view.View.GONE;
+import static android.view.View.resolveSizeAndState;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
 
         Log.d("FRAGMENT_STATE", "User paused the app");
+        WaitScan.setIsConnectionAlive(false);
     }
 
     @Override
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         Log.d("FRAGMENT_STATE", "User resumed the app");
+        WaitScan.setIsConnectionAlive(true);
     }
 
     @Override
@@ -37,9 +40,8 @@ public class MainActivity extends AppCompatActivity {
         WaitScan.getBluetoothDataReceiver().closeConnection();
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
-
         int count = getSupportFragmentManager().getBackStackEntryCount();
 
         Log.d("BACKBUTTON", "I am pressing back button, count is " + count);
@@ -55,19 +57,21 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().popBackStack();
             }
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen_activity);
+        findViewById(android.R.id.content).getRootView().setBackgroundColor(getResources().getColor(R.color.splashscreenColor));
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 findViewById(R.id.splashscreenImageView).setVisibility(GONE);
-
+                // change background to white
+                findViewById(android.R.id.content).getRootView().setBackgroundColor(getResources().getColor(android.R.color.white));
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 LaunchingFragment fragment = new LaunchingFragment();

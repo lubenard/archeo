@@ -2,6 +2,7 @@
 <resources>
 	<color name="colorPrimary">#F7C28B</color>
 	<color name="colorPrimaryDark">#A3815E</color>
+	<color name="splashscreenColor">#F7BC80</color>
 	<color name="colorDisabled">#78746E</color>
 	<color name="green">#66FF66</color>
 	<color name="red">#FF0000</color>

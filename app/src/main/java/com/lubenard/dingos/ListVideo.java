@@ -2,11 +2,13 @@ package com.lubenard.dingos;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -23,9 +25,6 @@ public class ListVideo extends Fragment {
     }
 
     private void commitTransition() {
-        // Disable isConnectionAlive to avoid being able to scan during quizz or video
-        //WaitScan.setIsConnectionAlive(false);
-
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         VideoPlayerFragment fragment = new VideoPlayerFragment();
