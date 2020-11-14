@@ -49,6 +49,9 @@ public class WaitScan extends Fragment {
 
     private static Thread runningThread;
 
+    private static boolean hasIntroBeenScanned = false;
+    private static boolean hasOutroBeenScanned = false;
+    private static boolean error = false;
     private static boolean hasFinalQuizzBeenDone = false;
 
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
@@ -87,6 +90,8 @@ public class WaitScan extends Fragment {
         curActivity = getActivity();
         curContext = getContext();
         fragmentManager = getFragmentManager();
+
+        getActivity().setTitle("Ding'os");
 
         ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
 
@@ -172,11 +177,19 @@ public class WaitScan extends Fragment {
         prefs.edit().putString("DISCOVERED_PROGRESS", elementDiscoveredJson).apply();
     }
 
+    private void toastInsideThread(final String text) {
+        curActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(curContext, text, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     // SCANS ARE IN THE FOLLOWING ORDER:
     // 0 - Intro
     // [1 -> 8] - Discovery videos
-    // 9 - Outro
     // 10 - Final quizz
+    // 9 - Outro
     // 11 - Pause/Resume videoPlayer
 
     private void threadReadData() {
@@ -200,73 +213,72 @@ public class WaitScan extends Fragment {
                         int dataRead = inputStream.read();
                         Log.d("BLUETOOTH", "Looking for datas");
                         Log.d("BLUETOOTH", "Datas available: " + String.format("%c", dataRead));
-                        if (dataRead >= 48 && dataRead <= 57 && !VideoPlayerFragment.getIsInsideVideo()) {
+                        if (dataRead >= 48 && dataRead <= 58 && !VideoPlayerFragment.getIsInsideVideo()) {
                             int elementRead = dataRead - 48;
-                            Log.d("BLUETOOTH","Valid card! elementRead = " + elementRead);
+                            Log.d("BLUETOOTH", "Valid card! elementRead = " + elementRead);
                             // The first card HAS TO BE intro
-                            if (elementDiscoveredArray.size() == 0 && elementRead != 0) {
-                                curActivity.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        Toast.makeText(curContext, "THIS IS NOT THE INTRO CARD", Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                            } else if ((elementDiscoveredArray.size() == 0 && elementRead == 0) || elementDiscoveredArray.size() != 0) {
+                            if (!hasIntroBeenScanned && elementRead != 0) {
+                                toastInsideThread("This is not the right card to pass now");
+                                error = true;
+                            } else if (elementRead == 0) {
+                                hasIntroBeenScanned = true;
+                                error = false;
+                                setShouldQuizzLaunch(false);
+                            } else if (elementRead == 10) {
+                                if (elementDiscoveredArray.size() == 9) {
+                                    // Transition to Final Quizz
+                                    setIsConnectionAlive(false);
+                                    hasFinalQuizzBeenDone = true;
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    FinalQuizz fragment = new FinalQuizz();
+                                    fragmentTransaction.replace(android.R.id.content, fragment);
+                                    fragmentTransaction.commit();
+                                } else {
+                                    toastInsideThread("You have not scanned all videos yet !");
+                                    error = true;
+                                }
+                            } else if (elementRead == 9) {
+                                if (hasFinalQuizzBeenDone) {
+                                    hasOutroBeenScanned = true;
+                                    error = false;
+                                    setShouldQuizzLaunch(false);
+                                } else {
+                                    toastInsideThread("This is not the right card to pass now");
+                                    error = true;
+                                }
+                            } else if (elementRead > 0 && elementRead < 9) {
+                                setShouldQuizzLaunch(true);
+                                error = false;
+                            }
+
+                            if (!error && !VideoPlayerFragment.getIsInsideVideo()) {
                                 if (!elementDiscoveredArray.contains(elementRead)) {
                                     // Add discovered element into array
                                     elementDiscoveredArray.add(elementRead);
                                     //Save the new array into pref
                                     saveProgress();
-                                    if (elementDiscoveredCounter < 8 && elementRead != 10) {
-                                        if (elementRead != 0 && elementRead != 9) {
-                                            Log.d("BLUETOOTH", "Updating elementDiscoveredCounter for elementRead " + elementRead);
-                                            // Update counter
-                                            ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");
-                                        }
-                                        //Prepare elements for video + quizz
-                                        setItemChoice(elementRead, resArray[elementRead]);
-                                        // Quizz should launch after video (not like replay fragment)
-                                        setShouldQuizzLaunch(true);
-                                        commitTransition();
-                                    } else if (elementDiscoveredArray.size() >= 8 && elementRead == 9) {
-                                        // Send to final video
-                                        setItemChoice(elementRead, resArray[elementRead]);
-                                        setShouldQuizzLaunch(false);
-                                        commitTransition();
+                                    // Update counter only if it belong to quizz questions
+                                    if (getShouldQuizzLaunch()) {
+                                        Log.d("BLUETOOTH", "Updating elementDiscoveredCounter for elementRead " + elementRead);
+                                        ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");
                                     }
+                                    //Prepare elements for video + quizz
+                                    setItemChoice(elementRead, resArray[elementRead]);
+                                    commitTransition();
                                 } else {
-                                    curActivity.runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            Toast.makeText(curContext, curContext.getString(R.string.already_discovered_elemment), Toast.LENGTH_LONG).show();
-                                        }
-                                    });
+                                    toastInsideThread(curContext.getString(R.string.already_discovered_elemment));
                                 }
                             }
-                        } else if (dataRead == 58 && elementDiscoveredCounter == 8 && !VideoPlayerFragment.getIsInsideVideo()) {
-                            if (!hasFinalQuizzBeenDone) {
-                                // Transition to Final Quizz
-                                setIsConnectionAlive(false);
-                                hasFinalQuizzBeenDone = true;
-                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                FinalQuizz fragment = new FinalQuizz();
-                                fragmentTransaction.replace(android.R.id.content, fragment);
-                                fragmentTransaction.commit();
+                        } else if (dataRead == 59) {
+                            if (VideoPlayerFragment.getIsInsideVideo()) {
+                                Log.d("BLUETOOTH", "I should set pause/unpause on video");
+                                VideoPlayerFragment.setVideoPlayerStatus();
                             } else {
-                                curActivity.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        Toast.makeText(curContext, curContext.getString(R.string.already_discovered_elemment), Toast.LENGTH_LONG).show();
-                                    }
-                                });
+                                toastInsideThread("You are currently not inside a video");
                             }
-                        } else if (dataRead == 59 && VideoPlayerFragment.getIsInsideVideo()) {
-                            Log.d("BLUETOOTH", "I should set pause/unpause on video");
-                            VideoPlayerFragment.setVideoPlayerStatus();
                         } else {
                             Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);
-                            curActivity.runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(curContext, curContext.getString(R.string.bad_card_code), Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            toastInsideThread(curContext.getString(R.string.bad_card_code));
                         }
                     }
                 } catch (InterruptedIOException e) {
