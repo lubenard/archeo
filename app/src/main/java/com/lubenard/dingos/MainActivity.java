@@ -40,25 +40,6 @@ public class MainActivity extends AppCompatActivity {
         WaitScan.getBluetoothDataReceiver().closeConnection();
     }
 
-    /*@Override
-    public void onBackPressed() {
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-
-        Log.d("BACKBUTTON", "I am pressing back button, count is " + count);
-        if (!VideoPlayerFragment.getIsInsideVideo()) {
-
-            if (count == 0 && isQuittingSecondTime) {
-                super.onBackPressed();
-                finish();
-            } else if (count == 0) {
-                Toast.makeText(this, getString(R.string.about_to_quit), Toast.LENGTH_SHORT).show();
-                isQuittingSecondTime = true;
-            } else {
-                getSupportFragmentManager().popBackStack();
-            }
-        }
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
