@@ -44,6 +44,7 @@
     <string name="bluetooth_does_not_exist">Sorry, bluetooth does not exist on this device. Exiting…</string>
     <string name="bluetooth_required">Bluetooth is needed for this app, exiting now</string>
 	<string name="bad_card_code">This card is not recognized by this app. Are you sure you are using right cards?</string>
+    <string name="card_during_video">You are currently inside a video ! You cannot pass a card during this time</string>
 
     <string name="bluetooth_discovered">Discovered</string>
     <string name="bluetooth_paired">Paired</string>
@@ -126,7 +127,7 @@
     <string name="menu_reset_user_progress">Reset progress</string>
 	<string name="saveFound">A save has been found !</string>
     <string name="saveNotFound">No save has been found, starting with fresh start</string>
-	<string name="final_quizz_question">Based on all the previous questions, what does the figure in the grave look like?</string>
+	<string name="final_quizz_question">Based on all the previous questions, who do you think is in the grave?</string>
     <string name="final_quizz_consigne">Click on the right character</string>
 
     <string name="photo_scan_text">We are now going to take a picture of the grave !</string>

@@ -221,6 +221,7 @@ public class WaitScan extends Fragment {
                             Log.d("BLUETOOTH", "Valid card! elementRead = " + elementRead);
                             // The first card HAS TO BE intro
                             if (!hasIntroBeenScanned && elementRead != 0) {
+                                Log.d("BLUETOOTH", "This is not the right card to pass right now");
                                 toastInsideThread(curContext.getString(R.string.not_right_card));
                                 error = true;
                             } else if (elementRead == 0) {
@@ -228,7 +229,9 @@ public class WaitScan extends Fragment {
                                 error = false;
                                 setShouldQuizzLaunch(0);
                             } else if (elementRead == 10) {
+                                Log.d("BLUETOOTH", "Element read is 10");
                                 if (elementDiscoveredArray.size() == 9) {
+                                    Log.d("BLUETOOTH", "Element read is 10 and size of elementArraydiscovered is 9");
                                     // Transition to Final Quizz
                                     setIsConnectionAlive(false);
                                     hasFinalQuizzBeenDone = true;
@@ -241,6 +244,7 @@ public class WaitScan extends Fragment {
                                     error = true;
                                 }
                             } else if (elementRead == 9) {
+                                Log.d("BLUETOOTH", "Element read is 9");
                                 if (hasFinalQuizzBeenDone) {
                                     //hasOutroBeenScanned = true;
                                     error = false;
@@ -253,23 +257,26 @@ public class WaitScan extends Fragment {
                                 setShouldQuizzLaunch(1);
                                 error = false;
                             }
-
-                            if (!error && !VideoPlayerFragment.getIsInsideVideo()) {
-                                if (!elementDiscoveredArray.contains(elementRead)) {
-                                    // Add discovered element into array
-                                    elementDiscoveredArray.add(elementRead);
-                                    //Save the new array into pref
-                                    saveProgress();
-                                    // Update counter only if it belong to quizz questions
-                                    if (getShouldQuizzLaunch() == 1) {
-                                        Log.d("BLUETOOTH", "Updating elementDiscoveredCounter for elementRead " + elementRead);
-                                        ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");
+                            if (elementRead != 10) {
+                                if (!error && !VideoPlayerFragment.getIsInsideVideo()) {
+                                    if (!elementDiscoveredArray.contains(elementRead)) {
+                                        Log.d("BLUETOOTH", "Element is not contained into element already discovered");
+                                        // Add discovered element into array
+                                        elementDiscoveredArray.add(elementRead);
+                                        //Save the new array into pref
+                                        saveProgress();
+                                        // Update counter only if it belong to quizz questions
+                                        if (getShouldQuizzLaunch() == 1) {
+                                            Log.d("BLUETOOTH", "Updating elementDiscoveredCounter for elementRead " + elementRead);
+                                            ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");
+                                        }
+                                        Log.d("BLUETOOTH", "set elementRead = " + elementRead);
+                                        //Prepare elements for video + quizz only of not quizz
+                                        setItemChoice(elementRead, resArray[elementRead]);
+                                        commitTransition();
+                                    } else {
+                                        toastInsideThread(curContext.getString(R.string.already_discovered_elemment));
                                     }
-                                    //Prepare elements for video + quizz
-                                    setItemChoice(elementRead, resArray[elementRead]);
-                                    commitTransition();
-                                } else {
-                                    toastInsideThread(curContext.getString(R.string.already_discovered_elemment));
                                 }
                             }
                         } else if (dataRead == 59) {
@@ -280,8 +287,13 @@ public class WaitScan extends Fragment {
                                 toastInsideThread(curContext.getString(R.string.currently_inside_video));
                             }
                         } else {
-                            Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);
-                            toastInsideThread(curContext.getString(R.string.bad_card_code));
+                            if (VideoPlayerFragment.getIsInsideVideo()){
+                                Log.d("BLUETOOTH", "The card is passed during video and is not play/pause");
+                                toastInsideThread(curContext.getString(R.string.bad_card_code));
+                            } else {
+                                Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);
+                                toastInsideThread(curContext.getString(R.string.bad_card_code));
+                            }
                         }
                     }
                 } catch (InterruptedIOException e) {

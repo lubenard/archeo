@@ -122,9 +122,7 @@ public class VideoPlayerFragment extends Fragment {
                 if (WaitScan.getVideoPathChoice() == R.raw.photo) {
                     Log.d("VIDEOVIEW", "Video is finished now, let's go to the End Fragment");
                     fragment = new EndFragment();
-                }
-
-                if (choice == 1) {
+                } else if (choice == 1) {
                     Log.d("VIDEOVIEW", "Video is finished now, let's go to the quizz");
                     fragment = new QuizzFragment();
                 } else {
