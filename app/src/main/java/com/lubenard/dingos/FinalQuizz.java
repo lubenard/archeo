@@ -30,16 +30,12 @@ public class FinalQuizz extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.imageButton2).setOnClickListener(this);
         view.findViewById(R.id.imageButton3).setOnClickListener(this);
         view.findViewById(R.id.imageButton4).setOnClickListener(this);
-        view.findViewById(R.id.imageButton5).setOnClickListener(this);
-        view.findViewById(R.id.imageButton6).setOnClickListener(this);
-        view.findViewById(R.id.imageButton7).setOnClickListener(this);
-        view.findViewById(R.id.imageButton8).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         Log.d("FINAL_QUIZZ", "Clicked on id " + view.getId());
-        if (view.getId() == R.id.imageButton3) {
+        if (view.getId() == R.id.imageButton2) {
             Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_SHORT).show();
             new ParticleSystem(getActivity(), 10, R.drawable.star, 3000)
                     .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
