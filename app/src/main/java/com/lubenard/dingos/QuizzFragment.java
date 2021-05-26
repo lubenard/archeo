@@ -56,64 +56,64 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
 
         final int item = WaitScan.getItemChoice();
 
-        if (item == 0 || item == 11)
+        if (item == 11)
             commitTransition();
 
         switch (item) {
-            case 1:
+            case 0:
                 questionTextView.setText(getCustomString(R.string.forearm_question));
                 button1.setText(getCustomString(R.string.forearm_answ1));
                 button2.setText(getCustomString(R.string.forearm_answ2));
                 button3.setText(getCustomString(R.string.forearm_answ3));
                 button4.setText(getCustomString(R.string.forearm_answ4));
-                goodAnswer = R.id.answer2;
+                goodAnswer = R.id.answer1;
                 break;
             case 2:
-                questionTextView.setText(getCustomString(R.string.sex_question));
-                button1.setText(getCustomString(R.string.sex_answ1));
-                button2.setText(getCustomString(R.string.sex_answ2));
-                button3.setText(getCustomString(R.string.sex_answ3));
-                button4.setText(getCustomString(R.string.sex_answ4));
+                questionTextView.setText(getCustomString(R.string.pelvis_question));
+                button1.setText(getCustomString(R.string.pelvis_answ1));
+                button2.setText(getCustomString(R.string.pelvis_answ2));
+                button3.setText(getCustomString(R.string.pelvis_answ3));
+                button4.setText(getCustomString(R.string.pelvis_answ4));
                 goodAnswer = R.id.answer1;
                 break;
             case 3:
-                questionTextView.setText(getCustomString(R.string.teeth_question));
-                button1.setText(getCustomString(R.string.teeth_answ1));
-                button2.setText(getCustomString(R.string.teeth_answ2));
-                button3.setText(getCustomString(R.string.teeth_answ3));
-                button4.setText(getCustomString(R.string.teeth_answ4));
+                questionTextView.setText(getCustomString(R.string.skull_question));
+                button1.setText(getCustomString(R.string.skull_answ1));
+                button2.setText(getCustomString(R.string.skull_answ2));
+                button3.setText(getCustomString(R.string.skull_answ3));
+                button4.setText(getCustomString(R.string.skull_answ4));
                 goodAnswer = R.id.answer2;
                 break;
             case 4:
-                questionTextView.setText(getCustomString(R.string.size_question));
-                button1.setText(getCustomString(R.string.size_answ1));
-                button2.setText(getCustomString(R.string.size_answ2));
-                button3.setText(getCustomString(R.string.size_answ3));
-                button4.setText(getCustomString(R.string.size_answ4));
+                questionTextView.setText(getCustomString(R.string.femur_question));
+                button1.setText(getCustomString(R.string.femur_answ1));
+                button2.setText(getCustomString(R.string.femur_answ2));
+                button3.setText(getCustomString(R.string.femur_answ3));
+                button4.setText(getCustomString(R.string.femur_answ4));
                 goodAnswer = R.id.answer2;
                 break;
             case 5:
-                questionTextView.setText(getCustomString(R.string.age_question));
-                button1.setText(getCustomString(R.string.age_answ1));
-                button2.setText(getCustomString(R.string.age_answ2));
-                button3.setText(getCustomString(R.string.age_answ3));
-                button4.setText(getCustomString(R.string.age_answ4));
+                questionTextView.setText(getCustomString(R.string.humerus_question));
+                button1.setText(getCustomString(R.string.humerus_answ1));
+                button2.setText(getCustomString(R.string.humerus_answ2));
+                button3.setText(getCustomString(R.string.humerus_answ3));
+                button4.setText(getCustomString(R.string.humerus_answ4));
                 goodAnswer = R.id.answer4;
                 break;
             case 6:
-                questionTextView.setText(getCustomString(R.string.object_question));
-                button1.setText(getCustomString(R.string.object_answ1));
-                button2.setText(getCustomString(R.string.object_answ2));
-                button3.setText(getCustomString(R.string.object_answ3));
-                button4.setText(getCustomString(R.string.object_answ4));
+                questionTextView.setText(getCustomString(R.string.chronology_question));
+                button1.setText(getCustomString(R.string.chronology_answ1));
+                button2.setText(getCustomString(R.string.chronology_answ2));
+                button3.setText(getCustomString(R.string.chronology_answ3));
+                button4.setText(getCustomString(R.string.chronology_answ4));
                 goodAnswer = R.id.answer3;
                 break;
             case 7:
-                questionTextView.setText(getCustomString(R.string.howmany_question));
-                button1.setText(getCustomString(R.string.howmany_answ1));
-                button2.setText(getCustomString(R.string.howmany_answ2));
-                button3.setText(getCustomString(R.string.howmany_answ3));
-                button4.setText(getCustomString(R.string.howmany_answ4));
+                questionTextView.setText(getCustomString(R.string.container_question));
+                button1.setText(getCustomString(R.string.container_answ1));
+                button2.setText(getCustomString(R.string.container_answ2));
+                button3.setText(getCustomString(R.string.container_answ3));
+                button4.setText(getCustomString(R.string.container_answ4));
                 goodAnswer = R.id.answer1;
                 break;
             case 8:

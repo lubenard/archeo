@@ -44,13 +44,10 @@ public class ListVideo extends Fragment {
         /* This code is messy but fix the bug of superposition of fragment when using .addToBackStack(null) */
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener( new View.OnKeyListener()
-        {
+        getView().setOnKeyListener( new View.OnKeyListener() {
             @Override
-            public boolean onKey( View v, int keyCode, KeyEvent event )
-            {
-                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP)
-                {
+            public boolean onKey( View v, int keyCode, KeyEvent event ) {
+                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                    Log.d("LISTVIDEO", "BACK HAS BEEN PRESSED");
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     WaitScan fragment = new WaitScan();
@@ -60,7 +57,7 @@ public class ListVideo extends Fragment {
                 }
                 return false;
             }
-        } );
+        });
 
         ArrayList<Button> buttons = new ArrayList<>();
 
@@ -73,13 +70,11 @@ public class ListVideo extends Fragment {
         buttons.add((Button)view.findViewById(R.id.replay_object));
         buttons.add((Button)view.findViewById(R.id.replay_reduction));
         buttons.add((Button)view.findViewById(R.id.replay_tibia));
-        buttons.add((Button)view.findViewById(R.id.replay_photo));
 
         ArrayList<Integer> discoveredArray = WaitScan.getElementDiscoveredArray();
         final int[] resArray = WaitScan.getResArray();
 
-        for (int i = 0; i < buttons.size(); i++)
-        {
+        for (int i = 0; i < buttons.size(); i++) {
             if (!discoveredArray.contains(i)) {
                 buttons.get(i).setEnabled(false);
             } else {

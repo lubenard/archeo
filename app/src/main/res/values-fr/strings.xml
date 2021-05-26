@@ -18,67 +18,75 @@
 	<string name="bluetooth_required">Le bluetooth is requis pour cette application, exit</string>
 	<string name="menu_browse_videos">Voir les vidéos</string>
 	<string name="bad_card_code">Cette carte n\'est pas reconnu par l\'application. Êtes vous sûr d\'utiliser la bonne carte ?</string>
-	<string name="video_intro">Intro</string>
-	<string name="video_forearm">Avant-bras</string>
-	<string name="video_coxaux">Coxaux</string>
-	<string name="video_skull">Crane</string>
-	<string name="video_femur">Femur</string>
-	<string name="video_humerus">Humerus</string>
-	<string name="video_object">Objet</string>
-	<string name="video_diminution">Réduction</string>
-	<string name="video_tibia">Tibia</string>
-	<string name="video_photo">Photo</string>
+
 	<string name="bluetooth_discovered">Découvert</string>
 	<string name="bluetooth_paired">Appairé</string>
 
-	<string name="forearm_question">Dans quel état est l\'avant bras gauche ?</string>
-	<string name="forearm_answ1">L\'avant-bras gauche est intact</string>
-	<string name="forearm_answ2">Seul le bas de l\’avant-bras gauche est fracturé</string>
-	<string name="forearm_answ3">Seul le haut de l\’avant-bras gauche est fracturé</string>
-	<string name="forearm_answ4">L\’avant-bras gauche est en bouillie !</string>
+	<string name="video_intro">Intro</string>
+	<string name="video_forearm">Avant-bras</string>
+	<string name="video_pelvis">Bassin</string>
+	<string name="video_skull">Crane</string>
+	<string name="video_femur">Femur</string>
+	<string name="video_humerus">Humerus</string>
+	<string name="video_chronology">Chronologie</string>
+	<string name="video_container">Contenant</string>
+	<string name="video_tibia">Tibia</string>
 
-	<string name="sex_question">Quel est le sexe du sujet ?</string>
-	<string name="sex_answ1">Le sujet est une femme</string>
-	<string name="sex_answ2">Le sujet est un homme</string>
-	<string name="sex_answ3">Le sexe de ce sujet adulte n\'est pas determinable</string>
-	<string name="sex_answ4">C\'est un enfant, donc ce n\'est possible sur un squelette</string>
+	<string name="intro_question">Quelle est cette structure archéologique ?</string>
+	<string name="intro_answ1">Une sépulture</string>
+	<string name="intro_answ2">Un silo</string>
+	<string name="intro_answ3">Un four</string>
+	<string name="intro_answ4">Un mur</string>
 
-	<string name="teeth_question">Dans quel état est la dentition du sujet ?</string>
-	<string name="teeth_answ1">Le sujet n\'a pas de carie</string>
-	<string name="teeth_answ2">Le sujet a une carie</string>
-	<string name="teeth_answ3">Le sujet a une carie, une dent sur deux</string>
-	<string name="teeth_answ4">Le sujet n\'a pas de dents</string>
+	<string name="forearm_question">L\'avant-bras a-t-il une fracture ?</string>
+	<string name="forearm_answ1">Oui, en bas de l\'avant-bras.</string>
+	<string name="forearm_answ2">Oui, en haut de l\'avant-bras.</string>
+	<string name="forearm_answ3">Non.</string>
+	<string name="forearm_answ4">Le sujet n\'a pas d\'avant-bras !</string>
 
-	<string name="size_question">Quelle taille mesure le sujet ?</string>
-	<string name="size_answ1">Le sujet mesure environ 1,50m</string>
-	<string name="size_answ2">Le sujet mesure environ 1,65m</string>
-	<string name="size_answ3">Le sujet mesure 1,85m</string>
-	<string name="size_answ4">Il n\'est pas possible d\'estimer la taille</string>
+	<string name="container_question">Comment était-il inhumé ?</string>
+	<string name="container_answ1">Dans un sarcophage en plâtre.</string>
+	<string name="container_answ2">Sans contenant.</string>
+	<string name="container_answ3">Dans un coffrage de pierre.</string>
+	<string name="container_answ4">Dans une urne.</string>
 
-	<string name="age_question">Quel âge a le sujet ?</string>
-	<string name="age_answ1">Le sujet est un enfant de - de 10 ans</string>
-	<string name="age_answ2">C\'est un adolescent entre 10 et 15 ans</string>
-	<string name="age_answ3">C\'est un adolescent entre 15 et 20 ans</string>
-	<string name="age_answ4">C\'est un adulte</string>
+	<string name="pelvis_question">Est-ce un homme ou une femme ?</string>
+	<string name="pelvis_answ1">Le sujet est une femme.</string>
+	<string name="pelvis_answ2">Le sujet est un homme.</string>
+	<string name="pelvis_answ3">Ce n\'est pas très net !</string>
+	<string name="pelvis_answ4">Il n\'y a pas de bassin.</string>
 
-	<string name="object_question">Quel est l\'object presenté ?</string>
-	<string name="object_answ1">C\'est un vase de l\'âge du bronze</string>
-	<string name="object_answ2">C\'est une épée de l\'époque romaine</string>
-	<string name="object_answ3">C\'est un collier en perle de l\'époque mérovingigienne</string>
-	<string name="object_answ4">C\'est un pot de fleur d\'aujourd\'hui</string>
+	<string name="skull_question">Combien comptez-vous de caries ?</string>
+	<string name="skull_answ1">Aucune.</string>
+	<string name="skull_answ2">Le sujet a 1 carie.</string>
+	<string name="skull_answ3">Le sujet a 2 carie.</string>
+	<string name="skull_answ4">Le sujet a 3 carie.</string>
 
-	<string name="howmany_question">Combien y a t\'il de sujets ?</string>
-	<string name="howmany_answ1">Il y a un sujet</string>
-	<string name="howmany_answ2">Il y a deux sujets</string>
-	<string name="howmany_answ3">Il y a trois sujets</string>
-	<string name="howmany_answ4">C\'est le même que celui qui est sur le dos</string>
+	<string name="femur_question">Quelle est la taille de notre sujet ?</string>
+	<string name="femur_answ1">Le sujet mesure moins d\'1,50 m.</string>
+	<string name="femur_answ2">Le sujet mesure entre 1,51m et 1,70m.</string>
+	<string name="femur_answ3">Le sujet mesure entre 1,71m et 1,90m.</string>
+	<string name="femur_answ4">Le sujet mesure plus d\'1,91 m.</string>
 
-	<string name="tibia_answ1">Le sujet présente une fracture</string>
-	<string name="tibia_answ2">Le sujet présente la syphilis</string>
-	<string name="tibia_answ3">Le sujet a un trou, une ostéomyélite (infection)</string>
-	<string name="tibia_answ4">Le tibia du sujet est très sain</string>
-	<string name="tibia_question">Quel symptome peut on voir sur le tibia du sujet ?</string>
-	<string name="good_answer">Bien joué ! C\'est la bonne réponse</string>
+	<string name="humerus_question">Comment est l\'humérus ?</string>
+	<string name="humerus_answ1">Un humérus en une partie, c\'est un adulte.</string>
+	<string name="humerus_answ2">Un humérus en 2 parties, c\'est un adolescent.</string>
+	<string name="humerus_answ3">Un humérus en 3 parties, c\'est un enfant.</string>
+	<string name="humerus_answ4">Il n\'y a pas d\'humérus !</string>
+
+	<string name="chronology_question">De quelle époque date cette sépulture ?</string>
+	<string name="chronology_answ1">-10099, la Préhistoire.</string>
+	<string name="chronology_answ2">299, l\'Antiquité.</string>
+	<string name="chronology_answ3">1099, le moyen âge.</string>
+	<string name="chronology_answ4">2021, aujourd\'hui.</string>
+
+	<string name="tibia_question">Que voyez-vous sur le tibia ?</string>
+	<string name="tibia_answ1">Le sujet présente les signes d\'une fracture.</string>
+	<string name="tibia_answ2">Le sujet présente un tibia est plus petit que l\'autre !</string>
+	<string name="tibia_answ3">Le sujet présente les signes d\'une infection.</string>
+	<string name="tibia_answ4">Le tibia est absent !</string>
+
+	<string name="good_answer">Bien joué ! C\'est la bonne réponse !</string>
 	<string name="bad_answer">Oops, mauvaise réponse</string>
 	<string name="no_answer">Faites un choix</string>
 	<string name="menu_set_language">Changer de langue</string>
@@ -98,7 +106,6 @@
 	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
 	<string name="final_quizz_question">Sur la base de toutes les questions précédentes, qui, d\'après vous, se trouve dans la sépulture ?</string>
 	<string name="final_quizz_consigne">Cliquez sur le bon personnage</string>
-	<string name="photo_scan_text">Nous allons maintenant prendre une photo de la sépulture !</string>
 	<string name="recap">1. Seul l\'avant-bras inférieur gauche est fracturé.\n2. Le sujet est une femme.\n3. Le sujet a une carie.\n4. Le sujet mesure environ 1,65m.\n5. C\'est un adulte.\n6. C\'est un collier de perles de la période mérovingienne.\n7. Il y a deux sujets.\n8. Le sujet a un trou, une ostéomyélite (infection).</string>
 	<string name="about_to_quit">Vous êtes sur le point de quitter l\'application. Si vous voulez la quitter, pressez retour de nouveau</string>
 	<string name="not_all_video_scanned">Vous n\'avez pas encore scanné toutes les vidéos!</string>
