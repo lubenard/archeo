@@ -28,7 +28,7 @@
 		android:id="@+id/replay_coxaux"
 		android:layout_height="wrap_content"
 		style="@style/custom_button_replay"
-		android:text="@string/video_coxaux" />
+		android:text="@string/video_pelvis" />
 
 	<Button
 		android:id="@+id/replay_crane"
@@ -52,25 +52,19 @@
 		android:id="@+id/replay_object"
 		android:layout_height="wrap_content"
 		style="@style/custom_button_replay"
-		android:text="@string/video_object" />
+		android:text="@string/video_chronology" />
 
 	<Button
 		android:id="@+id/replay_reduction"
 		android:layout_height="wrap_content"
 		style="@style/custom_button_replay"
-		android:text="@string/video_diminution" />
+		android:text="@string/video_container" />
 
 	<Button
 		android:id="@+id/replay_tibia"
 		android:layout_height="wrap_content"
 		style="@style/custom_button_replay"
 		android:text="@string/video_tibia" />
-
-	<Button
-		android:id="@+id/replay_photo"
-		android:layout_height="wrap_content"
-		style="@style/custom_button_replay"
-		android:text="@string/video_photo" />
 
 	</LinearLayout>
 </ScrollView>

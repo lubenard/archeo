@@ -58,13 +58,10 @@ public class VideoPlayerFragment extends Fragment {
         /* This code is messy but fix the bug of superposition of fragment when using .addToBackStack(null) */
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
-        getView().setOnKeyListener( new View.OnKeyListener()
-        {
+        getView().setOnKeyListener( new View.OnKeyListener() {
             @Override
-            public boolean onKey( View v, int keyCode, KeyEvent event )
-            {
-                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP)
-                {
+            public boolean onKey( View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     Fragment fragment;
                     if (choice == 0) {
@@ -119,10 +116,7 @@ public class VideoPlayerFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Fragment fragment;
 
-                if (WaitScan.getVideoPathChoice() == R.raw.photo) {
-                    Log.d("VIDEOVIEW", "Video is finished now, let's go to the End Fragment");
-                    fragment = new EndFragment();
-                } else if (choice == 1) {
+                if (choice == 1) {
                     Log.d("VIDEOVIEW", "Video is finished now, let's go to the quizz");
                     fragment = new QuizzFragment();
                 } else {

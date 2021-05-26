@@ -49,14 +49,16 @@ public class WaitScan extends Fragment {
 
     private static Thread runningThread;
 
+    private static int isInDebugMode;
+
     private static boolean hasIntroBeenScanned = false;
-    //private static boolean hasOutroBeenScanned = false;
     private static boolean error = false;
     private static boolean hasFinalQuizzBeenDone = false;
 
+    private final static String TAG = "WaitScan";
+
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
-            R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.objet, R.raw.reduction, R.raw.tibia,
-            R.raw.photo};
+            R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.chronologie, R.raw.contenant, R.raw.tibia};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,22 +101,22 @@ public class WaitScan extends Fragment {
 
         if (elementDiscoveredArray.size() == 0)
             ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
-        else if (elementDiscoveredCounter == 8 && hasFinalQuizzBeenDone)
-            ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.photo_scan_text));
         else if (elementDiscoveredCounter == 8)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
-        bluetoothDataReceiver = BluetoothFragment.getBluetoothDataReceiver();
-        Log.d("BLUETOOTH", "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
-        Log.d("BLUETOOTH", "isConnectionAlive = " + isConnectionAlive + " setting it to true");
-        isConnectionAlive = true;
-        threadReadData();
+        if (isInDebugMode == 0) {
+            bluetoothDataReceiver = BluetoothFragment.getBluetoothDataReceiver();
+            Log.d(TAG, "Is connection still valid after transition :" + bluetoothDataReceiver.getConnectionStatus());
+            Log.d(TAG, "isConnectionAlive = " + isConnectionAlive + " setting it to true");
+            isConnectionAlive = true;
+            threadReadData();
+        }
     }
 
     private void loadProgress() {
         String userProgress = getActivity().getPreferences(Context.MODE_PRIVATE).getString("DISCOVERED_PROGRESS", null);
         if (userProgress != null) {
-            Log.d("WAITSCAN", "User Progress has been found! " + userProgress);
+            Log.d(TAG, "User Progress has been found! " + userProgress);
             Type listType = new TypeToken<ArrayList<Integer>>(){}.getType();
             elementDiscoveredArray = new Gson().fromJson(userProgress, listType);
             if (elementDiscoveredArray.contains(0)) {
@@ -158,6 +160,10 @@ public class WaitScan extends Fragment {
 
     public static void setIsConnectionAlive(boolean newValue) { isConnectionAlive = newValue; }
 
+    public static void setDebugMode(int newStatus) {
+        isInDebugMode = newStatus;
+    }
+
     public static void interruptThread() {
         if (runningThread != null) {
             runningThread.interrupt();
@@ -191,16 +197,13 @@ public class WaitScan extends Fragment {
     // SCANS ARE IN THE FOLLOWING ORDER:
     // 0 - Intro
     // [1 -> 8] - Discovery videos
-    // 10 - Final quizz
-    // 9 - Outro
-    // 11 - Pause/Resume videoPlayer
-
+    // 9 - Final quizz
+    // 10 - Pause/Resume videoPlayer
     private void threadReadData() {
         runningThread = new Thread() {
             public void run() {
-                if (runningThread.isInterrupted())
-                {
-                    Log.d("BLUETOOTH", "Thread has been stopped");
+                if (runningThread.isInterrupted()) {
+                    Log.d(TAG, "Thread has been stopped");
                     try {
                         throw new InterruptedException("Thread stopped");
                     } catch (InterruptedException e) {
@@ -214,24 +217,24 @@ public class WaitScan extends Fragment {
                     inputStream = socket.getInputStream();
                     while (isConnectionAlive) {
                         int dataRead = inputStream.read();
-                        Log.d("BLUETOOTH", "Looking for datas");
-                        Log.d("BLUETOOTH", "Datas available: " + String.format("%c", dataRead));
+                        Log.d(TAG, "Looking for datas");
+                        Log.d(TAG, "Datas available: " + String.format("%c", dataRead));
                         if (dataRead >= 48 && dataRead <= 58 && !VideoPlayerFragment.getIsInsideVideo()) {
                             int elementRead = dataRead - 48;
-                            Log.d("BLUETOOTH", "Valid card! elementRead = " + elementRead);
+                            Log.d(TAG, "Valid card! elementRead = " + elementRead);
                             // The first card HAS TO BE intro
                             if (!hasIntroBeenScanned && elementRead != 0) {
-                                Log.d("BLUETOOTH", "This is not the right card to pass right now");
+                                Log.d(TAG, "This is not the right card to pass right now");
                                 toastInsideThread(curContext.getString(R.string.not_right_card));
                                 error = true;
                             } else if (elementRead == 0) {
                                 hasIntroBeenScanned = true;
                                 error = false;
-                                setShouldQuizzLaunch(0);
+                                setShouldQuizzLaunch(1);
                             } else if (elementRead == 10) {
-                                Log.d("BLUETOOTH", "Element read is 10");
+                                Log.d(TAG, "Element read is 10");
                                 if (elementDiscoveredArray.size() == 9) {
-                                    Log.d("BLUETOOTH", "Element read is 10 and size of elementArraydiscovered is 9");
+                                    Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
                                     // Transition to Final Quizz
                                     setIsConnectionAlive(false);
                                     hasFinalQuizzBeenDone = true;
@@ -244,9 +247,8 @@ public class WaitScan extends Fragment {
                                     error = true;
                                 }
                             } else if (elementRead == 9) {
-                                Log.d("BLUETOOTH", "Element read is 9");
+                                Log.d(TAG, "Element read is 9");
                                 if (hasFinalQuizzBeenDone) {
-                                    //hasOutroBeenScanned = true;
                                     error = false;
                                     setShouldQuizzLaunch(0);
                                 } else {
@@ -260,17 +262,17 @@ public class WaitScan extends Fragment {
                             if (elementRead != 10) {
                                 if (!error && !VideoPlayerFragment.getIsInsideVideo()) {
                                     if (!elementDiscoveredArray.contains(elementRead)) {
-                                        Log.d("BLUETOOTH", "Element is not contained into element already discovered");
+                                        Log.d(TAG, "Element is not contained into element already discovered");
                                         // Add discovered element into array
                                         elementDiscoveredArray.add(elementRead);
                                         //Save the new array into pref
                                         saveProgress();
                                         // Update counter only if it belong to quizz questions
                                         if (getShouldQuizzLaunch() == 1) {
-                                            Log.d("BLUETOOTH", "Updating elementDiscoveredCounter for elementRead " + elementRead);
+                                            Log.d(TAG, "Updating elementDiscoveredCounter for elementRead " + elementRead);
                                             ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");
                                         }
-                                        Log.d("BLUETOOTH", "set elementRead = " + elementRead);
+                                        Log.d(TAG, "set elementRead = " + elementRead);
                                         //Prepare elements for video + quizz only of not quizz
                                         setItemChoice(elementRead, resArray[elementRead]);
                                         commitTransition();
@@ -279,25 +281,25 @@ public class WaitScan extends Fragment {
                                     }
                                 }
                             }
-                        } else if (dataRead == 59) {
+                        } else if (dataRead == 58) {
                             if (VideoPlayerFragment.getIsInsideVideo()) {
-                                Log.d("BLUETOOTH", "I should set pause/unpause on video");
+                                Log.d(TAG, "I should set pause/unpause on video");
                                 VideoPlayerFragment.setVideoPlayerStatus();
                             } else {
                                 toastInsideThread(curContext.getString(R.string.currently_inside_video));
                             }
                         } else {
                             if (VideoPlayerFragment.getIsInsideVideo()){
-                                Log.d("BLUETOOTH", "The card is passed during video and is not play/pause");
+                                Log.d(TAG, "The card is passed during video and is not play/pause");
                                 toastInsideThread(curContext.getString(R.string.bad_card_code));
                             } else {
-                                Log.d("BLUETOOTH", "This card is not between 48 and 57. It's code actually is " + dataRead);
+                                Log.d(TAG, "This card is not between 48 and 57. It's code actually is " + dataRead);
                                 toastInsideThread(curContext.getString(R.string.bad_card_code));
                             }
                         }
                     }
                 } catch (InterruptedIOException e) {
-                    Log.d("BLUETOOTH", "Thead has been stopped / Interrupted");
+                    Log.d(TAG, "Thead has been stopped / Interrupted");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
