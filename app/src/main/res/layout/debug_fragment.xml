@@ -14,47 +14,47 @@
 		android:id="@+id/debug_launch_video1"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="Launch video 1" />
+		android:text="Launch video forearm" />
 
 	<Button
 		android:id="@+id/debug_launch_video2"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="launch video 2" />
+		android:text="launch video pelvis" />
 
 	<Button
 		android:id="@+id/debug_launch_video3"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="launch video 3" />
+		android:text="launch video skull" />
 
 	<Button
 		android:id="@+id/debug_launch_video4"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="debug_launch_video4" />
+		android:text="launch video femur" />
 
 	<Button
 		android:id="@+id/debug_launch_video5"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="debug_launch_video5" />
+		android:text="launch video humerus" />
 
 	<Button
 		android:id="@+id/debug_launch_video6"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="debug_launch_video6" />
+		android:text="launch video chronology" />
 
 	<Button
 		android:id="@+id/debug_launch_video7"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="debug_launch_video7" />
+		android:text="launch video container" />
 
 	<Button
 		android:id="@+id/debug_launch_video8"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="debug_launch_video8" />
+		android:text="launch video tibia" />
 </LinearLayout>

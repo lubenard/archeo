@@ -47,16 +47,38 @@ public class DebugMenuFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
+        int itemIndex = -1;
         switch (view.getId()) {
             case R.id.debug_launch_intro:
-                WaitScan.setShouldQuizzLaunch(1);
-                WaitScan.setItemChoice(0, WaitScan.getResArray()[0]);
+                itemIndex = 0;
                 break;
             case R.id.debug_launch_video1:
-                WaitScan.setShouldQuizzLaunch(1);
-                WaitScan.setItemChoice(1, WaitScan.getResArray()[1]);
+                itemIndex = 1;
+                break;
+            case R.id.debug_launch_video2:
+                itemIndex = 2;
+                break;
+            case R.id.debug_launch_video3:
+                itemIndex = 3;
+                break;
+            case R.id.debug_launch_video4:
+                itemIndex = 4;
+                break;
+            case R.id.debug_launch_video5:
+                itemIndex = 5;
+                break;
+            case R.id.debug_launch_video6:
+                itemIndex = 6;
+                break;
+            case R.id.debug_launch_video7:
+                itemIndex = 7;
+                break;
+            case R.id.debug_launch_video8:
+                itemIndex = 8;
                 break;
         }
+        WaitScan.setShouldQuizzLaunch(1);
+        WaitScan.setItemChoice(itemIndex, WaitScan.getResArray()[itemIndex]);
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         VideoPlayerFragment fragment = new VideoPlayerFragment();
         fragmentTransaction.replace(android.R.id.content, fragment);
