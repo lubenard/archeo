@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<Button
+		android:id="@+id/debug_launch_intro"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Launch intro" />
+
+	<Button
+		android:id="@+id/debug_launch_video1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Launch video 1" />
+
+	<Button
+		android:id="@+id/debug_launch_video2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="launch video 2" />
+
+	<Button
+		android:id="@+id/debug_launch_video3"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="launch video 3" />
+
+	<Button
+		android:id="@+id/debug_launch_video4"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="debug_launch_video4" />
+
+	<Button
+		android:id="@+id/debug_launch_video5"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="debug_launch_video5" />
+
+	<Button
+		android:id="@+id/debug_launch_video6"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="debug_launch_video6" />
+
+	<Button
+		android:id="@+id/debug_launch_video7"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="debug_launch_video7" />
+
+	<Button
+		android:id="@+id/debug_launch_video8"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="debug_launch_video8" />
+</LinearLayout>

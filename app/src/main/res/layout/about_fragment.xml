@@ -79,5 +79,14 @@
 		android:textAlignment="center"
 		android:gravity="center_horizontal"
 		android:text="@string/license_github_leonids_link_link" />
+
+	<Button
+		android:id="@+id/debug_menu"
+		android:layout_marginTop="50dp"
+		android:layout_marginBottom="15dp"
+		android:layout_gravity="center"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Debug menu" />
 </LinearLayout>
 </ScrollView>
