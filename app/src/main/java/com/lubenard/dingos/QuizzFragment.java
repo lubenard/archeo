@@ -61,6 +61,14 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
 
         switch (item) {
             case 0:
+                questionTextView.setText(getCustomString(R.string.intro_question));
+                button1.setText(getCustomString(R.string.intro_answ1));
+                button2.setText(getCustomString(R.string.intro_answ2));
+                button3.setText(getCustomString(R.string.intro_answ3));
+                button4.setText(getCustomString(R.string.intro_answ4));
+                goodAnswer = R.id.answer1;
+                break;
+            case 1:
                 questionTextView.setText(getCustomString(R.string.forearm_question));
                 button1.setText(getCustomString(R.string.forearm_answ1));
                 button2.setText(getCustomString(R.string.forearm_answ2));
@@ -74,7 +82,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.pelvis_answ2));
                 button3.setText(getCustomString(R.string.pelvis_answ3));
                 button4.setText(getCustomString(R.string.pelvis_answ4));
-                goodAnswer = R.id.answer1;
+                goodAnswer = R.id.answer2;
                 break;
             case 3:
                 questionTextView.setText(getCustomString(R.string.skull_question));
@@ -82,7 +90,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.skull_answ2));
                 button3.setText(getCustomString(R.string.skull_answ3));
                 button4.setText(getCustomString(R.string.skull_answ4));
-                goodAnswer = R.id.answer2;
+                goodAnswer = R.id.answer3;
                 break;
             case 4:
                 questionTextView.setText(getCustomString(R.string.femur_question));
@@ -90,7 +98,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.femur_answ2));
                 button3.setText(getCustomString(R.string.femur_answ3));
                 button4.setText(getCustomString(R.string.femur_answ4));
-                goodAnswer = R.id.answer2;
+                goodAnswer = R.id.answer3;
                 break;
             case 5:
                 questionTextView.setText(getCustomString(R.string.humerus_question));
@@ -98,7 +106,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.humerus_answ2));
                 button3.setText(getCustomString(R.string.humerus_answ3));
                 button4.setText(getCustomString(R.string.humerus_answ4));
-                goodAnswer = R.id.answer4;
+                goodAnswer = R.id.answer1;
                 break;
             case 6:
                 questionTextView.setText(getCustomString(R.string.chronology_question));
@@ -114,7 +122,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.container_answ2));
                 button3.setText(getCustomString(R.string.container_answ3));
                 button4.setText(getCustomString(R.string.container_answ4));
-                goodAnswer = R.id.answer1;
+                goodAnswer = R.id.answer2;
                 break;
             case 8:
                 questionTextView.setText(getCustomString(R.string.tibia_question));
