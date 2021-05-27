@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -69,22 +70,6 @@ public class WaitScan extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_wait_scan, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        ListVideo fragment = new ListVideo();
-        fragmentTransaction.replace(android.R.id.content, fragment);
-        fragmentTransaction.commit();
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -93,7 +78,14 @@ public class WaitScan extends Fragment {
         curContext = getContext();
         fragmentManager = getFragmentManager();
 
-        getActivity().setTitle("Ding'os");
+        Toolbar toolbar = view.findViewById(R.id.wait_scan_toolbar);
+        toolbar.setOnMenuItemClickListener(item -> {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            ListVideo fragment = new ListVideo();
+            fragmentTransaction.replace(android.R.id.content, fragment);
+            fragmentTransaction.commit();
+            return false;
+        });
 
         ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
 
@@ -163,6 +155,10 @@ public class WaitScan extends Fragment {
     public static void setDebugMode(int newStatus) {
         isInDebugMode = newStatus;
     }
+    public static int getDebugMode() {
+        return isInDebugMode;
+    }
+
 
     public static void interruptThread() {
         if (runningThread != null) {

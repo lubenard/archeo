@@ -14,8 +14,6 @@ import static android.view.View.resolveSizeAndState;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static boolean isQuittingSecondTime = false;
-
     @Override
     protected void onPause() {
         super.onPause();

@@ -32,7 +32,11 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
     private void commitTransition() {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        WaitScan fragment = new WaitScan();
+        Fragment fragment;
+        if (WaitScan.getDebugMode() == 0)
+            fragment = new WaitScan();
+        else
+           fragment = new DebugMenuFragment();
         fragmentTransaction.replace(android.R.id.content, fragment);
         fragmentTransaction.commit();
     }
@@ -45,7 +49,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("Ding'os - QUIZZ TIME !");
+        getActivity().setTitle(getString(R.string.dingos_quizz_time));
 
         TextView questionTextView = view.findViewById(R.id.textViewQuestionQuizz);
 

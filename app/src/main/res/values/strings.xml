@@ -138,4 +138,5 @@
     <string name="recap">1. Only the lower left forearm is fractured. \n2. The subject is a woman. \n3. The subject has a cavity.\n4. The subject measures approximately 1.65m.\n5. He\'s an adult.\n6. It\'s a pearl necklace from the Merovingian period. \n7. There are two subjects. \n8. Subject has a hole, osteomyelitis (infection).</string>
     <string name="about_to_quit">You are about to quit the app. If you want to quit, press back again</string>
     <string name="bluetooth_title">Connect to a bluetooth device</string>
+	<string name="dingos_quizz_time" translatable="false">Ding\'os - QUIZZ TIME !</string>
 </resources>
