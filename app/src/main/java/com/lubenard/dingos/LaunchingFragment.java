@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -62,7 +63,7 @@ public class LaunchingFragment extends Fragment {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             BluetoothFragment fragment = new BluetoothFragment();
-            fragmentTransaction.replace(android.R.id.content, fragment);
+            fragmentTransaction.replace(android.R.id.content, fragment).addToBackStack(null);
             fragmentTransaction.commit();
         }
     }
@@ -147,48 +148,6 @@ public class LaunchingFragment extends Fragment {
         return inflater.inflate(R.layout.lauching_fragment, container, false);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_launching_page, menu);
-        if (!currentLocale.equals("fr_FR") && !currentLocale.equals("fr")) {
-            menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.fr));
-            switchToLanguage = 0; // Switch to fr language
-        }
-        else {
-            menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.en));
-            switchToLanguage = 1; // switch to en language
-        }
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.about:
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                AboutFragment fragment = new AboutFragment();
-                fragmentTransaction.replace(android.R.id.content, fragment).addToBackStack(null);
-                fragmentTransaction.commit();
-                return super.onOptionsItemSelected(item);
-            case R.id.set_language:
-                if (switchToLanguage == 1)
-                    setAppLocale("en-us");
-                else if (switchToLanguage == 0)
-                    setAppLocale("fr");
-                return super.onOptionsItemSelected(item);
-            case R.id.reset_bt:
-                SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-                preferences.edit().remove("BLUETOOTH_ADDR").apply();
-            case R.id.reset_user_progress:
-                SharedPreferences preferences2 = getActivity().getPreferences(Context.MODE_PRIVATE);
-                preferences2.edit().remove("DISCOVERED_PROGRESS").apply();
-                isBackupFoundTextView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
-                isBackupFoundTextView.setText(getContext().getString(R.string.saveNotFound));
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     Locale getCurrentLocale(Context context){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
@@ -202,11 +161,52 @@ public class LaunchingFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button startSession = view.findViewById(R.id.startSessionButton);
-
         currentLocale = getCurrentLocale(getContext()).toString();
 
         Log.d("LANGUAGE", "Current locale is " + currentLocale);
+
+        Toolbar toolbar = view.findViewById(R.id.main_toolbar);
+        if (!currentLocale.equals("fr_FR") && !currentLocale.equals("fr")) {
+            toolbar.getMenu().getItem(0).setIcon(getResources().getDrawable(R.drawable.fr));
+            switchToLanguage = 0; // Switch to fr language
+        }
+        else {
+            toolbar.getMenu().getItem(0).setIcon(getResources().getDrawable(R.drawable.en));
+            switchToLanguage = 1; // switch to en language
+        }
+        toolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.about:
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    AboutFragment fragment = new AboutFragment();
+                    fragmentTransaction.replace(android.R.id.content, fragment).addToBackStack(null);
+                    fragmentTransaction.commit();
+                    break;
+                case R.id.set_language:
+
+                    if (switchToLanguage == 1)
+                        setAppLocale("en-us");
+                    else if (switchToLanguage == 0)
+                        setAppLocale("fr");
+                    break;
+                case R.id.reset_bt:
+                    SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    preferences.edit().remove("BLUETOOTH_ADDR").apply();
+                    break;
+                case R.id.reset_user_progress:
+                    SharedPreferences preferences2 = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    preferences2.edit().remove("DISCOVERED_PROGRESS").apply();
+                    isBackupFoundTextView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
+                    isBackupFoundTextView.setText(getContext().getString(R.string.saveNotFound));
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        });
+
+        Button startSession = view.findViewById(R.id.startSessionButton);
 
          isBackupFoundTextView = view.findViewById(R.id.isThereBackup);
 

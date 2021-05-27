@@ -1,34 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:gravity="center">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical">
 
-	<TextView
-		android:id="@+id/welcomeTextView"
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/main_toolbar"
+		style="@style/basic_toolbar"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+		app:menu="@menu/menu_launching_page"
+		app:titleTextColor="@color/white"
+		app:title="@string/app_name" />
+
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="40dp"
-		android:textAlignment="center"
-		android:textSize="50sp"
-		android:gravity="center_horizontal"
-		android:text="@string/landing_greeting"/>
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:gravity="center">
 
-	<TextView
-		android:layout_marginTop="30dp"
-		android:id="@+id/isThereBackup"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center_horizontal"/>
+		<TextView
+			android:id="@+id/welcomeTextView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="40dp"
+			android:gravity="center_horizontal"
+			android:text="@string/landing_greeting"
+			android:textAlignment="center"
+			android:textSize="50sp" />
 
-	<Button
-		android:id="@+id/startSessionButton"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerInParent="true"
-		style="@style/custom_button"
-		android:layout_marginTop="220dp"
-		android:text="@string/landing_start_session" />
+		<TextView
+			android:id="@+id/isThereBackup"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="30dp"
+			android:gravity="center_horizontal" />
+
+		<Button
+			android:id="@+id/startSessionButton"
+			style="@style/custom_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:layout_marginTop="220dp"
+			android:text="@string/landing_start_session" />
+	</LinearLayout>
+
 </LinearLayout>
