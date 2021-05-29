@@ -29,14 +29,11 @@ public class EndFragment extends Fragment {
 
         Button exitApp = view.findViewById(R.id.exitApp);
 
-        exitApp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Remove saved user progress before exiting
-                SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-                preferences.edit().remove("DISCOVERED_PROGRESS").apply();
-                getActivity().finish();
-            }
+        exitApp.setOnClickListener(view1 -> {
+            // Remove saved user progress before exiting
+            SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+            preferences.edit().remove("DISCOVERED_PROGRESS").apply();
+            getActivity().finish();
         });
 
         DisplayMetrics displayMetrics = new DisplayMetrics();

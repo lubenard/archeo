@@ -26,16 +26,16 @@ public class FinalQuizz extends Fragment implements View.OnClickListener {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.imageButton).setOnClickListener(this);
-        view.findViewById(R.id.imageButton2).setOnClickListener(this);
-        view.findViewById(R.id.imageButton3).setOnClickListener(this);
-        view.findViewById(R.id.imageButton4).setOnClickListener(this);
+        view.findViewById(R.id.final_answer1).setOnClickListener(this);
+        view.findViewById(R.id.final_answer2).setOnClickListener(this);
+        view.findViewById(R.id.final_answer3).setOnClickListener(this);
+        view.findViewById(R.id.final_answer4).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         Log.d("FINAL_QUIZZ", "Clicked on id " + view.getId());
-        if (view.getId() == R.id.imageButton2) {
+        if (view.getId() == R.id.final_answer2) {
             Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_SHORT).show();
             new ParticleSystem(getActivity(), 10, R.drawable.star, 3000)
                     .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
@@ -47,7 +47,7 @@ public class FinalQuizz extends Fragment implements View.OnClickListener {
                     .oneShot(view, 10);
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            WaitScan fragment = new WaitScan();
+            EndFragment fragment = new EndFragment();
             fragmentTransaction.replace(android.R.id.content, fragment);
             fragmentTransaction.commit();
         } else {

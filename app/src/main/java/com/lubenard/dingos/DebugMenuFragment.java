@@ -33,6 +33,7 @@ public class DebugMenuFragment extends Fragment implements View.OnClickListener 
         Button video6 = view.findViewById(R.id.debug_launch_video6);
         Button video7 = view.findViewById(R.id.debug_launch_video7);
         Button video8 = view.findViewById(R.id.debug_launch_video8);
+        Button video9 = view.findViewById(R.id.debug_launch_video9);
 
         intro.setOnClickListener(this);
         video1.setOnClickListener(this);
@@ -43,6 +44,7 @@ public class DebugMenuFragment extends Fragment implements View.OnClickListener 
         video6.setOnClickListener(this);
         video7.setOnClickListener(this);
         video8.setOnClickListener(this);
+        video9.setOnClickListener(this);
     }
 
     @Override
@@ -76,11 +78,19 @@ public class DebugMenuFragment extends Fragment implements View.OnClickListener 
             case R.id.debug_launch_video8:
                 itemIndex = 8;
                 break;
+            case R.id.debug_launch_video9:
+                itemIndex = 9;
+                break;
         }
-        WaitScan.setShouldQuizzLaunch(1);
-        WaitScan.setItemChoice(itemIndex, WaitScan.getResArray()[itemIndex]);
+
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        VideoPlayerFragment fragment = new VideoPlayerFragment();
+        Fragment fragment;
+        if (itemIndex != 9) {
+            WaitScan.setShouldQuizzLaunch(1);
+            WaitScan.setItemChoice(itemIndex, WaitScan.getResArray()[itemIndex]);
+            fragment = new VideoPlayerFragment();
+        } else
+            fragment = new FinalQuizz();
         fragmentTransaction.replace(android.R.id.content, fragment);
         fragmentTransaction.commit();
     }

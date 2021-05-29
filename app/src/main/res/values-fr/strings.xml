@@ -113,4 +113,5 @@
 	<string name="currently_inside_video">Vous n\'êtes pas dans une vidéo</string>
 	<string name="card_during_video">Vous êtes actuellement dans une vidéo ! Vous ne pouvez pas passer de carte a ce moment la</string>
 	<string name="bluetooth_title">Connection a un appareil bluetooth</string>
+	<string name="reminder_prec_answer_final_quizz">Rappel des réponses précédentes</string>
 </resources>

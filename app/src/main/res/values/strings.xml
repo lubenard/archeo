@@ -139,4 +139,5 @@
     <string name="about_to_quit">You are about to quit the app. If you want to quit, press back again</string>
     <string name="bluetooth_title">Connect to a bluetooth device</string>
 	<string name="dingos_quizz_time" translatable="false">Ding\'os - QUIZZ TIME !</string>
+	<string name="reminder_prec_answer_final_quizz">Reminder of previous answers</string>
 </resources>

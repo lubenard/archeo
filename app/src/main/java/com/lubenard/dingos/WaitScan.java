@@ -227,7 +227,7 @@ public class WaitScan extends Fragment {
                                 hasIntroBeenScanned = true;
                                 error = false;
                                 setShouldQuizzLaunch(1);
-                            } else if (elementRead == 10) {
+                            } else if (elementRead == 9) {
                                 Log.d(TAG, "Element read is 10");
                                 if (elementDiscoveredArray.size() == 9) {
                                     Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
@@ -240,15 +240,6 @@ public class WaitScan extends Fragment {
                                     fragmentTransaction.commit();
                                 } else {
                                     toastInsideThread(curContext.getString(R.string.not_all_video_scanned));
-                                    error = true;
-                                }
-                            } else if (elementRead == 9) {
-                                Log.d(TAG, "Element read is 9");
-                                if (hasFinalQuizzBeenDone) {
-                                    error = false;
-                                    setShouldQuizzLaunch(0);
-                                } else {
-                                    toastInsideThread(curContext.getString(R.string.not_right_card));
                                     error = true;
                                 }
                             } else if (elementRead > 0 && elementRead < 9) {
@@ -281,17 +272,14 @@ public class WaitScan extends Fragment {
                             if (VideoPlayerFragment.getIsInsideVideo()) {
                                 Log.d(TAG, "I should set pause/unpause on video");
                                 VideoPlayerFragment.setVideoPlayerStatus();
-                            } else {
+                            } else
                                 toastInsideThread(curContext.getString(R.string.currently_inside_video));
-                            }
                         } else {
-                            if (VideoPlayerFragment.getIsInsideVideo()){
+                            if (VideoPlayerFragment.getIsInsideVideo())
                                 Log.d(TAG, "The card is passed during video and is not play/pause");
-                                toastInsideThread(curContext.getString(R.string.bad_card_code));
-                            } else {
+                            else
                                 Log.d(TAG, "This card is not between 48 and 57. It's code actually is " + dataRead);
-                                toastInsideThread(curContext.getString(R.string.bad_card_code));
-                            }
+                            toastInsideThread(curContext.getString(R.string.bad_card_code));
                         }
                     }
                 } catch (InterruptedIOException e) {

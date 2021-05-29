@@ -1,71 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/final_quizz_consigne"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="20sp"
+		android:gravity="center"
+		android:text="@string/final_quizz_consigne" />
+
+	<Button
+		android:id="@+id/button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/reminder_prec_answer_final_quizz" />
 
 	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical">
-
-		<TextView
-			android:id="@+id/textView15"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:text="@string/recap" />
+			android:layout_height="match_parent"
+			android:orientation="horizontal">
 
-		<TextView
-			android:id="@+id/final_quizz_question"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="35dp"
-			android:textSize="20sp"
-			android:gravity="center"
-			android:text="@string/final_quizz_question" />
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:layout_weight="1">
 
-		<TextView
-			android:id="@+id/final_quizz_consigne"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="30dp"
-			android:textSize="20sp"
-			android:gravity="center"
-			android:text="@string/final_quizz_consigne" />
+				<ImageButton
+					android:id="@+id/final_answer1"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal"
+					android:background="#D56464"
+					app:srcCompat="@drawable/perso1"
+					android:textSize="20dp"
+					android:text="Answer 1"
+					android:layout_weight="1"/>
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
+				<ImageButton
+					android:id="@+id/final_answer3"
+					android:layout_width="match_parent"
+					android:background="#5ab1bb"
+					android:textSize="20dp"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal"
+					app:srcCompat="@drawable/perso3"
+					android:layout_weight="1"
+					android:text="Answer 3" />
+			</LinearLayout>
 
-			<ImageButton
-				android:id="@+id/imageButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				app:srcCompat="@drawable/perso1" />
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:layout_weight="1">
 
-			<ImageButton
-				android:id="@+id/imageButton2"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				app:srcCompat="@drawable/perso2" />
+				<ImageButton
+					android:id="@+id/final_answer2"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal"
+					android:background="#a5c882"
+					app:srcCompat="@drawable/perso2"
+					android:textSize="20dp"
+					android:text="Answer 2"
+					android:layout_weight="1"/>
 
-			<ImageButton
-				android:id="@+id/imageButton3"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				app:srcCompat="@drawable/perso3" />
-
-			<ImageButton
-				android:id="@+id/imageButton4"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				app:srcCompat="@drawable/perso4" />
+				<ImageButton
+					android:id="@+id/final_answer4"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal"
+					android:background="#f7dd72"
+					app:srcCompat="@drawable/perso4"
+					android:textSize="20dp"
+					android:text="Answer 4"
+					android:layout_weight="1"/>
+			</LinearLayout>
 		</LinearLayout>
-	</LinearLayout>
-</ScrollView>
+</LinearLayout>
