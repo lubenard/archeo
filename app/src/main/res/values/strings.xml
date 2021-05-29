@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name" translatable="false">Ding\'os</string>
+	<string name="app_name" translatable="false">Archéo\'scan</string>
 	<string name="license" translatable="false">Scan and discover bones using arduino to teach kids archeology.\nCopyright (C) 2020  lubenard\n
     This program is free software: you can redistribute it and/or modify\n
     it under the terms of the GNU General Public License as published by\n
@@ -25,13 +25,13 @@
 
     <string name="bluetooth_list_icon">Bluetooth Icon</string>
     
-    <string name="landing_greeting">Welcome into Ding\'os!</string>
+    <string name="landing_greeting">Welcome into Archéo\'scan!</string>
     <string name="landing_start_session">Start the session!</string>
 
     <string name="quizz_title" translatable="false">Quizz Time !</string>
     <string name="quizz_check_answer">Check my answers</string>
 
-    <string name="wait_scan">Scan a part of skeleton…</string>
+    <string name="wait_scan">Scan the burial site!</string>
 
     <string name="bluetooth_warning_title">Warning</string>
     <string name="bluetooth_warning_text">Do you want to connect to this device ? This setting will be remembered.</string>
@@ -60,57 +60,57 @@
     <string name="video_tibia">Tibia</string>
 
     <string name="intro_question">What is this archaeological structure?</string>
-    <string name="intro_answ1">A burial site.</string>
-    <string name="intro_answ2">A silo.</string>
-    <string name="intro_answ3">An oven.</string>
-    <string name="intro_answ4">A wall.</string>
+    <string name="intro_answ1">A burial site</string>
+    <string name="intro_answ2">A silo</string>
+    <string name="intro_answ3">An oven</string>
+    <string name="intro_answ4">A wall</string>
 
     <string name="forearm_question">Does the forearm have a fracture?</string>
-    <string name="forearm_answ1">Yes, at the bottom of the forearm.</string>
-    <string name="forearm_answ2">Yes, at the top of the forearm.</string>
-    <string name="forearm_answ3">No.</string>
+    <string name="forearm_answ1">Yes, at the bottom of the forearm</string>
+    <string name="forearm_answ2">Yes, at the top of the forearm</string>
+    <string name="forearm_answ3">No</string>
     <string name="forearm_answ4">The subject does not have a forearm!</string>
 
     <string name="container_question">How was he buried?</string>
-    <string name="container_answ1">In a plaster sarcophagus.</string>
-    <string name="container_answ2">Without container.</string>
-    <string name="container_answ3">In a stone box.</string>
-    <string name="container_answ4">In a ballot box.</string>
+    <string name="container_answ1">In a plaster sarcophagus</string>
+    <string name="container_answ2">Without container</string>
+    <string name="container_answ3">In a stone box</string>
+    <string name="container_answ4">In a ballot box</string>
 
     <string name="pelvis_question">What is the gender of the subject?</string>
-    <string name="pelvis_answ1">The subject is a woman.</string>
-    <string name="pelvis_answ2">The subject is a man.</string>
+    <string name="pelvis_answ1">The subject is a woman</string>
+    <string name="pelvis_answ2">The subject is a man</string>
     <string name="pelvis_answ3">It\'s not very clear!</string>
-    <string name="pelvis_answ4">There is no pelvis.</string>
+    <string name="pelvis_answ4">There is no pelvis</string>
 
     <string name="skull_question">How many cavities do you have?</string>
     <string name="skull_answ1">None.</string>
-    <string name="skull_answ2">The subject has 1 cavity.</string>
-    <string name="skull_answ3">The subject has 2 cavity.</string>
-    <string name="skull_answ4">The subject has 3 cavity.</string>
+    <string name="skull_answ2">The subject has 1 cavity</string>
+    <string name="skull_answ3">The subject has 2 cavity</string>
+    <string name="skull_answ4">The subject has 3 cavity</string>
 
     <string name="femur_question">How big is the subject?</string>
-    <string name="femur_answ1">Subject is less than 1.50m tall.</string>
-    <string name="femur_answ2">Subject is between 1.51m and 1.70m tall.</string>
-    <string name="femur_answ3">Subject is between 1.71m and 1.90m tall.</string>
-    <string name="femur_answ4">Subject is over 1.91 m tall.</string>
+    <string name="femur_answ1">Subject is less than 1.50m tall</string>
+    <string name="femur_answ2">Subject is between 1.51m and 1.70m tall</string>
+    <string name="femur_answ3">Subject is between 1.71m and 1.90m tall</string>
+    <string name="femur_answ4">Subject is over 1.91 m tall</string>
 
     <string name="humerus_question">How is the humerus ?</string>
-    <string name="humerus_answ1">A one-part humerus is an adult.</string>
-    <string name="humerus_answ2">A two-part humerus is an adolescent.</string>
-    <string name="humerus_answ3">A 3-part humerus, that\'s a child.</string>
-    <string name="humerus_answ4">There is no humerus.</string>
+    <string name="humerus_answ1">A one-part humerus is an adult</string>
+    <string name="humerus_answ2">A two-part humerus is an adolescent</string>
+    <string name="humerus_answ3">A 3-part humerus, that\'s a child</string>
+    <string name="humerus_answ4">There is no humerus</string>
 
     <string name="chronology_question">From what period does this burial date?</string>
-    <string name="chronology_answ1">-10099, Prehistory.</string>
-    <string name="chronology_answ2">299, the Antiquity.</string>
-    <string name="chronology_answ3">1099, the Middle Ages.</string>
-    <string name="chronology_answ4">2021, today.</string>
+    <string name="chronology_answ1">-10099, Prehistory</string>
+    <string name="chronology_answ2">299, the Antiquity</string>
+    <string name="chronology_answ3">1099, the Middle Ages</string>
+    <string name="chronology_answ4">2021, today</string>
 
     <string name="tibia_question">What do you see on the tibia?</string>
-    <string name="tibia_answ1">The subject shows signs of a fracture.</string>
+    <string name="tibia_answ1">The subject shows signs of a fracture</string>
     <string name="tibia_answ2">The subject has one tibia that is smaller than the other!</string>
-    <string name="tibia_answ3">The subject has signs of an infection.</string>
+    <string name="tibia_answ3">The subject has signs of an infection</string>
     <string name="tibia_answ4">The tibia is missing!</string>
 
     <string name="good_answer">Well played, you did it !</string>
@@ -119,9 +119,9 @@
     <string name="menu_reset_bt">Forget bluetooth device</string>
     <string name="launch_intro">Launch intro</string>
     <string name="launch_photo">Discovery over, let\'s go to the final quizz!</string>
-	<string name="auto_connect_toast">Connecting to device...</string>
+	<string name="auto_connect_toast">Connecting to device…</string>
 	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
-    <string name="exit">Restart the app</string>
+    <string name="exit">Restart the application</string>
 	<string name="already_discovered_elemment">Wait a minute, this element has already been scanned!</string>
     <string name="not_all_video_scanned">You have not scanned all videos yet !</string>
     <string name="not_right_card">This is not the right card to pass now</string>

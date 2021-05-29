@@ -2,12 +2,12 @@
 <resources>
 	<string name="menu_about">A propos</string>
 	<string name="bluetooth_list_icon">Icone bluetooth</string>
-	<string name="landing_greeting">Bienvenue dans Ding\'os!</string>
+	<string name="landing_greeting">Bienvenue dans Archéo\'scan!</string>
 	<string name="license_github_link_text">Vous pouvez trouver le code source entier de cette application ici:</string>
 	<string name="license_main_license">Cette application est sous license GPLv3.</string>
 	<string name="landing_start_session">Commencer la session !</string>
 	<string name="quizz_check_answer">Verifier mes réponses</string>
-	<string name="wait_scan">Scannez une partie du squelette…</string>
+	<string name="wait_scan">Scannez la sépulture !</string>
 	<string name="bluetooth_warning_title">Attention</string>
 	<string name="bluetooth_warning_text">Voulez-vous vous connecter a cet appareil ? Ce paramètre sera enregistré.</string>
 	<string name="bluetooth_warning_toast">Préference sauvegardé !</string>
@@ -38,52 +38,52 @@
 	<string name="intro_answ3">Un four</string>
 	<string name="intro_answ4">Un mur</string>
 
-	<string name="forearm_question">L\'avant-bras a-t-il une fracture ?</string>
-	<string name="forearm_answ1">Oui, en bas de l\'avant-bras.</string>
-	<string name="forearm_answ2">Oui, en haut de l\'avant-bras.</string>
-	<string name="forearm_answ3">Non.</string>
+	<string name="forearm_question">Y a-t-il une fracture à l\'avant bras ?</string>
+	<string name="forearm_answ1">Oui, en bas de l\'avant-bras</string>
+	<string name="forearm_answ2">Oui, en haut de l\'avant-bras</string>
+	<string name="forearm_answ3">Non</string>
 	<string name="forearm_answ4">Le sujet n\'a pas d\'avant-bras !</string>
 
 	<string name="container_question">Comment était-il inhumé ?</string>
-	<string name="container_answ1">Dans un sarcophage en plâtre.</string>
-	<string name="container_answ2">Sans contenant.</string>
-	<string name="container_answ3">Dans un coffrage de pierre.</string>
-	<string name="container_answ4">Dans une urne.</string>
+	<string name="container_answ1">Dans un sarcophage en plâtre</string>
+	<string name="container_answ2">Sans contenant</string>
+	<string name="container_answ3">Dans un coffrage de bois</string>
+	<string name="container_answ4">Dans une urne</string>
 
 	<string name="pelvis_question">Est-ce un homme ou une femme ?</string>
-	<string name="pelvis_answ1">Le sujet est une femme.</string>
-	<string name="pelvis_answ2">Le sujet est un homme.</string>
+	<string name="pelvis_answ1">Le sujet est une femme</string>
+	<string name="pelvis_answ2">Le sujet est un homme</string>
 	<string name="pelvis_answ3">Ce n\'est pas très net !</string>
-	<string name="pelvis_answ4">Il n\'y a pas de bassin.</string>
+	<string name="pelvis_answ4">Il n\'y a pas de bassin</string>
 
 	<string name="skull_question">Combien comptez-vous de caries ?</string>
 	<string name="skull_answ1">Aucune.</string>
-	<string name="skull_answ2">Le sujet a 1 carie.</string>
-	<string name="skull_answ3">Le sujet a 2 carie.</string>
-	<string name="skull_answ4">Le sujet a 3 carie.</string>
+	<string name="skull_answ2">Le sujet a 1 carie</string>
+	<string name="skull_answ3">Le sujet a 2 caries</string>
+	<string name="skull_answ4">Le sujet a 3 caries</string>
 
 	<string name="femur_question">Quelle est la taille de notre sujet ?</string>
-	<string name="femur_answ1">Le sujet mesure moins d\'1,50 m.</string>
-	<string name="femur_answ2">Le sujet mesure entre 1,51m et 1,70m.</string>
-	<string name="femur_answ3">Le sujet mesure entre 1,71m et 1,90m.</string>
-	<string name="femur_answ4">Le sujet mesure plus d\'1,91 m.</string>
+	<string name="femur_answ1">Le sujet mesure moins d\'1,50 m</string>
+	<string name="femur_answ2">Le sujet mesure entre 1,51m et 1,70m</string>
+	<string name="femur_answ3">Le sujet mesure entre 1,71m et 1,90m</string>
+	<string name="femur_answ4">Le sujet mesure plus d\'1,91 m</string>
 
 	<string name="humerus_question">Comment est l\'humérus ?</string>
-	<string name="humerus_answ1">Un humérus en une partie, c\'est un adulte.</string>
-	<string name="humerus_answ2">Un humérus en 2 parties, c\'est un adolescent.</string>
-	<string name="humerus_answ3">Un humérus en 3 parties, c\'est un enfant.</string>
+	<string name="humerus_answ1">L\'humérus est en 1 partie</string>
+	<string name="humerus_answ2">L\'humérus en 2 parties</string>
+	<string name="humerus_answ3">L\'humérus en 3 parties</string>
 	<string name="humerus_answ4">Il n\'y a pas d\'humérus !</string>
 
 	<string name="chronology_question">De quelle époque date cette sépulture ?</string>
-	<string name="chronology_answ1">-10099, la Préhistoire.</string>
-	<string name="chronology_answ2">299, l\'Antiquité.</string>
-	<string name="chronology_answ3">1099, le moyen âge.</string>
-	<string name="chronology_answ4">2021, aujourd\'hui.</string>
+	<string name="chronology_answ1">-10099, la Préhistoire</string>
+	<string name="chronology_answ2">299, l\'Antiquité</string>
+	<string name="chronology_answ3">1099, le moyen âge</string>
+	<string name="chronology_answ4">2021, aujourd\'hui</string>
 
 	<string name="tibia_question">Que voyez-vous sur le tibia ?</string>
-	<string name="tibia_answ1">Le sujet présente les signes d\'une fracture.</string>
-	<string name="tibia_answ2">Le sujet présente un tibia est plus petit que l\'autre !</string>
-	<string name="tibia_answ3">Le sujet présente les signes d\'une infection.</string>
+	<string name="tibia_answ1">Le sujet présente les signes d\'une fracture</string>
+	<string name="tibia_answ2">Le sujet présente un tibia plus petit que l\'autre !</string>
+	<string name="tibia_answ3">Le sujet présente les signes d\'une infection</string>
 	<string name="tibia_answ4">Le tibia est absent !</string>
 
 	<string name="good_answer">Bien joué ! C\'est la bonne réponse !</string>
@@ -95,15 +95,15 @@
 	<string name="launch_photo">La découverte est finie, dernière question !</string>
 	<string name="auto_connect_toast">Connection a l\'appareil…</string>
 	<string name="end_fragment_main_text">Bien joué ! Vous avez fini l\'activité !</string>
-	<string name="exit">Redemarrer l\'app</string>
+	<string name="exit">Redemarrer l\'application</string>
 	<string name="already_discovered_elemment">Attendez une minute, cet élément à déjà été scanné !</string>
 	<string name="license_main_leonids">Cette app utilise Leonids, une librairie sous license Apache License 2.0</string>
 	<string name="license_github_leonids_link_text">Vous pouvez trouver le code source entier de Leonids ici:</string>
 	<string name="menu_refresh">Rafraichir</string>
 	<string name="reload_bt">Rafraichissement du Bluetooth…</string>
 	<string name="menu_reset_user_progress">Reinitialiser le progrès</string>
-	<string name="saveFound">Une sauvegarde à été trouvé !</string>
-	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
+	<string name="saveFound">Une sauvegarde à été trouvée !</string>
+	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvée, lancement depuis 0</string>
 	<string name="final_quizz_question">Sur la base de toutes les questions précédentes, qui, d\'après vous, se trouve dans la sépulture ?</string>
 	<string name="final_quizz_consigne">Cliquez sur le bon personnage</string>
 	<string name="recap">1. C\'est une sépulture.\n2. 1099, le moyen-âge.\n3. Il est inhumé sans contenant.\n4. Le sujet à deux caries.\n5. L\'humérus est en une seule partie.\n6. L\'avant-bras à une fracture en bas.\n7. Le sujet est un homme.\n8. Le sujet mesure entre 1m71 et 1m90.\n9. On peut voir les signes d\'une infection.</string>
