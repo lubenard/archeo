@@ -54,7 +54,6 @@ public class WaitScan extends Fragment {
 
     private static boolean hasIntroBeenScanned = false;
     private static boolean error = false;
-    private static boolean hasFinalQuizzBeenDone = false;
 
     private final static String TAG = "WaitScan";
 
@@ -87,7 +86,8 @@ public class WaitScan extends Fragment {
             return false;
         });
 
-        ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/8");
+        Log.d(TAG, "SETTING IT TO " + elementDiscoveredArray.size() + " / " + elementDiscoveredCounter);
+        ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
 
         loadProgress();
 
@@ -114,12 +114,10 @@ public class WaitScan extends Fragment {
             if (elementDiscoveredArray.contains(0)) {
                 hasIntroBeenScanned = true;
             }
-            if (elementDiscoveredArray.size() > 1)
-                elementDiscoveredCounter = elementDiscoveredArray.size() - 1;
-            if (elementDiscoveredArray.size() > 8)
-                elementDiscoveredCounter = 8;
+            if (elementDiscoveredArray.size() > 9)
+                elementDiscoveredCounter = 9;
             // Update textView
-            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredCounter + "/8");
+            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredCounter + "/9");
         }
     }
 
@@ -233,7 +231,6 @@ public class WaitScan extends Fragment {
                                     Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
                                     // Transition to Final Quizz
                                     setIsConnectionAlive(false);
-                                    hasFinalQuizzBeenDone = true;
                                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                                     FinalQuizz fragment = new FinalQuizz();
                                     fragmentTransaction.replace(android.R.id.content, fragment);
@@ -257,7 +254,9 @@ public class WaitScan extends Fragment {
                                         // Update counter only if it belong to quizz questions
                                         if (getShouldQuizzLaunch() == 1) {
                                             Log.d(TAG, "Updating elementDiscoveredCounter for elementRead " + elementRead);
-                                            ((TextView) curView.findViewById(R.id.element_discovered)).setText(++elementDiscoveredCounter + "/8");
+                                            elementDiscoveredCounter++;
+                                            Log.d(TAG, "New elementDiscoveredCounter is " + elementDiscoveredCounter);
+                                            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredCounter + "/9");
                                         }
                                         Log.d(TAG, "set elementRead = " + elementRead);
                                         //Prepare elements for video + quizz only of not quizz

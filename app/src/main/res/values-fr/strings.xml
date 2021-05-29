@@ -106,7 +106,7 @@
 	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
 	<string name="final_quizz_question">Sur la base de toutes les questions précédentes, qui, d\'après vous, se trouve dans la sépulture ?</string>
 	<string name="final_quizz_consigne">Cliquez sur le bon personnage</string>
-	<string name="recap">1. C\'est une sépulture.\n2. 1099, le moyen-âge.\n3. Il est inhumé sans contenant.\n4. Le sujet à deux caries.\n5. L\'humérus est en une seule partie.\n6. L'avant-bras à une fracture en bas.\n7. Le sujet est un homme.\n8. Le sujet mesure entre 1m71 et 1m90.\n9. On peut voir les signes d'une infection.</string>
+	<string name="recap">1. C\'est une sépulture.\n2. 1099, le moyen-âge.\n3. Il est inhumé sans contenant.\n4. Le sujet à deux caries.\n5. L\'humérus est en une seule partie.\n6. L\'avant-bras à une fracture en bas.\n7. Le sujet est un homme.\n8. Le sujet mesure entre 1m71 et 1m90.\n9. On peut voir les signes d\'une infection.</string>
 	<string name="about_to_quit">Vous êtes sur le point de quitter l\'application. Si vous voulez la quitter, pressez retour de nouveau</string>
 	<string name="not_all_video_scanned">Vous n\'avez pas encore scanné toutes les vidéos!</string>
 	<string name="not_right_card">Ce n\'est pas la bonne carte à passer maintenant</string>
