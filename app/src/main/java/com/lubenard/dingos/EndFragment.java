@@ -12,6 +12,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.plattysoft.leonids.ParticleSystem;
 
@@ -33,7 +35,15 @@ public class EndFragment extends Fragment {
             // Remove saved user progress before exiting
             SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
             preferences.edit().remove("DISCOVERED_PROGRESS").apply();
-            getActivity().finish();
+            // Clear back stack to avoid using back button
+            FragmentManager fm = getActivity().getSupportFragmentManager();
+            for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            LaunchingFragment fragment = new LaunchingFragment();
+            fragmentTransaction.replace(android.R.id.content, fragment);
+            fragmentTransaction.commit();
         });
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
