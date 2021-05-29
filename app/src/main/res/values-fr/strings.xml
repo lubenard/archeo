@@ -95,7 +95,7 @@
 	<string name="launch_photo">La découverte est finie, dernière question !</string>
 	<string name="auto_connect_toast">Connection a l\'appareil…</string>
 	<string name="end_fragment_main_text">Bien joué ! Vous avez fini l\'activité !</string>
-	<string name="exit">Quitter l\'app</string>
+	<string name="exit">Redemarrer l\'app</string>
 	<string name="already_discovered_elemment">Attendez une minute, cet élément à déjà été scanné !</string>
 	<string name="license_main_leonids">Cette app utilise Leonids, une librairie sous license Apache License 2.0</string>
 	<string name="license_github_leonids_link_text">Vous pouvez trouver le code source entier de Leonids ici:</string>
@@ -106,7 +106,7 @@
 	<string name="saveNotFound">Aucune sauvegarde n\'a été trouvé, lancement depuis 0</string>
 	<string name="final_quizz_question">Sur la base de toutes les questions précédentes, qui, d\'après vous, se trouve dans la sépulture ?</string>
 	<string name="final_quizz_consigne">Cliquez sur le bon personnage</string>
-	<string name="recap">1. Seul l\'avant-bras inférieur gauche est fracturé.\n2. Le sujet est une femme.\n3. Le sujet a une carie.\n4. Le sujet mesure environ 1,65m.\n5. C\'est un adulte.\n6. C\'est un collier de perles de la période mérovingienne.\n7. Il y a deux sujets.\n8. Le sujet a un trou, une ostéomyélite (infection).</string>
+	<string name="recap">1. C\'est une sépulture.\n2. 1099, le moyen-âge.\n3. Il est inhumé sans contenant.\n4. Le sujet à deux caries.\n5. L\'humérus est en une seule partie.\n6. L'avant-bras à une fracture en bas.\n7. Le sujet est un homme.\n8. Le sujet mesure entre 1m71 et 1m90.\n9. On peut voir les signes d'une infection.</string>
 	<string name="about_to_quit">Vous êtes sur le point de quitter l\'application. Si vous voulez la quitter, pressez retour de nouveau</string>
 	<string name="not_all_video_scanned">Vous n\'avez pas encore scanné toutes les vidéos!</string>
 	<string name="not_right_card">Ce n\'est pas la bonne carte à passer maintenant</string>
@@ -114,4 +114,5 @@
 	<string name="card_during_video">Vous êtes actuellement dans une vidéo ! Vous ne pouvez pas passer de carte a ce moment la</string>
 	<string name="bluetooth_title">Connection a un appareil bluetooth</string>
 	<string name="reminder_prec_answer_final_quizz">Rappel des réponses précédentes</string>
+	<string name="clues">Indices</string>
 </resources>

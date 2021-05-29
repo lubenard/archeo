@@ -1,12 +1,15 @@
 package com.lubenard.dingos;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,6 +33,20 @@ public class FinalQuizz extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.final_answer2).setOnClickListener(this);
         view.findViewById(R.id.final_answer3).setOnClickListener(this);
         view.findViewById(R.id.final_answer4).setOnClickListener(this);
+
+        Button clues = view.findViewById(R.id.final_quizz_clues);
+
+        clues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setTitle(R.string.clues);
+                alertDialogBuilder.setMessage(getContext().getString(R.string.recap));
+                alertDialogBuilder.setPositiveButton(android.R.string.yes, null);
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
     }
 
     @Override

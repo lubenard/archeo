@@ -121,7 +121,7 @@
     <string name="launch_photo">Discovery over, let\'s go to the final quizz!</string>
 	<string name="auto_connect_toast">Connecting to device...</string>
 	<string name="end_fragment_main_text">Well played! You have finished the activity</string>
-    <string name="exit">Exit the app</string>
+    <string name="exit">Restart the app</string>
 	<string name="already_discovered_elemment">Wait a minute, this element has already been scanned!</string>
     <string name="not_all_video_scanned">You have not scanned all videos yet !</string>
     <string name="not_right_card">This is not the right card to pass now</string>
@@ -135,9 +135,10 @@
 	<string name="final_quizz_question">Based on all the previous questions, who do you think is in the grave?</string>
     <string name="final_quizz_consigne">Click on the right character</string>
 
-    <string name="recap">1. Only the lower left forearm is fractured. \n2. The subject is a woman. \n3. The subject has a cavity.\n4. The subject measures approximately 1.65m.\n5. He\'s an adult.\n6. It\'s a pearl necklace from the Merovingian period. \n7. There are two subjects. \n8. Subject has a hole, osteomyelitis (infection).</string>
+    <string name="recap">1. This is a burial site.\n2. 1099, the Middle Ages.\n3. He is buried without a container.\n4. The subject has two cavities.\n5. The humerus is in one piece.\n6. Forearm has a fracture at the bottom.\n7. Subject is male.\n8. Subject is between 1m71 and 1m90 tall.\n9. Signs of an infection can be seen.</string>
     <string name="about_to_quit">You are about to quit the app. If you want to quit, press back again</string>
     <string name="bluetooth_title">Connect to a bluetooth device</string>
 	<string name="dingos_quizz_time" translatable="false">Ding\'os - QUIZZ TIME !</string>
 	<string name="reminder_prec_answer_final_quizz">Reminder of previous answers</string>
+    <string name="clues">Clues</string>
 </resources>
