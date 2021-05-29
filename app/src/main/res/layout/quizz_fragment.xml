@@ -26,22 +26,14 @@
 
 			<Button
 				android:id="@+id/answer1"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_gravity="center_horizontal"
+				style="@style/button_quizz"
 				android:background="#D56464"
-				android:textSize="20dp"
-				android:text="Answer 1"
-				android:layout_weight="1"/>
+				android:text="Answer 1" />
 
 			<Button
 				android:id="@+id/answer2"
-				android:layout_width="match_parent"
 				android:background="#5ab1bb"
-				android:textSize="20dp"
-				android:layout_height="match_parent"
-				android:layout_gravity="center_horizontal"
-				android:layout_weight="1"
+				style="@style/button_quizz"
 				android:text="Answer 3" />
 		</LinearLayout>
 
@@ -53,23 +45,15 @@
 
 			<Button
 				android:id="@+id/answer3"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_gravity="center_horizontal"
 				android:background="#a5c882"
-				android:textSize="20dp"
-				android:text="Answer 2"
-				android:layout_weight="1"/>
+				style="@style/button_quizz"
+				android:text="Answer 2" />
 
 			<Button
 				android:id="@+id/answer4"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_gravity="center_horizontal"
 				android:background="#f7dd72"
-				android:textSize="20dp"
-				android:text="Answer 4"
-				android:layout_weight="1"/>
+				style="@style/button_quizz"
+				android:text="Answer 4" />
 		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>

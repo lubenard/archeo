@@ -35,24 +35,16 @@
 
 				<ImageButton
 					android:id="@+id/final_answer1"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_gravity="center_horizontal"
+					style="@style/button_quizz"
 					android:background="#D56464"
 					app:srcCompat="@drawable/perso1"
-					android:textSize="20dp"
-					android:text="Answer 1"
-					android:layout_weight="1"/>
+					android:text="Answer 1" />
 
 				<ImageButton
 					android:id="@+id/final_answer3"
-					android:layout_width="match_parent"
+					style="@style/button_quizz"
 					android:background="#5ab1bb"
-					android:textSize="20dp"
-					android:layout_height="match_parent"
-					android:layout_gravity="center_horizontal"
 					app:srcCompat="@drawable/perso3"
-					android:layout_weight="1"
 					android:text="Answer 3" />
 			</LinearLayout>
 
@@ -64,25 +56,17 @@
 
 				<ImageButton
 					android:id="@+id/final_answer2"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_gravity="center_horizontal"
+					style="@style/button_quizz"
 					android:background="#a5c882"
 					app:srcCompat="@drawable/perso2"
-					android:textSize="20dp"
-					android:text="Answer 2"
-					android:layout_weight="1"/>
+					android:text="Answer 2" />
 
 				<ImageButton
 					android:id="@+id/final_answer4"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_gravity="center_horizontal"
+					style="@style/button_quizz"
 					android:background="#f7dd72"
 					app:srcCompat="@drawable/perso4"
-					android:textSize="20dp"
-					android:text="Answer 4"
-					android:layout_weight="1"/>
+					android:text="Answer 4" />
 			</LinearLayout>
 		</LinearLayout>
 </LinearLayout>

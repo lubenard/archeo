@@ -1,6 +1,7 @@
 package com.lubenard.dingos;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.plattysoft.leonids.ParticleSystem;
 import com.plattysoft.leonids.modifiers.ScaleModifier;
+
+import static android.view.View.GONE;
 
 public class QuizzFragment extends Fragment implements View.OnClickListener {
 
@@ -126,7 +129,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.container_answ2));
                 button3.setText(getCustomString(R.string.container_answ3));
                 button4.setText(getCustomString(R.string.container_answ4));
-                goodAnswer = R.id.answer2;
+                goodAnswer = R.id.answer3;
                 break;
             case 8:
                 questionTextView.setText(getCustomString(R.string.tibia_question));
@@ -148,7 +151,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Log.d("QUIZZ", "Good answer is " + goodAnswer + ", current answer is " + view.getId());
         if (view.getId() == goodAnswer) {
-            Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), getContext().getString(R.string.good_answer), Toast.LENGTH_SHORT).show();
             new ParticleSystem(getActivity(), 10, R.drawable.star, 3000)
                     .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
                     .setAcceleration(0.000003f, 90)
@@ -157,9 +160,11 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                     .setFadeOut(2000)
                     .addModifier(new ScaleModifier(0f, 1.5f, 0, 1500))
                     .oneShot(view, 10);
-            commitTransition();
+            // Wait until the animation of the stars is over before transitioning to WaitScan fragment
+            new Handler().postDelayed(() -> commitTransition(), 2200);
+
         } else {
-            Toast.makeText(getContext(), getContext().getString(R.string.bad_answer), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), getContext().getString(R.string.bad_answer), Toast.LENGTH_SHORT).show();
             new ParticleSystem(getActivity(), 10, R.drawable.red_cross, 3000)
                     .setSpeedByComponentsRange(-0.2f, 0.3f, -0.2f, 0.03f)
                     .setAcceleration(0.000003f, 90)
