@@ -222,6 +222,7 @@ public class LaunchingFragment extends Fragment {
         startSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                WaitScan.setDebugMode(0);
                 isBluetoothConnected();
             }
         });
