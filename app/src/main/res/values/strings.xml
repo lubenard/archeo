@@ -141,4 +141,5 @@
 	<string name="dingos_quizz_time" translatable="false">Ding\'os - QUIZZ TIME !</string>
 	<string name="reminder_prec_answer_final_quizz">Reminder of previous answers</string>
     <string name="clues">Clues</string>
+    <string name="bt_connection_broken">Bluetooth connection has been broken</string>
 </resources>

@@ -86,14 +86,13 @@ public class WaitScan extends Fragment {
             return false;
         });
 
-        Log.d(TAG, "SETTING IT TO " + elementDiscoveredArray.size() + " / " + elementDiscoveredCounter);
         ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
 
         loadProgress();
 
         if (elementDiscoveredArray.size() == 0)
             ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
-        else if (elementDiscoveredCounter == 8)
+        else if (elementDiscoveredCounter == 9)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
         if (isInDebugMode == 0) {
@@ -121,10 +120,9 @@ public class WaitScan extends Fragment {
         }
     }
 
-    private static void commitTransition() {
+    private static void commitTransition(Fragment fragmentToTransit) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        VideoPlayerFragment fragment = new VideoPlayerFragment();
-        fragmentTransaction.replace(android.R.id.content, fragment);
+        fragmentTransaction.replace(android.R.id.content, fragmentToTransit);
         fragmentTransaction.commit();
     }
 
@@ -208,10 +206,9 @@ public class WaitScan extends Fragment {
                 isConnectionAlive = bluetoothDataReceiver.getConnectionStatus();
                 InputStream inputStream = null;
                 try {
-                    inputStream = socket.getInputStream();
                     while (isConnectionAlive) {
+                        inputStream = socket.getInputStream();
                         int dataRead = inputStream.read();
-                        Log.d(TAG, "Looking for datas");
                         Log.d(TAG, "Datas available: " + String.format("%c", dataRead));
                         if (dataRead >= 48 && dataRead <= 58 && !VideoPlayerFragment.getIsInsideVideo()) {
                             int elementRead = dataRead - 48;
@@ -221,29 +218,28 @@ public class WaitScan extends Fragment {
                                 Log.d(TAG, "This is not the right card to pass right now");
                                 toastInsideThread(curContext.getString(R.string.not_right_card));
                                 error = true;
-                            } else if (elementRead == 0) {
-                                hasIntroBeenScanned = true;
-                                error = false;
-                                setShouldQuizzLaunch(1);
-                            } else if (elementRead == 9) {
-                                Log.d(TAG, "Element read is 10");
-                                if (elementDiscoveredArray.size() == 9) {
-                                    Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
-                                    // Transition to Final Quizz
-                                    setIsConnectionAlive(false);
-                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                    FinalQuizz fragment = new FinalQuizz();
-                                    fragmentTransaction.replace(android.R.id.content, fragment);
-                                    fragmentTransaction.commit();
-                                } else {
-                                    toastInsideThread(curContext.getString(R.string.not_all_video_scanned));
-                                    error = true;
+                            } else {
+                                // Special conditions for intro / final quizz
+                                if (elementRead == 0) {
+                                    hasIntroBeenScanned = true;
+                                    error = false;
+                                } else if (elementRead == 9) {
+                                    if (elementDiscoveredArray.size() == 9) {
+                                        Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
+                                        // Transition to Final Quizz
+                                        setIsConnectionAlive(false);
+                                        commitTransition(new FinalQuizz());
+                                    } else {
+                                        toastInsideThread(curContext.getString(R.string.not_all_video_scanned));
+                                        error = true;
+                                    }
                                 }
-                            } else if (elementRead > 0 && elementRead < 9) {
-                                setShouldQuizzLaunch(1);
-                                error = false;
+                                if (elementRead >= 0 && elementRead < 9) {
+                                    setShouldQuizzLaunch(1);
+                                    error = false;
+                                }
                             }
-                            if (elementRead != 10) {
+                            if (elementRead < 9) {
                                 if (!error && !VideoPlayerFragment.getIsInsideVideo()) {
                                     if (!elementDiscoveredArray.contains(elementRead)) {
                                         Log.d(TAG, "Element is not contained into element already discovered");
@@ -253,20 +249,19 @@ public class WaitScan extends Fragment {
                                         saveProgress();
                                         // Update counter only if it belong to quizz questions
                                         if (getShouldQuizzLaunch() == 1) {
-                                            Log.d(TAG, "Updating elementDiscoveredCounter for elementRead " + elementRead);
                                             elementDiscoveredCounter++;
                                             Log.d(TAG, "New elementDiscoveredCounter is " + elementDiscoveredCounter);
-                                            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredCounter + "/9");
                                         }
                                         Log.d(TAG, "set elementRead = " + elementRead);
+                                        setIsConnectionAlive(false);
                                         //Prepare elements for video + quizz only of not quizz
                                         setItemChoice(elementRead, resArray[elementRead]);
-                                        commitTransition();
-                                    } else {
+                                        commitTransition(new VideoPlayerFragment());
+                                    } else
                                         toastInsideThread(curContext.getString(R.string.already_discovered_elemment));
-                                    }
                                 }
                             }
+                        // Only if the card is pause / unpause for videos
                         } else if (dataRead == 58) {
                             if (VideoPlayerFragment.getIsInsideVideo()) {
                                 Log.d(TAG, "I should set pause/unpause on video");
@@ -283,7 +278,9 @@ public class WaitScan extends Fragment {
                     }
                 } catch (InterruptedIOException e) {
                     Log.d(TAG, "Thead has been stopped / Interrupted");
+                    toastInsideThread(curContext.getString(R.string.bt_connection_broken));
                 } catch (IOException e) {
+                    toastInsideThread(curContext.getString(R.string.bt_connection_broken));
                     e.printStackTrace();
                 }
             }
