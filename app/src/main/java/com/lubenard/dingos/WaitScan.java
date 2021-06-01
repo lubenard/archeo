@@ -55,6 +55,9 @@ public class WaitScan extends Fragment {
     private static boolean hasIntroBeenScanned = false;
     private static boolean error = false;
 
+    private static boolean isScanAvailable = false;
+
+
     private final static String TAG = "WaitScan";
 
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
@@ -86,6 +89,8 @@ public class WaitScan extends Fragment {
             return false;
         });
 
+        isScanAvailable = true;
+
         ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
 
         loadProgress();
@@ -116,7 +121,7 @@ public class WaitScan extends Fragment {
             if (elementDiscoveredArray.size() > 9)
                 elementDiscoveredCounter = 9;
             // Update textView
-            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredCounter + "/9");
+            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
         }
     }
 
@@ -210,7 +215,7 @@ public class WaitScan extends Fragment {
                         inputStream = socket.getInputStream();
                         int dataRead = inputStream.read();
                         Log.d(TAG, "Datas available: " + String.format("%c", dataRead));
-                        if (dataRead >= 48 && dataRead <= 58 && !VideoPlayerFragment.getIsInsideVideo()) {
+                        if (dataRead >= 48 && dataRead <= 58 && isScanAvailable) {
                             int elementRead = dataRead - 48;
                             Log.d(TAG, "Valid card! elementRead = " + elementRead);
                             // The first card HAS TO BE intro
@@ -227,6 +232,7 @@ public class WaitScan extends Fragment {
                                     if (elementDiscoveredArray.size() == 9) {
                                         Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
                                         // Transition to Final Quizz
+                                        isScanAvailable = false;
                                         setIsConnectionAlive(false);
                                         commitTransition(new FinalQuizz());
                                     } else {
@@ -240,7 +246,7 @@ public class WaitScan extends Fragment {
                                 }
                             }
                             if (elementRead < 9) {
-                                if (!error && !VideoPlayerFragment.getIsInsideVideo()) {
+                                if (!error && isScanAvailable) {
                                     if (!elementDiscoveredArray.contains(elementRead)) {
                                         Log.d(TAG, "Element is not contained into element already discovered");
                                         // Add discovered element into array
@@ -253,7 +259,7 @@ public class WaitScan extends Fragment {
                                             Log.d(TAG, "New elementDiscoveredCounter is " + elementDiscoveredCounter);
                                         }
                                         Log.d(TAG, "set elementRead = " + elementRead);
-                                        setIsConnectionAlive(false);
+                                        isScanAvailable = false;
                                         //Prepare elements for video + quizz only of not quizz
                                         setItemChoice(elementRead, resArray[elementRead]);
                                         commitTransition(new VideoPlayerFragment());

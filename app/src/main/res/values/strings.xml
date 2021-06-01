@@ -84,7 +84,7 @@
     <string name="pelvis_answ4">There is no pelvis</string>
 
     <string name="skull_question">How many cavities do you have?</string>
-    <string name="skull_answ1">None.</string>
+    <string name="skull_answ1">None</string>
     <string name="skull_answ2">The subject has 1 cavity</string>
     <string name="skull_answ3">The subject has 2 cavity</string>
     <string name="skull_answ4">The subject has 3 cavity</string>

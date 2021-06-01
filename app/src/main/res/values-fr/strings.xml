@@ -57,7 +57,7 @@
 	<string name="pelvis_answ4">Il n\'y a pas de bassin</string>
 
 	<string name="skull_question">Combien comptez-vous de caries ?</string>
-	<string name="skull_answ1">Aucune.</string>
+	<string name="skull_answ1">Aucune</string>
 	<string name="skull_answ2">Le sujet a 1 carie</string>
 	<string name="skull_answ3">Le sujet a 2 caries</string>
 	<string name="skull_answ4">Le sujet a 3 caries</string>
