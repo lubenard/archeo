@@ -82,10 +82,29 @@ public class WaitScan extends Fragment {
 
         Toolbar toolbar = view.findViewById(R.id.wait_scan_toolbar);
         toolbar.setOnMenuItemClickListener(item -> {
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            ListVideo fragment = new ListVideo();
-            fragmentTransaction.replace(android.R.id.content, fragment);
-            fragmentTransaction.commit();
+            switch (item.getItemId()) {
+                case R.id.menu_browse_videos:
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    ListVideo fragment = new ListVideo();
+                    fragmentTransaction.replace(android.R.id.content, fragment);
+                    fragmentTransaction.commit();
+                    break;
+                case R.id.menu_try_reconnect:
+                    ReceiveBtDatas bluetoothDataReceiver = new ReceiveBtDatas();
+                    String deviceMacAddr = getActivity().getPreferences(Context.MODE_PRIVATE).getString("BLUETOOTH_ADDR", null);
+                    if (deviceMacAddr != null && bluetoothDataReceiver.connect(deviceMacAddr) == 1){
+                        Toast.makeText(getContext(), getContext().getString(R.string.bluetooth_toast_error), Toast.LENGTH_LONG).show();
+                        Log.d("BLUETOOTH", "Connection failed! ");
+                    } else {
+                        Log.d("BLUETOOTH", "Connection successful");
+                        Toast.makeText(getContext(), getContext().getString(R.string.bluetooth_toast_success), Toast.LENGTH_LONG).show();
+                        Log.d("BLUETOOTH", "Connected to " + deviceMacAddr);
+                        BluetoothFragment.setBluetoothDataReceiver(bluetoothDataReceiver);
+                    }
+                    break;
+                default:
+                    break;
+            }
             return false;
         });
 

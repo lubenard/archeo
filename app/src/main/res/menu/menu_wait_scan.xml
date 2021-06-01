@@ -2,6 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<item android:title="@string/menu_browse_videos"
+	<item
+		android:id="@+id/menu_browse_videos"
+		android:title="@string/menu_browse_videos"
+		app:showAsAction="never"/>
+
+	<item
+		android:id="@+id/menu_try_reconnect"
+		android:title="@string/menu_try_reconnect"
 		app:showAsAction="never"/>
 </menu>
