@@ -105,7 +105,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button2.setText(getCustomString(R.string.femur_answ2));
                 button3.setText(getCustomString(R.string.femur_answ3));
                 button4.setText(getCustomString(R.string.femur_answ4));
-                goodAnswer = R.id.answer3;
+                goodAnswer = R.id.answer2;
                 break;
             case 5:
                 questionTextView.setText(getCustomString(R.string.humerus_question));
