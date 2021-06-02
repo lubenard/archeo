@@ -35,6 +35,7 @@ public class EndFragment extends Fragment {
             // Remove saved user progress before exiting
             SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
             preferences.edit().remove("DISCOVERED_PROGRESS").apply();
+            WaitScan.resetDiscoveryArray();
             // Clear back stack to avoid using back button
             FragmentManager fm = getActivity().getSupportFragmentManager();
             for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {

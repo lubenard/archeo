@@ -17,7 +17,7 @@
 	<string name="bluetooth_does_not_exist">Désolé, le bluetooth n\'existe pas sur cette appareil. Exit…</string>
 	<string name="bluetooth_required">Le bluetooth is requis pour cette application, exit</string>
 	<string name="menu_browse_videos">Voir les vidéos</string>
-	<string name="bad_card_code">Cette carte n\'est pas reconnu par l\'application. Êtes vous sûr d\'utiliser la bonne carte ?</string>
+	<string name="bad_card_code">Cette carte n\'est pas reconnue par l\'application. Êtes vous sûr d\'utiliser la bonne carte ?</string>
 
 	<string name="bluetooth_discovered">Découvert</string>
 	<string name="bluetooth_paired">Appairé</string>

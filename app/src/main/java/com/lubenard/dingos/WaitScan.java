@@ -46,8 +46,6 @@ public class WaitScan extends Fragment {
     private static BluetoothSocket socket;
     private static ReceiveBtDatas bluetoothDataReceiver;
 
-    private static int elementDiscoveredCounter = 0;
-
     private static Thread runningThread;
 
     private static int isInDebugMode;
@@ -116,7 +114,7 @@ public class WaitScan extends Fragment {
 
         if (elementDiscoveredArray.size() == 0)
             ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
-        else if (elementDiscoveredCounter == 9)
+        else if (elementDiscoveredArray.size() == 9)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
         if (isInDebugMode == 0) {
@@ -137,8 +135,6 @@ public class WaitScan extends Fragment {
             if (elementDiscoveredArray.contains(0)) {
                 hasIntroBeenScanned = true;
             }
-            if (elementDiscoveredArray.size() > 9)
-                elementDiscoveredCounter = 9;
             // Update textView
             ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
         }
@@ -148,6 +144,10 @@ public class WaitScan extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(android.R.id.content, fragmentToTransit);
         fragmentTransaction.commit();
+    }
+
+    public static void resetDiscoveryArray() {
+        elementDiscoveredArray.removeAll(elementDiscoveredArray);
     }
 
     public static int getItemChoice() {
@@ -273,10 +273,6 @@ public class WaitScan extends Fragment {
                                         //Save the new array into pref
                                         saveProgress();
                                         // Update counter only if it belong to quizz questions
-                                        if (getShouldQuizzLaunch() == 1) {
-                                            elementDiscoveredCounter++;
-                                            Log.d(TAG, "New elementDiscoveredCounter is " + elementDiscoveredCounter);
-                                        }
                                         Log.d(TAG, "set elementRead = " + elementRead);
                                         isScanAvailable = false;
                                         //Prepare elements for video + quizz only of not quizz

@@ -197,6 +197,7 @@ public class LaunchingFragment extends Fragment {
                 case R.id.reset_user_progress:
                     SharedPreferences preferences2 = getActivity().getPreferences(Context.MODE_PRIVATE);
                     preferences2.edit().remove("DISCOVERED_PROGRESS").apply();
+                    WaitScan.resetDiscoveryArray();
                     isBackupFoundTextView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.red, null));
                     isBackupFoundTextView.setText(getContext().getString(R.string.saveNotFound));
                     break;
