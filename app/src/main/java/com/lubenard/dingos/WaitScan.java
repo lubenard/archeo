@@ -36,6 +36,8 @@ public class WaitScan extends Fragment {
     private static Activity curActivity;
     private static Context curContext;
 
+    private static boolean shouldLoadProgress = true;
+
     private static FragmentManager fragmentManager;
 
     private static int itemIndexChoice;
@@ -110,7 +112,10 @@ public class WaitScan extends Fragment {
 
         ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
 
-        loadProgress();
+        if (shouldLoadProgress) {
+            loadProgress();
+            shouldLoadProgress = false;
+        }
 
         if (elementDiscoveredArray.size() == 0)
             ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
@@ -166,11 +171,17 @@ public class WaitScan extends Fragment {
         return resArray;
     }
 
-    public static int getShouldQuizzLaunch() { return shouldQuizzLaunch;}
+    public static int getShouldQuizzLaunch() {
+        return shouldQuizzLaunch;
+    }
 
-    public static void setShouldQuizzLaunch(int newValue) {shouldQuizzLaunch = newValue;}
+    public static void setShouldQuizzLaunch(int newValue) {
+        shouldQuizzLaunch = newValue;
+    }
 
-    public static void setIsConnectionAlive(boolean newValue) { isConnectionAlive = newValue; }
+    public static void setIsConnectionAlive(boolean newValue) {
+        isConnectionAlive = newValue;
+    }
 
     public static void setDebugMode(int newStatus) {
         isInDebugMode = newStatus;
@@ -178,7 +189,6 @@ public class WaitScan extends Fragment {
     public static int getDebugMode() {
         return isInDebugMode;
     }
-
 
     public static void interruptThread() {
         if (runningThread != null) {

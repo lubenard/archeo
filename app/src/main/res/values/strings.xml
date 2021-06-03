@@ -138,7 +138,7 @@
     <string name="recap">1. This is a burial site.\n2. 1099, the Middle Ages.\n3. He is buried without a container.\n4. The subject has two cavities.\n5. The humerus is in one piece.\n6. Forearm has a fracture at the bottom.\n7. Subject is male.\n8. Subject is between 1m71 and 1m90 tall.\n9. Signs of an infection can be seen.</string>
     <string name="about_to_quit">You are about to quit the app. If you want to quit, press back again</string>
     <string name="bluetooth_title">Connect to a bluetooth device</string>
-	<string name="dingos_quizz_time" translatable="false">Ding\'os - QUIZZ TIME !</string>
+	<string name="dingos_quizz_time" translatable="false">Archéo\'scan - QUIZZ TIME !</string>
 	<string name="reminder_prec_answer_final_quizz">Reminder of previous answers</string>
     <string name="clues">Clues</string>
     <string name="bt_connection_broken">Bluetooth connection has been broken</string>
