@@ -61,7 +61,9 @@ public class WaitScan extends Fragment {
     private final static String TAG = "WaitScan";
 
     private static final int[] resArray = new int[] {R.raw.intro, R.raw.avant_bras, R.raw.coxaux,
-            R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.chronologie, R.raw.contenant, R.raw.tibia};
+            R.raw.crane, R.raw.femur, R.raw.humerus, R.raw.chronologie, R.raw.tibia};
+
+    private static final int resArraySize = 8;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,7 +112,7 @@ public class WaitScan extends Fragment {
 
         isScanAvailable = true;
 
-        ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
+        ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/" + resArraySize);
 
         if (shouldLoadProgress) {
             loadProgress();
@@ -119,7 +121,7 @@ public class WaitScan extends Fragment {
 
         if (elementDiscoveredArray.size() == 0)
             ((TextView) view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_intro));
-        else if (elementDiscoveredArray.size() == 9)
+        else if (elementDiscoveredArray.size() == resArraySize)
             ((TextView)view.findViewById(R.id.wait_scan_main_message)).setText(getContext().getString(R.string.launch_photo));
 
         if (isInDebugMode == 0) {
@@ -141,7 +143,7 @@ public class WaitScan extends Fragment {
                 hasIntroBeenScanned = true;
             }
             // Update textView
-            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/9");
+            ((TextView) curView.findViewById(R.id.element_discovered)).setText(elementDiscoveredArray.size() + "/" + resArraySize);
         }
     }
 
@@ -222,7 +224,7 @@ public class WaitScan extends Fragment {
 
     // SCANS ARE IN THE FOLLOWING ORDER:
     // 0 - Intro
-    // [1 -> 8] - Discovery videos
+    // [1 -> 7] - Discovery videos
     // 9 - Final quizz
     // 10 - Pause/Resume videoPlayer
     private void threadReadData() {
@@ -258,7 +260,7 @@ public class WaitScan extends Fragment {
                                     hasIntroBeenScanned = true;
                                     error = false;
                                 } else if (elementRead == 9) {
-                                    if (elementDiscoveredArray.size() == 9) {
+                                    if (elementDiscoveredArray.size() == resArraySize) {
                                         Log.d(TAG, "Element read is 10 and size of elementArraydiscovered is 9");
                                         // Transition to Final Quizz
                                         isScanAvailable = false;
@@ -269,12 +271,12 @@ public class WaitScan extends Fragment {
                                         error = true;
                                     }
                                 }
-                                if (elementRead >= 0 && elementRead < 9) {
+                                if (elementRead >= 0 && elementRead < resArraySize) {
                                     setShouldQuizzLaunch(1);
                                     error = false;
                                 }
                             }
-                            if (elementRead < 9) {
+                            if (elementRead < resArraySize) {
                                 if (!error && isScanAvailable) {
                                     if (!elementDiscoveredArray.contains(elementRead)) {
                                         Log.d(TAG, "Element is not contained into element already discovered");

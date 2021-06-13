@@ -123,14 +123,6 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button4.setText(getCustomString(R.string.chronology_answ4));
                 goodAnswer = R.id.answer3;
                 break;
-            case 7:
-                questionTextView.setText(getCustomString(R.string.container_question));
-                button1.setText(getCustomString(R.string.container_answ1));
-                button2.setText(getCustomString(R.string.container_answ2));
-                button3.setText(getCustomString(R.string.container_answ3));
-                button4.setText(getCustomString(R.string.container_answ4));
-                goodAnswer = R.id.answer3;
-                break;
             case 8:
                 questionTextView.setText(getCustomString(R.string.tibia_question));
                 button1.setText(getCustomString(R.string.tibia_answ1));
