@@ -67,6 +67,9 @@ public class VideoPlayerFragment extends Fragment {
                     if (choice == 0) {
                         Log.d("VIDEOVIEW", "Video is finished now, let's go to WaitScan");
                         fragment = new WaitScan();
+                    } else if (choice == 1) {
+                        Log.d("VIDEOVIEW", "Video is finished now, let's go to WaitScan");
+                        fragment = new DebugMenuFragment();
                     } else {
                         Log.d("VIDEOVIEW", "Video is finished now, let's go to Listvideo");
                         fragment = new ListVideo();

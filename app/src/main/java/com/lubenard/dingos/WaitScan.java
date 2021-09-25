@@ -247,6 +247,11 @@ public class WaitScan extends Fragment {
                         int dataRead = inputStream.read();
                         Log.d(TAG, "Datas available: " + String.format("%c", dataRead));
                         if (dataRead >= 48 && dataRead <= 58 && isScanAvailable) {
+                            // Exception for card with number 8, who does not exist
+                            if (dataRead == 56) {
+                                toastInsideThread(curContext.getString(R.string.bad_card_code));
+                                error = true;
+                            }
                             int elementRead = dataRead - 48;
                             Log.d(TAG, "Valid card! elementRead = " + elementRead);
                             // The first card HAS TO BE intro
@@ -289,6 +294,7 @@ public class WaitScan extends Fragment {
                                         isScanAvailable = false;
                                         //Prepare elements for video + quizz only of not quizz
                                         setItemChoice(elementRead, resArray[elementRead]);
+                                        setShouldQuizzLaunch(0);
                                         commitTransition(new VideoPlayerFragment());
                                     } else
                                         toastInsideThread(curContext.getString(R.string.already_discovered_elemment));

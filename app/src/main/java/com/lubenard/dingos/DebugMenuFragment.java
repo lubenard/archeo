@@ -2,15 +2,19 @@ package com.lubenard.dingos;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class DebugMenuFragment extends Fragment implements View.OnClickListener {
+    private static FragmentManager fragmentManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,6 +27,26 @@ public class DebugMenuFragment extends Fragment implements View.OnClickListener 
         super.onViewCreated(view, savedInstanceState);
 
         WaitScan.setDebugMode(1);
+
+        fragmentManager = getFragmentManager();
+
+        /* This code is messy but fix the bug of superposition of fragment when using .addToBackStack(null) */
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener( new View.OnKeyListener() {
+            @Override
+            public boolean onKey( View v, int keyCode, KeyEvent event ) {
+                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    Log.d("DEBUG_MENU", "BACK HAS BEEN PRESSED");
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    AboutFragment fragment = new AboutFragment();
+                    fragmentTransaction.replace(android.R.id.content, fragment);
+                    fragmentTransaction.commit();
+                    return true;
+                }
+                return false;
+            }
+        });
 
         Button intro = view.findViewById(R.id.debug_launch_intro);
         Button video1 = view.findViewById(R.id.debug_launch_video1);

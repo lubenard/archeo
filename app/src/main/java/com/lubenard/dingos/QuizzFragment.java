@@ -123,7 +123,7 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button4.setText(getCustomString(R.string.chronology_answ4));
                 goodAnswer = R.id.answer3;
                 break;
-            case 8:
+            case 7:
                 questionTextView.setText(getCustomString(R.string.tibia_question));
                 button1.setText(getCustomString(R.string.tibia_answ1));
                 button2.setText(getCustomString(R.string.tibia_answ2));
@@ -131,6 +131,9 @@ public class QuizzFragment extends Fragment implements View.OnClickListener {
                 button4.setText(getCustomString(R.string.tibia_answ4));
                 goodAnswer = R.id.answer3;
                 break;
+            default:
+                Toast.makeText(getContext(), "This card is not valid !", Toast.LENGTH_LONG);
+                commitTransition();
         }
 
         button1.setOnClickListener(this);
