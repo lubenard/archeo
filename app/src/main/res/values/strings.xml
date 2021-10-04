@@ -1,6 +1,6 @@
 <resources>
 	<string name="app_name" translatable="false">Archéo\'scan</string>
-    <string name="app_version" translatable="false">v1.2</string>
+    <string name="app_version" translatable="false">v1.2.1</string>
 	<string name="license" translatable="false">Scan and discover bones using arduino to teach kids archeology.\nCopyright (C) 2020  lubenard\n
     This program is free software: you can redistribute it and/or modify\n
     it under the terms of the GNU General Public License as published by\n
